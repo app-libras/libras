@@ -11,7 +11,7 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Ingreso de usuario')),
+      appBar: AppBar(title: const Text('Ingreso de usuario')),
       body: SafeArea(child: Text('hello  world!')),
     );
   }
