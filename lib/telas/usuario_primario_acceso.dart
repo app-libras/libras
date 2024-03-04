@@ -11,8 +11,49 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Ingreso de usuario')),
-      body: SafeArea(child: Text('hello  world!')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              'Seja Bem - Vindo ao LIBRAR.',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+              width: 16,
+            ),
+            Center(
+              child: TextField(
+                decoration: InputDecoration(
+                  labelText: "Seu Nome:",
+                  hintText: 'Digite seu nome',
+                  hintStyle: const TextStyle(color: Colors.black),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                textCapitalization: TextCapitalization.words,
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+              width: 16,
+            ),
+            const ElevatedButton(
+              onPressed: null,
+              child: Text('Iniciar'),
+            )
+          ],
+        ),
+      ),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
     );
   }
 }
