@@ -14,20 +14,33 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              'Seja Bem - Vindo ao LIBRAR.',
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-              width: 16,
+            Row(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text(
+                  'Seja Bem - Vindo ao LIBRAR.',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                  width: 10,
+                ),
+                Image.asset(
+                  'assets/images/sign.png',
+                  height: 100,
+                ),
+                const SizedBox(
+                  height: 80,
+                ),
+              ],
             ),
             Center(
               child: TextField(
