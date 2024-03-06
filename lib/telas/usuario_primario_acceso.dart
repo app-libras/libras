@@ -20,15 +20,38 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
             Row(
               // crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
-
               children: [
-                const Text(
-                  'Seja Bem - Vindo ao LIBRAR.',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                  ),
+                const Column(
+                  children: <Widget>[
+                    Text(
+                      'Seja Bem Vindo',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          'ao',
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                        Text(
+                          ' LIBRAR.',
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 10,
@@ -38,10 +61,10 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
                   'assets/images/sign.png',
                   height: 100,
                 ),
-                const SizedBox(
-                  height: 80,
-                ),
               ],
+            ),
+            const SizedBox(
+              height: 100,
             ),
             Center(
               child: TextField(
@@ -58,7 +81,6 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
             ),
             const SizedBox(
               height: 20,
-              width: 16,
             ),
             const ElevatedButton(
               onPressed: null,
@@ -67,7 +89,6 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
           ],
         ),
       ),
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
     );
   }
 }
