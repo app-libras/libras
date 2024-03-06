@@ -14,12 +14,13 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Row(
               // crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+
               children: [
                 const Text(
                   'Seja Bem - Vindo ao LIBRAR.',
