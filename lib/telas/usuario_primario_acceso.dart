@@ -14,11 +14,9 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
-              // crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Column(
@@ -53,10 +51,6 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                  width: 10,
-                ),
                 Image.asset(
                   'assets/images/sign.png',
                   height: 100,
@@ -64,7 +58,29 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
               ],
             ),
             const SizedBox(
-              height: 100,
+              height: 5,
+            ),
+            const Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage: null,
+                  backgroundColor: Colors.blueAccent,
+                ),
+                Text(
+                  'avatar',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    decoration: TextDecoration.underline,
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
             ),
             Center(
               child: TextField(
