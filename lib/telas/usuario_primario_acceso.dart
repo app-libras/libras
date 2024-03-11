@@ -7,6 +7,23 @@ class UsuarioAcceso extends StatefulWidget {
   @override
   State<UsuarioAcceso> createState() => _UsuarioAccesoState();
 }
+// class _ProfileScreenState extends State<ProfileScreen> {
+//   String selectedAvatar = 'assets/avatar1.png'; // Initial avatar path
+
+// // class _ProfileScreenState extends State<ProfileScreen> {
+// String selectedAvatar = 'assets/images/do-utilizador.png';
+
+// List<String> avatars = [
+//   'assets/images/garoto (1).png',
+//   'assets/images/monstro.png',
+// ];
+
+// // Function to update the selected avatar
+// void _updateAvatar(String newAvatar) {
+//   setState(() {
+//     selectedAvatar = newAvatar;
+//   });
+// }
 
 class _UsuarioAccesoState extends State<UsuarioAcceso> {
   @override
@@ -65,13 +82,16 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
               //   height: 5,
               // ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  // _updateAvatar(avatar);
+                },
                 child: const Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
                     CircleAvatar(
                       radius: 80,
-                      backgroundColor: Color.fromARGB(255, 181, 190, 186),
+                      // backgroundImage: AssetImage(Sele),
+                      // backgroundColor: Color.fromARGB(255, 181, 190, 186),
                     ),
                     Text(
                       'avatar',
