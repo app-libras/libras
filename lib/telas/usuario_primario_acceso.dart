@@ -1,4 +1,7 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class UsuarioAcceso extends StatefulWidget {
   const UsuarioAcceso({super.key});
@@ -69,21 +72,25 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
                 alignment: Alignment.bottomCenter,
                 children: [
                   CircleAvatar(
+                    // need to replace with image
                     radius: 80,
                     child: Icon(
                       Icons.person,
-                      size: 30,
+                      size: 40,
                     ),
                   ),
                   Positioned(
                     bottom: 10,
-                    left: 140,
-                    child: Icon(
-                      Icons.add_circle,
-                      color: Colors.black,
-                      size: 20,
+                    left: 98.0,
+                    child: ElevatedButton(
+                      onPressed: null,
+                      child: Icon(
+                        Icons.add_circle,
+                        color: Colors.black,
+                        size: 20,
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -107,9 +114,12 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
               height: 20,
             ),
 
-            const ElevatedButton(
-              onPressed: null,
-              child: Text('Entrar'),
+            const SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: null,
+                child: Text('Entrar'),
+              ),
             )
           ],
         ),
