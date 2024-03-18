@@ -1,54 +1,61 @@
+// // import 'dart:html';
+
 // import 'package:flutter/material.dart';
-// import 'package:fluttermoji/fluttermoji.dart';
 
-// class ProfileAvatar extends StatefulWidget {
-//    const ProfileAvatar ({super.key});
-
-//   @override
-//   _ProfileAvatarState createState() => _ProfileAvatarState();
-//   }
-
-//   class _ProfileAvatarState extends State<ProfileAvatar> {
-//   String? _fluttermojiSvg;
+// class AvatarSelect extends StatefulWidget {
+//   const AvatarSelect({super.key});
 
 //   @override
-//   void initState() {
-//     super.initState();
-//     _generateFluttermoji();
-//   }
+//   _AvatarSelectState createState() => _AvatarSelectState();
+// }
 
-//   void _generateFluttermoji() async {
-//     String svg = await FluttermojiFunctions().encode();
-//     setState(() {
-//       _fluttermojiSvg = svg;
-//     });
-//   }
-  
-//  @override
+// class _AvatarSelectState extends State<AvatarSelect> {
+//   String? _selectedImage;
+
+//   @override
 //   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Create Profile Picture'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             _fluttermojiSvg != null
-//                 ? FluttermojiSvg(
-//                     svg: _fluttermojiSvg!,
-//                     width: 150,
-//                     height: 150,
-//                   )
-//                 : CircularProgressIndicator(),
-//             SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: _generateFluttermoji,
-//               child: Text('Create Profile Picture'),
+//     return const Scaffold(
+//         body: Center(
+//             child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
 //             ),
-//           ],
-//         ),
-//       ),
+//             ),
+//             );
+//   }
+
+//   @override
+//   void _selectImageFromAssets(BuildContext context) {
+//     showDialog(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           title: Text('Select Image'),
+//           content: Column(
+//             mainAxisSize: MainAxisSize.min,
+//             children: [
+//               ListTile(
+//                 title: Text('Image 1'),
+//                 onTap: () {
+//                   setState(() {
+//                     _selectedImage = 'assets/image1.png';
+//                   });
+//                   Navigator.pop(context);
+//                 },
+//               ),
+//               ListTile(
+//                 title: Text('Image 2'),
+//                 onTap: () {
+//                   setState(() {
+//                     _selectedImage = 'assets/image2.png';
+//                   });
+//                   Navigator.pop(context);
+//                 },
+//               ),
+//               // Add more list tiles for additional images as needed
+//             ],
+//           ),
+//         );
+//       },
 //     );
 //   }
 // }

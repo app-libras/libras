@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:libras/telas/avatar.dart';
 
 class UsuarioAcceso extends StatefulWidget {
   const UsuarioAcceso({super.key});
@@ -26,10 +27,9 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
               child: const Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
-                 
                   // FluttermojiCircleAvatar(
                   //   radius: 100,
-                    
+
                   // )
                   CircleAvatar(
                     // need to replace with image
