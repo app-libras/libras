@@ -22,50 +22,7 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     const Column(
-            //       children: <Widget>[
-            //         Text(
-            //           'Seja Bem Vindo',
-            //           style: TextStyle(
-            //             fontSize: 25,
-            //             fontWeight: FontWeight.w500,
-            //           ),
-            //         ),
-            //         SizedBox(
-            //           height: 5,
-            //         ),
-            //         Row(
-            //           children: <Widget>[
-            //             Text(
-            //               'ao',
-            //               style: TextStyle(
-            //                 fontSize: 25,
-            //                 fontStyle: FontStyle.italic,
-            //               ),
-            //             ),
-            //             Text(
-            //               ' LIBRAR.',
-            //               style: TextStyle(
-            //                 fontSize: 30,
-            //                 fontWeight: FontWeight.bold,
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //       ],
-            //     ),
-            //     Image.asset(
-            //       'assets/images/sign.png',
-            //       height: 100,
-            //     ),
-            //   ],
-            // ),
-            // const SizedBox(
-            //   height: 5,
-            // ),
+     
             GestureDetector(
               onTap: () {},
               child: const Stack(
