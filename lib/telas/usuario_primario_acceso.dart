@@ -15,17 +15,22 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
       // appBar: AppBar(
       //   backgroundColor: const Color.fromARGB(244, 4, 245, 149),
       // ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-     
             GestureDetector(
               onTap: () {},
               child: const Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
+                 
+                  // FluttermojiCircleAvatar(
+                  //   radius: 100,
+                    
+                  // )
                   CircleAvatar(
                     // need to replace with image
                     radius: 80,
@@ -68,7 +73,6 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
             const SizedBox(
               height: 20,
             ),
-
             const SizedBox(
               width: double.infinity,
               child: ElevatedButton(
