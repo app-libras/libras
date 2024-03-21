@@ -26,7 +26,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: const Color.fromARGB(255, 1, 76, 138),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -41,14 +41,15 @@ class _SplashState extends State<Splash> {
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w500,
+                        color: Colors.white,
                       ),
                     ),
                     Text(
-                      ' LIBRAR.',
+                      'LiBRAR.',
                       style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ],
                 ),
