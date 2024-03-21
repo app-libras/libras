@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+
 import 'package:libras/telas/usuario_primario_acceso.dart';
 
 class Splash extends StatefulWidget {
@@ -16,11 +18,11 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() async {
-    // await Future.delayed(const Duration(seconds: 10), () {});
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => const UsuarioAcceso()),
-    // );
+    await Future.delayed(const Duration(seconds: 5), () {});
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const UsuarioAcceso()),
+    );
   }
 
   @override
@@ -34,9 +36,9 @@ class _SplashState extends State<Splash> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Column(
+                Column(
                   children: <Widget>[
-                    Text(
+                    const Text(
                       'Bem Vindo ao',
                       style: TextStyle(
                         fontSize: 25,
@@ -44,12 +46,20 @@ class _SplashState extends State<Splash> {
                         color: Colors.white,
                       ),
                     ),
-                    Text(
-                      'LiBRAR.',
-                      style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                    AnimatedTextKit(
+                      repeatForever: true,
+                      pause: const Duration(milliseconds: 5000),
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          'LiBRAR.',
+                          textStyle: const TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          speed: const Duration(milliseconds: 200),
+                        ),
+                      ],
                     ),
                   ],
                 ),
