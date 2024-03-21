@@ -16,55 +16,48 @@ class _SplashState extends State<Splash> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(const Duration(seconds: 10), () {});
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const UsuarioAcceso()),
-    );
+    // await Future.delayed(const Duration(seconds: 10), () {});
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => const UsuarioAcceso()),
+    // );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Column(
-                    children: <Widget>[
-                      Text(
-                        'Bem Vindo ao',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500,
-                        ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Column(
+                  children: <Widget>[
+                    Text(
+                      'Bem Vindo ao',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w500,
                       ),
-                      SizedBox(
-                        height: 5,
+                    ),
+                    Text(
+                      ' LIBRAR.',
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Row(
-                        children: <Widget>[
-                          Text(
-                            ' LIBRAR.',
-                            style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Image.asset(
-                    'assets/images/sign.png',
-                    height: 150,
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 10),
+                Image.asset(
+                  'assets/images/sign.png',
+                  height: 100,
+                ),
+              ],
             )
           ],
         ),
