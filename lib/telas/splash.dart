@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:libras/telas/usuario_primario_acceso.dart';
+import 'package:libras/telas/circles.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -21,7 +22,7 @@ class _SplashState extends State<Splash> {
     await Future.delayed(const Duration(seconds: 5), () {});
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const UsuarioAcceso()),
+      MaterialPageRoute(builder: (context) => const CirclesScreen()),
     );
   }
 
