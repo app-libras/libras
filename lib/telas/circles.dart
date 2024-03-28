@@ -67,6 +67,9 @@ class _CirclesScreenState extends State<CirclesScreen> {
                   ),
                   child: const CircularProgressIndicator(),
                 ),
+                // const Divider(
+                //   height: 1,
+                // ),
                 const SizedBox(height: 30),
                 Container(
                   height: 60,
