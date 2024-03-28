@@ -52,7 +52,7 @@ class _CirclesScreenState extends State<CirclesScreen> {
                   decoration: BoxDecoration(
                     color: Colors.red,
                     border: Border.all(color: Colors.redAccent),
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(60),
                   ),
                   child: const CircularProgressIndicator(),
                 ),
@@ -63,7 +63,7 @@ class _CirclesScreenState extends State<CirclesScreen> {
                   decoration: BoxDecoration(
                     color: Colors.yellowAccent,
                     border: Border.all(color: Colors.yellowAccent),
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(60),
                   ),
                   child: const CircularProgressIndicator(),
                 ),
@@ -74,7 +74,7 @@ class _CirclesScreenState extends State<CirclesScreen> {
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     border: Border.all(color: Colors.blueAccent),
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius: BorderRadius.circular(60),
                   ),
                   child: const CircularProgressIndicator(),
                 ),
