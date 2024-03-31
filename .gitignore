@@ -27,3 +27,5 @@ doc/api/
 .flutter-plugins-dependencies
 .vscode
 android/local.properties
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/Generated.xcconfig
