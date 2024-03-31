@@ -28,7 +28,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 1, 76, 138),
+      backgroundColor: const Color.fromARGB(255, 2, 97, 45),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +51,7 @@ class _SplashState extends State<Splash> {
                       pause: const Duration(milliseconds: 5000),
                       animatedTexts: [
                         TypewriterAnimatedText(
-                          'LiBRAR.',
+                          'LiBRAR',
                           textStyle: const TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,

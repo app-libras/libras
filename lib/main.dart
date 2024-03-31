@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show runApp;
 
 import 'package:libras/app/my_app.dart';
 
