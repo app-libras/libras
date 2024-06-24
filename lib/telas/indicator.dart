@@ -17,9 +17,14 @@ class _IndicatorScreenState extends State<IndicatorScreen> {
         title: const Text("Olá usuario"),
       ),
       body: Center(
+        // child: Padding(
+        //   padding: EdgeInsets.all(1.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CircularPercentIndicator(
+              animation: true,
+              animationDuration: 1000,
               radius: 50,
               lineWidth: 10,
               progressColor: Colors.green,
@@ -28,9 +33,9 @@ class _IndicatorScreenState extends State<IndicatorScreen> {
               percent: 0.4,
               center: const Text("40%"),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
             CircularPercentIndicator(
               radius: 50,
               lineWidth: 10,
@@ -40,9 +45,9 @@ class _IndicatorScreenState extends State<IndicatorScreen> {
               percent: 0.0,
               center: const Text("0%"),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
             CircularPercentIndicator(
               radius: 50,
               lineWidth: 10,
@@ -52,12 +57,13 @@ class _IndicatorScreenState extends State<IndicatorScreen> {
               percent: 0.0,
               center: const Text("0%"),
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
           ],
         ),
       ),
+      // ),
     );
   }
 }

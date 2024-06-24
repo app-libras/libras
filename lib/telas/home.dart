@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
         title: const Text('Librar'),
       ),
       body: Container(
-        child: Text(' hello'),
+        child: const Text(' hello'),
       ),
     );
   }
