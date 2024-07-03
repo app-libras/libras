@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:libras/telas/indicator.dart';
 // import 'package:libras/telas/avatar.dart';
 
 class UsuarioAcceso extends StatefulWidget {
@@ -11,29 +12,29 @@ class UsuarioAcceso extends StatefulWidget {
 
 class _UsuarioAccesoState extends State<UsuarioAcceso> {
   TextEditingController _controller = TextEditingController();
-  String name = '';
-  String? imageUrl;
+  // String name = '';
+  // String? imageUrl;
 
-  @override
-  void initState() {
-    super.initState();
-    _controller.addListener(() {
-      setState(() {
-        name = _controller.text;
-      });
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _controller.addListener(() {
+  //     setState(() {
+  //       name = _controller.text;
+  //     });
+  //   });
+  // }
 
-  String getInitials(String name) {
-    List<String> names = name.split(' ');
-    String initials = '';
-    if (names.length > 1) {
-      initials = names[0][0] + names[1][0];
-    } else if (names.length == 1) {
-      initials = names[0][0];
-    }
-    return initials.toUpperCase();
-  }
+  // String getInitials(String name) {
+  //   List<String> names = name.split(' ');
+  //   String initials = '';
+  //   if (names.length > 1) {
+  //     initials = names[0][0] + names[1][0];
+  //   } else if (names.length == 1) {
+  //     initials = names[0][0];
+  //   }
+  //   return initials.toUpperCase();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -100,18 +101,26 @@ class _UsuarioAccesoState extends State<UsuarioAcceso> {
             ),
             const SizedBox(
               width: double.infinity,
-              child: ElevatedButton(
-                onPressed: null,
-                child: Text('Entrar'),
-              ),
-            )
+              // child:
+              //  ElevatedButton(
+              //   child: Text('Entrar'),
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: (context) => const IndicatorScreen(),
+              //       ),
+              //     );
+              //   },
+              // ),
+            ),
           ],
         ),
       ),
-      // bottomNavigationBar: const BottomAppBar(
-      //   color: Color.fromARGB(244, 4, 245, 149),
-      //   height: 50,
-      // ));
     );
+    // bottomNavigationBar: const BottomAppBar(
+    //   color: Color.fromARGB(244, 4, 245, 149),
+    //   height: 50,
+    // ));
   }
 }
