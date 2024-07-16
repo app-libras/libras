@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:libras/telas/indicator.dart';
+import 'package:libras/screens/indicator.dart';
 // import 'package:libras/telas/avatar.dart';
 
 class UsuarioAcceso extends StatefulWidget {

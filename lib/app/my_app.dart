@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:libras/telas/splash.dart';
+import 'package:libras/screens/splash.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
