@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Libras',
+      title: 'Librar',
       theme: myTheme(),
       initialRoute: SplashScreen.id,
       routes: {

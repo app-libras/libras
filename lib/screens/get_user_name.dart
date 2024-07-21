@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:libras/models/user_database.dart';
 import 'package:libras/screens/home.dart';
+import 'package:provider/provider.dart';
 // import 'package:flutter/widgets.dart';
 
 class UserNameScreen extends StatefulWidget {
@@ -16,14 +18,19 @@ class _UserNameScreenState extends State<UserNameScreen> {
 
   void _getUserName() {
     String name = controller.text;
-    print(name);
     if (name.isNotEmpty) {
+      context.read<UserDatabase>().saveUser(name);
       Navigator.pushReplacementNamed(
         context,
         HomeScreen.id,
-        arguments: name,
       );
     }
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -31,22 +38,24 @@ class _UserNameScreenState extends State<UserNameScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 70),
-          child: Column(
-            children: [
-              markerAndLogo(),
-              const SizedBox(height: 70),
-              userProfile(context),
-              const SizedBox(
-                height: 20,
-              ),
-              nameTextField(context),
-              const SizedBox(
-                height: 20,
-              ),
-              enterButton(context)
-            ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 70),
+            child: Column(
+              children: [
+                markerAndLogo(),
+                const SizedBox(height: 70),
+                userProfile(context),
+                const SizedBox(
+                  height: 20,
+                ),
+                nameTextField(context),
+                const SizedBox(
+                  height: 20,
+                ),
+                enterButton(context)
+              ],
+            ),
           ),
         ),
       ),
@@ -70,6 +79,7 @@ class _UserNameScreenState extends State<UserNameScreen> {
           border: OutlineInputBorder(
             borderSide: BorderSide(
               color: Theme.of(context).colorScheme.primary,
+              width: 10,
             ),
             borderRadius: BorderRadius.circular(5),
           ),
@@ -132,12 +142,12 @@ class _UserNameScreenState extends State<UserNameScreen> {
           'assets/images/sign.png',
           height: 100,
         ),
-        const Text(
-          'Bem Vindo ao Libras',
+        Text(
+          'Bem Vindo ao Librar',
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w900,
-            // color: Colors.black,
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
       ],

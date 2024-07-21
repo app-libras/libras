@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:libras/models/user_database.dart';
 import 'package:libras/screens/get_user_name.dart';
+import 'package:libras/screens/home.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,12 +18,34 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    _readUser();
     _navigatetohome();
   }
 
+  void _readUser() {
+    try {
+      context.read<UserDatabase>().getUser();
+      // ignore: empty_catches
+    } catch (e) {}
+  }
+
   _navigatetohome() async {
-    await Future.delayed(const Duration(seconds: 2), () {});
-    Navigator.pushReplacementNamed(context, UserNameScreen.id);
+    await Future.delayed(const Duration(seconds: 2), () {
+      _getUser();
+    });
+  }
+
+  void _getUser() {
+    final userDatabase = context.read<UserDatabase>();
+    try {
+      if (userDatabase.user.name != null) {
+        Navigator.pushReplacementNamed(context, HomeScreen.id);
+      } else {
+        Navigator.pushReplacementNamed(context, UserNameScreen.id);
+      }
+    } catch (e) {
+      Navigator.pushReplacementNamed(context, UserNameScreen.id);
+    }
   }
 
   @override
@@ -47,10 +72,10 @@ class _SplashScreenState extends State<SplashScreen> {
                       animatedTexts: [
                         TypewriterAnimatedText(
                           'LiBRAR',
-                          textStyle: const TextStyle(
+                          textStyle: TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           speed: const Duration(milliseconds: 200),
                         ),
