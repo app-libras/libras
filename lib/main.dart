@@ -16,6 +16,7 @@ import 'package:libras/models/user_database.dart';
 /// The `runApp` function takes the widget that represents the root of the
 /// application widget tree and runs the app. In this case, the root widget is
 /// an instance of the `MyApp` widget.
+///
 void main() async {
   // Initialize the Isar instance
   WidgetsFlutterBinding.ensureInitialized();
