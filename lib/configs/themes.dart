@@ -1,68 +1,65 @@
 import 'package:flutter/material.dart';
 
-ThemeData lightTheme() {
-  return ThemeData.light().copyWith(
-    colorScheme: const ColorScheme.light(),
-  );
-}
-
 ThemeData myTheme() {
-  return ThemeData.dark().copyWith(
+  return ThemeData.light().copyWith(
     colorScheme: const ColorScheme.light().copyWith(
-      primary: const Color.fromARGB(255, 4, 245, 149),
-      secondary: const Color.fromARGB(255, 4, 245, 149),
-      // tertiary: const Color.fromARGB(255, 4, 245, 149),
-      surface: const Color.fromARGB(255, 2, 97, 45),
-      // onSurface: const Color.fromARGB(255, 2, 97, 45),
-      // onSecondary: const Color.fromARGB(255, 2, 97, 45),
-      // onTertiary: const Color.fromARGB(255, 2, 97, 45),
-      // onPrimary: const Color.fromARGB(255, 4, 245, 149),
-      // error: const Color.fromARGB(255, 4, 245, 149),
-      // onError: const Color.fromARGB(255, 4, 245, 149),
+      primary: const Color(0xffF5F7F8),
+      secondary: const Color(0xff399918),
+      tertiary: const Color.fromARGB(61, 208, 231, 200),
+      surface: const Color(0xffEFFFFB),
+      onSurface: const Color.fromARGB(255, 222, 228, 225),
+      onSecondary: const Color.fromARGB(255, 2, 97, 45),
+      onTertiary: const Color.fromARGB(255, 2, 97, 45),
+      onPrimary: const Color.fromARGB(255, 4, 245, 149),
+      error: const Color.fromARGB(220, 185, 55, 55),
+      onError: const Color.fromARGB(218, 192, 50, 40),
     ),
     textTheme: const TextTheme(
-      titleLarge: TextStyle(color: Colors.white),
-      titleMedium: TextStyle(color: Colors.white),
-      titleSmall: TextStyle(color: Colors.white),
-      bodySmall: TextStyle(color: Colors.white),
-      bodyMedium: TextStyle(color: Colors.white),
-      bodyLarge: TextStyle(color: Colors.white),
-      displayLarge: TextStyle(color: Colors.white),
-      displayMedium: TextStyle(color: Colors.white),
-      displaySmall: TextStyle(color: Colors.white),
-      labelLarge: TextStyle(color: Colors.white),
-      labelMedium: TextStyle(color: Colors.white),
-      labelSmall: TextStyle(color: Colors.white),
-      headlineLarge: TextStyle(color: Colors.white),
-      headlineMedium: TextStyle(color: Colors.white),
-      headlineSmall: TextStyle(color: Colors.white),
+      titleLarge: TextStyle(color: Colors.black),
+      titleMedium: TextStyle(color: Colors.black),
+      titleSmall: TextStyle(color: Colors.black),
+      bodyMedium: TextStyle(color: Colors.black),
+      bodySmall: TextStyle(color: Colors.black),
+      bodyLarge: TextStyle(color: Colors.black),
+      labelLarge: TextStyle(color: Colors.black),
+      labelMedium: TextStyle(color: Colors.black),
+      labelSmall: TextStyle(color: Colors.black),
     ),
-    iconTheme: const IconThemeData(color: Colors.white),
-    appBarTheme:
-        const AppBarTheme(backgroundColor: Color.fromARGB(255, 56, 18, 18)),
-    scaffoldBackgroundColor: const Color.fromARGB(255, 2, 97, 45),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: Color.fromARGB(255, 2, 97, 45),
-    ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        backgroundColor: WidgetStateProperty.all<Color>(
-          const Color.fromARGB(255, 4, 245, 149),
-        ),
-        foregroundColor: WidgetStateProperty.all<Color>(
-          const Color.fromARGB(255, 2, 97, 45),
-        ),
+    // // iconTheme: const IconThemeData(color: Colors.white),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xff379777),
+      foregroundColor: Color(0xffF5F7F8),
+      elevation: 0,
+      centerTitle: true,
+      actionsIconTheme: IconThemeData(
+        // color: Color(0xffF5F7F8),
+        size: 20,
       ),
     ),
-    textButtonTheme: TextButtonThemeData(
-      style: ButtonStyle(
-        foregroundColor: WidgetStateProperty.all<Color>(
-          const Color.fromARGB(255, 4, 245, 149),
-        ),
-      ),
-    ),
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Color.fromARGB(255, 4, 245, 149),
-    ),
+    scaffoldBackgroundColor: const Color(0xffF5F7F8),
+    // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    //     // backgroundColor: Color.fromARGB(255, 2, 97, 45),
+    //     ),
+
+    // // elevatedButtonTheme: ElevatedButtonThemeData(
+    // //   style: ButtonStyle(
+    // //     backgroundColor: WidgetStateProperty.all<Color>(
+    // //       const Color.fromARGB(255, 4, 245, 149),
+    // //     ),
+    // //     foregroundColor: WidgetStateProperty.all<Color>(
+    // //       const Color.fromARGB(255, 2, 97, 45),
+    // //     ),
+    // //   ),
+    // // ),
+    // // textButtonTheme: TextButtonThemeData(
+    // //   style: ButtonStyle(
+    // //     foregroundColor: WidgetStateProperty.all<Color>(
+    // //       const Color.fromARGB(255, 4, 245, 149),
+    // //     ),
+    // //   ),
+    // // ),
+    // // textSelectionTheme: const TextSelectionThemeData(
+    // //   cursorColor: Color.fromARGB(255, 4, 245, 149),
+    // // ),
   );
 }
