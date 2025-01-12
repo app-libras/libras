@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:libras/models/user_database.dart';
+
 import 'package:libras/screens/home.dart';
-import 'package:provider/provider.dart';
+import 'package:libras/auth/register_user.dart';
 // import 'package:flutter/widgets.dart';
 
 class UserNameScreen extends StatefulWidget {
@@ -20,6 +20,7 @@ class _UserNameScreenState extends State<UserNameScreen> {
     String name = controller.text;
     if (name.isNotEmpty) {
       // context.read<UserDatabase>().saveUser(name);
+      RegisterUser().addUserToDatabase(name);
       Navigator.pushReplacementNamed(
         context,
         HomeScreen.id,

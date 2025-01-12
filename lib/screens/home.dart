@@ -1,6 +1,6 @@
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:libras/models/user_database.dart';
+import 'package:libras/providers/user_provider.dart';
 import 'package:libras/widgets/app_greeting.dart';
 import 'package:libras/widgets/progressive_circle.dart';
 import 'package:libras/widgets/user_score.dart';

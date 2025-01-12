@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:libras/app/my_app.dart';
-import 'package:libras/models/user_database.dart';
+import 'package:libras/providers/user_provider.dart';
 
 /// The entry point of the application.
 ///
@@ -23,10 +23,10 @@ void main() async {
   // await UserDatabase.initialize();
   // Run the app by passing the root widget.
   runApp(
-    // ChangeNotifierProvider(
-    //   create: (context) => UserDatabase(),
-    //   child: const MyApp(),
-    // ),
-    const MyApp(),
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+      child: const MyApp(),
+    ),
+    // const MyApp(),
   );
 }
