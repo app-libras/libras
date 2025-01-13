@@ -28,6 +28,7 @@ class DbService{
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    await db.execute(DbTables().userTables);
+    await db.execute(UserDbTables().userTables);
+    await db.execute(ScoreDbTables().scoreTables);
   }
 }

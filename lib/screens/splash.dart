@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
-import 'package:libras/providers/user_provider.dart';
 import 'package:libras/screens/get_user_name.dart';
 import 'package:libras/screens/home.dart';
 import 'package:libras/auth/verifiy_user_account.dart';
@@ -13,7 +11,6 @@ class SplashScreen extends StatefulWidget {
   static const id = 'splash_screen';
 
   @override
-  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
@@ -36,7 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _getUser() {
-    // final userDatabase = context.read<UserDatabase>();
     try {
       if (isUser) {
         Navigator.pushReplacementNamed(context, HomeScreen.id);

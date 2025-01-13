@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             backgroundColor: Colors.greenAccent,
                             progressColor:
                                 Theme.of(context).colorScheme.secondary,
-                            percent: 1,
+                            percent: .5,
                             onTap: () => _aulaAbc(context),
                           ),
                           ProgressiveCircle(
