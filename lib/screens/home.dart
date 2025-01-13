@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppGreeting(
-              text: 'Bem Vindo ao Librar',
+              text: 'Bem-vindo ao Librar',
               textColor: Theme.of(context).colorScheme.primary,
               fontSize: 25,
             ),
