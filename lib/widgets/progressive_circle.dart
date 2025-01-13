@@ -25,7 +25,7 @@ class ProgressiveCircle extends StatelessWidget {
       child: CircularPercentIndicator(
         animation: true,
         animationDuration: 1000,
-        radius: 80,
+        radius: 70,
         lineWidth: 5,
         progressColor: progressColor,
         backgroundColor: backgroundColor,

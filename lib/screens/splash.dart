@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-// import 'package:libras/models/user_database.dart';
+
 import 'package:libras/screens/get_user_name.dart';
 import 'package:libras/screens/home.dart';
-import 'package:provider/provider.dart';
+import 'package:libras/auth/verifiy_user_account.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,44 +11,37 @@ class SplashScreen extends StatefulWidget {
   static const id = 'splash_screen';
 
   @override
-  // ignore: library_private_types_in_public_api
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  var isUser = false;
+
   @override
   void initState() {
     super.initState();
-    // _readUser();
     _navigatetohome();
   }
 
-  // void _readUser() {
-  //   try {
-  //     context.read<UserDatabase>().getUser();
-  //     // ignore: empty_catches
-  //   } catch (e) {}
-  // }
-
   _navigatetohome() async {
+    isUser = await VerifiyUserAccount().getUser();
 
     await Future.delayed(const Duration(seconds: 2), () {
-    Navigator.pushReplacementNamed(context, HomeScreen.id); 
-    //   _getUser();
+      _getUser();
     });
   }
 
   void _getUser() {
-    // final userDatabase = context.read<UserDatabase>();
-    // try {
-    //   if (userDatabase.user.name != null) {
-    //     Navigator.pushReplacementNamed(context, HomeScreen.id);
-    //   } else {
-    //     Navigator.pushReplacementNamed(context, UserNameScreen.id);
-    //   }
-    // } catch (e) {
-    //   Navigator.pushReplacementNamed(context, UserNameScreen.id);
-    // }
+    try {
+      if (isUser) {
+        Navigator.pushReplacementNamed(context, HomeScreen.id);
+      } else {
+        Navigator.pushReplacementNamed(context, UserNameScreen.id);
+      }
+    } catch (e) {
+      Navigator.pushReplacementNamed(context, UserNameScreen.id);
+    }
   }
 
   @override
