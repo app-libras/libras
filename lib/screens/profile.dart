@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 
-class ProfileScreen extends StatelessWidget{
-  const ProfileScreen({super.key});
+
+class Profile extends StatefulWidget{
+  const Profile({super.key});
   
   @override
-  _ProfileScreenState  createstate() => _ProfileScreenState();
+  State <Profile>  createstate() => ProfileState();
 }
 
 class ProfileScreenState extends StatelessWidget {
