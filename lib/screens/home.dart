@@ -17,12 +17,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 _aulaAbc(BuildContext context) {
-  Navigator.pushNamed(context, 'aula_screen');
+  Navigator.pushNamed(context, 'aula_screen'); 
+} 
 
-  _userprofiler(BuildContext context){
-    Navigator.pushNamed(context, 'profile_screen');
+void _userprofiler(BuildContext context){
+    Navigator.pushNamed(context, ProfileScreen.id);
   }
-}
+
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icons.person,
                 size: 30,
               ),
-              onPressed: _userprofiler,
+              onPressed:() => _userprofiler(context  ),
             ),
           ],
         ),
