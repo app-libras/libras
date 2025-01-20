@@ -1,4 +1,7 @@
+// import 'dart:ui';
+
 import 'package:flutter/material.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 
 
 class ProfileScreen extends StatelessWidget {
@@ -6,76 +9,88 @@ class ProfileScreen extends StatelessWidget {
 
   static const id = 'profile_screen';
 
+  final String userName = "John Doe";
+  final String userEmail = "johndoe@example.com";
+  final String userBio = "Software Developer | Flutter Enthusiast";
+  final String profileImageUrl = "https://via.placeholder.com/150";
+
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double weight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.only(
-          top: 30, 
-          left: 20, 
-          right: 20,
-          ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.arrow_back_ios,
-                  color: Colors.black,
-                  size: 30,),
-                  Spacer(),
-                  Icon(Icons.menu,
-                  color: Colors.black,
-                  size: 30,
-                  ),
-                ],
-              ),
-              SizedBox(height: 0.03,),
-              Row(
-                children: [
-                  Column(children: [
-                    Text('Kofi Manu!',
-                    style: TextStyle(
-                      fontSize: 20, 
-                      fontWeight: FontWeight.bold, 
-                      color: Colors.black,
-                    ),
-                    ),
-                    Text('idade',
-                    style: TextStyle(
-                      fontSize: 15, 
-                      fontWeight: FontWeight.normal, 
-                      color: Colors.black,
-                    ),
-                    ),
-                    Text('idade',
-                    style: TextStyle(
-                      fontSize: 15, 
-                      fontWeight: FontWeight.normal, 
-                      color: Colors.black,
-                    ),
-                    ),
-                  ],),
-                  Spacer(),
-                  Container(
-                    height: height * 0.12,
-                    width:    150,
-                    decoration: BoxDecoration(color: Color.fromARGB(1, 68, 192, 250),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow:[
-                      BoxShadow(
-                    color : Color.fromARGB(1, 68, 192, 250).withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3)
-                    ),])
-                  ),
-                ],
-              )
-            ],
-          ),
+      appBar: AppBar(
+        title: Text('Profile'),
+        centerTitle: true,
       ),
-   );
-  }}
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Container(
+              height:  250,
+              width:   200,
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow:[ BoxShadow(
+                  color: Colors.blueAccent.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3),
+               ),
+               ],
+               ),
+            ),
+            ],
+              
+              // backgroundImage: CachedNetworkImageProvider(profileImageUrl),
+            ),
+            
+            SizedBox(height: 20),
+            Text( 
+              "Olá,$userName",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                userBio,
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(height: 30),
+            ListTile(
+              leading: Icon(
+                Icons.favorite, 
+                color: Colors.blue,
+                ),
+              title: 
+              Text('Seus Favoritos', 
+              style: 
+              TextStyle(color: Colors.black, 
+              fontWeight: FontWeight.normal),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.edit, color: Colors.black),
+              title: Text('Editar Sua conta'),
+            ),
+            ListTile(
+              leading: Icon(Icons.work, color: Colors.orange),
+              title: Text('Software Developer'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Add functionality for editing profile
+              },
+              child: Text('Edit Profile'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
