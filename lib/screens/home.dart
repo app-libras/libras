@@ -21,7 +21,7 @@ _aulaAbc(BuildContext context) {
 } 
 
 void _userprofiler(BuildContext context){
-    // Navigator.pushNamed(context, ProfileScreen.id);
+     Navigator.pushNamed(context, ProfileScreen.id);
   }
 
 

@@ -1,58 +1,97 @@
-// import 'dart:ui';
+ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 // import 'package:cached_network_image/cached_network_image.dart';
 
 
-class ProfileScreen extends StatelessWidget {
+ class  ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   static const id = 'profile_screen';
-
-  final String userName = "John Doe";
-  final String userEmail = "johndoe@example.com";
-  final String userBio = "Software Developer | Flutter Enthusiast";
-  final String profileImageUrl = "https://via.placeholder.com/150";
-
+  
   @override
-  Widget build(BuildContext context) {
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    throw UnimplementedError();
+  }
+ 
+}
+ final String userName = "John Doe";
+ final String userBio = "Aulas de Libras";
+
+ Widget _buildTile(IconData icon, String title, String subtitle, Color color) {
+    return Card(
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 40, color: color),
+            SizedBox(height: 10),
+            Text(
+              title,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 5),
+            Text(
+              subtitle,
+              style: TextStyle(fontSize: 14, color: Colors.grey),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+
+   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
-        centerTitle: true,
+        title: Text('Perfil'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              // to be able to change details
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 20),
-            Container(
-              height:  250,
-              width:   200,
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow:[ BoxShadow(
-                  color: Colors.blueAccent.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3),
-               ),
-               ],
-               ),
-            ),
-            ],
-              
-              // backgroundImage: CachedNetworkImageProvider(profileImageUrl),
-            ),
-            
-            SizedBox(height: 20),
-            Text( 
-              "Olá,$userName",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Row(children: [
+            CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage('assets/profile_picture.png'), // Add your image asset
+            ),],),),
+            SizedBox(height: 10),
+            Text(
+              'Olá!' + userName,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
-            
-            Padding(
+            SizedBox(height: 5),
+            ],
+            ),
+            ),
+            SizedBox(height: 20,),
+        
+        //    Column(crossAxisAlignment: 
+        //    CrossAxisAlignment.start,
+        //    children: [Text(userName),
+        //    SizedBox(height: 10,
+        //    ),
+        //    ],
+        //    ),
+           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 userBio,
@@ -61,26 +100,24 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
-            ListTile(
-              leading: Icon(
-                Icons.favorite, 
-                color: Colors.blue,
-                ),
-              title: 
-              Text('Seus Favoritos', 
-              style: 
-              TextStyle(color: Colors.black, 
-              fontWeight: FontWeight.normal),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.edit, color: Colors.black),
-              title: Text('Editar Sua conta'),
-            ),
-            ListTile(
-              leading: Icon(Icons.work, color: Colors.orange),
-              title: Text('Software Developer'),
-            ),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: 
+            GridView.count(
+                shrinkWrap: true,
+                physics: AlwaysScrollableScrollPhysics(),
+                crossAxisCount: 2, 
+                crossAxisSpacing: 10, 
+                mainAxisSpacing: 10, 
+                childAspectRatio: 1.5,
+                children: [
+                        _buildTile(Icons.phone, 'Phone', '+1 234 567 890', Colors.blue),
+                        _buildTile(Icons.location_on, 'Location', 'New York, USA', Colors.green),
+                        _buildTile(Icons.work, 'Job', 'Software Developer', Colors.orange),
+                        _buildTile(Icons.cake, 'Birthday', 'Jan 1, 1990', Colors.purple),
+                ],
+                ),),
+                                               
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
@@ -88,9 +125,8 @@ class ProfileScreen extends StatelessWidget {
               },
               child: Text('Edit Profile'),
             ),
-          ],
-        ),
-      ),
-    );
+          
+        );
+      
+    
   }
-}
