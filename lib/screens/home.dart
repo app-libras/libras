@@ -6,6 +6,7 @@ import 'package:libras/widgets/progressive_circle.dart';
 import 'package:libras/widgets/user_score.dart';
 import 'package:libras/widgets/user_scores_container.dart';
 import 'package:provider/provider.dart';
+import 'package:libras/screens/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,8 +17,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 _aulaAbc(BuildContext context) {
-  Navigator.pushNamed(context, 'aula_screen');
-}
+  Navigator.pushNamed(context, 'aula_screen'); 
+} 
+
+void _userprofiler(BuildContext context){
+     Navigator.pushNamed(context, InteractiveProfile.id);
+  }
+
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -46,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icons.person,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed:() => _userprofiler(context  ),
             ),
           ],
         ),
