@@ -8,6 +8,7 @@ import 'package:libras/widgets/progressive_circle.dart';
 import 'package:libras/widgets/score_widget.dart';
 import 'package:libras/widgets/scores_container_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:libras/screens/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,38 +23,42 @@ _aulaAbc(BuildContext context) {
   Navigator.pushNamed(context, 'aula_screen');
 }
 
+void _userprofiler(BuildContext context) {
+  Navigator.pushNamed(context, InteractiveProfile.id);
+}
+
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
-      // bottomNavigationBar: BottomAppBar(
-      //   height: 90,
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //     children: <Widget>[
-      //       Column(
-      //         children: [
-      //           IconButton(
-      //             icon: const Icon(
-      //               Icons.home,
-      //               size: 20,
-      //             ),
-      //             onPressed: () {},
-      //           ),
-      //           // const Text('Home'),
-      //         ],
-      //       ),
-      //       IconButton(
-      //         icon: const Icon(
-      //           Icons.person,
-      //           size: 30,
-      //         ),
-      //         onPressed: () {},
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      bottomNavigationBar: BottomAppBar(
+        height: 90,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.home,
+                    size: 20,
+                  ),
+                  onPressed: () {},
+                ),
+                const Text('Home'),
+              ],
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.person,
+                size: 30,
+              ),
+              onPressed: () => _userprofiler(context),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,

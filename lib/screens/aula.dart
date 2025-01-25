@@ -22,7 +22,7 @@ class _AulaScreenState extends State<AulaScreen> {
             top: 30,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
                 padding: const EdgeInsets.all(20),
@@ -62,26 +62,20 @@ class _AulaScreenState extends State<AulaScreen> {
               //   child: Image.asset('assets/aulas/abc_gif/A.gif'),
               // ),
               Container(
-                // padding: const EdgeInsets.all(20),
-                // child: const Center(
-                //   child: Text(
-                //     'A',
-                //     style: TextStyle(
-                //       fontSize: 20,
-                //     ),
-                //   ),
-                // ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         ElevatedButton(
                           onPressed: () => null,
-                          child: const Text('Option 1',
-                              style: TextStyle(color: Colors.black)),
+                          child: const Text(
+                            'Option 1',
+                            style: TextStyle(color: Colors.black),
+                          ),
                         ),
+
                         ElevatedButton(
                           onPressed: () => null,
                           child: const Text(
@@ -89,29 +83,7 @@ class _AulaScreenState extends State<AulaScreen> {
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
-                        ElevatedButton(
-                          onPressed: () => null,
-                          child: const Text(
-                            'Option 3',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            ElevatedButton(
-                              onPressed: () => null,
-                              child: const Text(
-                                'Option 3',
-                                style: TextStyle(color: Colors.black),
-                              ),
-                            ),
-                          ],
-                        )
+
                         // Row(
                         //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         //   children: [
@@ -128,6 +100,25 @@ class _AulaScreenState extends State<AulaScreen> {
                         //     ),
                         //   ],
                         // ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        ElevatedButton(
+                          onPressed: () => null,
+                          child: const Text(
+                            'Option 3',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => null,
+                          child: const Text(
+                            'Option 4',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
                       ],
                     )
                   ],
