@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class AppGreeting extends StatelessWidget {
-  final String text;
+  final String name;
   final Color textColor;
+  final String? profileImage;
   final double? fontSize;
 
   const AppGreeting({
     super.key,
-    required this.text,
     required this.textColor,
+    required this.name,
     this.fontSize,
+    this.profileImage,
   });
 
   @override
@@ -17,16 +19,27 @@ class AppGreeting extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(
         top: 50,
-        left: 20,
+        left: 10,
         bottom: 10,
       ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: fontSize ?? 30,
-          fontWeight: FontWeight.w500,
-          color: textColor,
-        ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundImage:
+                AssetImage(profileImage ?? 'assets/images/avatar.png'),
+            radius: 40,
+          ),
+          const SizedBox(width: 20),
+          Text(
+            'Olá, $name',
+            style: TextStyle(
+              fontSize: fontSize ?? 30,
+              fontWeight: FontWeight.w600,
+              color: textColor,
+            ),
+          ),
+        ],
       ),
     );
   }

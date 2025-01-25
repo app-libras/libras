@@ -38,5 +38,6 @@ flutter:
    - assets/images/
    - assets/avatars/
    - assets/aulas/abc_gif/
+   - assets/aulas/abc_gif/logo/
 
   #   - images/a_dot_ham.jpeg
