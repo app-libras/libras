@@ -7,7 +7,7 @@ class InteractiveProfile extends StatefulWidget {
   static const id = 'interactive_profile';
 }
  
-final String userName = "John Doe";
+final String userName = "kwamz";
 
 class _InteractiveProfileState extends State<InteractiveProfile> {
   bool _isHovered = true;
@@ -18,7 +18,10 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
 
   @override
   Widget build(BuildContext context) { 
-  return Padding(
+  return
+  Scaffold(
+    backgroundColor: Colors.grey[100], // Change this color
+    body: Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -198,7 +201,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
           ),
         ],
       ),
-    );
+    ),);
   }
 
   Widget _buildInteractiveTile(BuildContext context, IconData icon,
