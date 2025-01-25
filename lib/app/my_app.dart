@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         UserNameScreen.id: (context) => const UserNameScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
         AulaScreen.id: (context) => const AulaScreen(),
-        ProfileScreen.id: (context) => const ProfileScreen(),
+        InteractiveProfile.id: (context) =>  InteractiveProfile(),
       },
     );
   }
