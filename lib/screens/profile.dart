@@ -48,162 +48,119 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
               ),
             ],
           ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              // Animated Profile Avatar with tap interaction
-              GestureDetector(
-                onTap: () {
-                  HapticFeedback.lightImpact();
-                  _showImageSourceDialog(context);
-                },
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: _isHovered ? Colors.blue : Colors.transparent,
-                      width: 2,
+          // SizedBox(height: 20),
+
+           Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  // Centered Circle Avatar
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        HapticFeedback.lightImpact();
+                        _showImageSourceDialog(context);
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: _isHovered
+                                ? Colors.blue
+                                : Colors.transparent,
+                            width: 2,
+                          ),
+                        ),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 40,
+                              backgroundImage: null,
+                              child: Icon(Icons.person, size: 40),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-               
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          
-                          backgroundImage: null,
-                          child: Icon(Icons.person, size: 40),
-                          
-                        ),
-                   
-            ],),
-                  ),
-                ),
-              
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  // Original content below the avatar
+                  SizedBox(height: 20),
                   Text(
-                    'Olá'+ userName + '!',
+                    'Olá $userName!',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
-                //   Animated progress indicator
-                  
-        //           SizedBox(height: 8),
-                  
-        //           Row(
-        //             mainAxisAlignment: MainAxisAlignment.end, // Align row children to right
-        // mainAxisSize: MainAxisSize.min,
-        //             children: [
-        //               // Animated Search Button
-        //               AnimatedIconButton(
-        //                 icon: Icons.search,
-        //                 onPressed: () => _showSearch(context),
-        //               ),
-        //               SizedBox(width: 10),
-        //               Notification Button with Badge
-        //               Stack(
-        //                 children: [
-        //                   AnimatedIconButton(
-        //                     icon: Icons.notifications,
-        //                     onPressed: () {
-        //                       setState(() => _showNotificationBadge = false);
-        //                       _showNotifications(context);
-        //                     },
-        //                   ),
-        //                   if (_showNotificationBadge)
-        //                     Positioned(
-        //                       right: 0,
-        //                       child: Container(
-        //                         padding: EdgeInsets.all(4),
-        //                         decoration: BoxDecoration(
-        //                           color: Colors.red,
-        //                           shape: BoxShape.circle,
-        //                         ),
-        //                       ),
-        //                     )
-        //                 ],
-        //               ),
-        //             ],
-                    
-        //           )
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 50),
-          
-         AnimatedSize(
+                  SizedBox(height: 20),
+                  AnimatedSize(
                     duration: Duration(milliseconds: 500),
                     child: Container(
                       width: 150,
                       child: LinearProgressIndicator(
                         value: _profileProgress,
                         backgroundColor: Colors.grey[300],
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.greenAccent),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.greenAccent),
                         minHeight: 8,
                       ),
                     ),
                   ),
-                  SizedBox(height: 25,),
-
-          
-          Column(
-            children: [
-              Row(
-                children: [
-                  _buildInteractiveTile(
-                    context,
-                    Icons.email,
-                    'Email',
-                    'user@example.com',
-                    color: Colors.blue,
-                  ),
-                  SizedBox(width: 16),
-                  _buildInteractiveTile(
-                    context,
-                    Icons.phone,
-                    'Phone',
-                    '+1 234 567 890',
-                    color: Colors.green,
+                  SizedBox(height: 25),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          _buildInteractiveTile(
+                            context,
+                            Icons.email,
+                            'Email',
+                            'user@example.com',
+                            color: Colors.blue,
+                          ),
+                          SizedBox(width: 16),
+                          _buildInteractiveTile(
+                            context,
+                            Icons.phone,
+                            'Phone',
+                            '+1 234 567 890',
+                            color: Colors.green,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 16),
+                      Row(
+                        children: [
+                          _buildInteractiveTile(
+                            context,
+                            Icons.settings,
+                            'Settings',
+                            'Account settings',
+                            color: Colors.orange,
+                          ),
+                          SizedBox(width: 16),
+                          _buildInteractiveTile(
+                            context,
+                            Icons.person,
+                            'Profile',
+                            'Edit profile',
+                            color: Colors.purple,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  _buildInteractiveTile(
-                    context,
-                    Icons.settings,
-                    'Settings',
-                    'Account settings',
-                    color: Colors.orange,
-                  ),
-                  SizedBox(width: 16),
-                  _buildInteractiveTile(
-                    context,
-                    Icons.person,
-                    'Profile',
-                    'Edit profile',
-                    color: Colors.purple,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
-    ),);
+    );
   }
-
   Widget _buildInteractiveTile(BuildContext context, IconData icon,
       String title, String subtitle, {Color color = Colors.blue}) {
     return Expanded(
