@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:libras/screens/home.dart';
 
 class InteractiveProfile extends StatefulWidget {
   @override
@@ -8,6 +9,12 @@ class InteractiveProfile extends StatefulWidget {
 }
  
 final String userName = "kwamz";
+
+
+void _homescreen(BuildContext context) {
+  Navigator.pushNamed(context, HomeScreen.id);
+}
+
 
 class _InteractiveProfileState extends State<InteractiveProfile> {
   bool _isHovered = true;
@@ -20,7 +27,35 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
   Widget build(BuildContext context) { 
   return
   Scaffold(
-    backgroundColor: Colors.grey[100], // Change this color
+    backgroundColor: Colors.grey[100], 
+     bottomNavigationBar: BottomAppBar(
+        height: 90,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.home,
+                    size: 20,
+                  ),
+                  onPressed: () => _homescreen(context),
+                ),
+                // const Text('Home'),
+              ],
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.person,
+                size: 30,
+              ),
+              onPressed: (){}, 
+              // () => _userprofiler(context),
+            ),
+          ],
+        ),
+      ),// Change this color
     body: Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
@@ -48,7 +83,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
               ),
             ],
           ),
-          // SizedBox(height: 20),
+          SizedBox(height: 40),
 
            Expanded(
               child: Column(
@@ -77,7 +112,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                           alignment: Alignment.center,
                           children: [
                             CircleAvatar(
-                              radius: 40,
+                              radius: 80,
                               backgroundImage: null,
                               child: Icon(Icons.person, size: 40),
                             ),
@@ -99,7 +134,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                   AnimatedSize(
                     duration: Duration(milliseconds: 500),
                     child: Container(
-                      width: 150,
+                      width: 250,
                       child: LinearProgressIndicator(
                         value: _profileProgress,
                         backgroundColor: Colors.grey[300],
@@ -109,48 +144,85 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: 35),
+                                 
                   Column(
                     children: [
+                       Row(
+                        children: [
+                          _buildInteractiveTile(
+                            context, 
+                            Icons.person_off_outlined, 
+                            'Perfil', 
+                            'Editar seu perfil',
+                            ),
+                            ],
+                      ),
+                      SizedBox(height: 20,
+                      ),
+                      
                       Row(
                         children: [
                           _buildInteractiveTile(
                             context,
-                            Icons.email,
-                            'Email',
-                            'user@example.com',
+                            Icons.percent_rounded,
+                            'Nivel',
+                            'Ver até onde chegou',
                             color: Colors.blue,
                           ),
-                          SizedBox(width: 16),
-                          _buildInteractiveTile(
-                            context,
-                            Icons.phone,
-                            'Phone',
-                            '+1 234 567 890',
-                            color: Colors.green,
-                          ),
+                          // SizedBox(width: 16),
+                          // _buildInteractiveTile(
+                          //   context,
+                          //   Icons.phone,
+                          //   'Phone',
+                          //   '+1 234 567 890',
+                          //   color: Colors.green,
+                          // ),
                         ],
                       ),
-                      SizedBox(height: 16),
-                      Row(
+                      SizedBox(height: 20),
+                       Row(
                         children: [
                           _buildInteractiveTile(
                             context,
                             Icons.settings,
-                            'Settings',
-                            'Account settings',
+                            'Configurações',
+                            'Configurar sua conta',
                             color: Colors.orange,
                           ),
-                          SizedBox(width: 16),
-                          _buildInteractiveTile(
-                            context,
-                            Icons.person,
-                            'Profile',
-                            'Edit profile',
-                            color: Colors.purple,
-                          ),
+                          // SizedBox(width: 16),
+                          // _buildInteractiveTile(
+                          //   context,
+                          //   Icons.person,
+                          //   'Profile',
+                          //   'Edit profile',
+                          //   color: Colors.purple,
+                          // ),
                         ],
                       ),
+                     
+                      // SizedBox(height: 20),
+                      // Row(
+                      //   children: [
+                      //     _buildInteractiveTile(
+                      //       context,
+                      //       Icons.settings,
+                      //       'Settings',
+                      //       'Account settings',
+                      //       color: Colors.orange,
+                      //     ),
+                      //     SizedBox(width: 16),
+                      //     _buildInteractiveTile(
+                      //       context,
+                      //       Icons.person,
+                      //       'Profile',
+                      //       'Edit profile',
+                      //       color: Colors.purple,
+                      //     ),
+                      //   ],
+                      // ),
+                      // SizedBox(height: 15,),
+                     
                     ],
                   ),
                 ],
@@ -202,7 +274,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                       color: color.withOpacity(0.2),
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(icon, size: 36, color: color),
+                    child: Icon(icon, size: 50, color: color),
                   ),
                   SizedBox(width: 20),
                   Expanded(
