@@ -38,7 +38,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                 IconButton(
                   icon: const Icon(
                     Icons.home,
-                    size: 20,
+                    size: 30,
                   ),
                   onPressed: () => _homescreen(context),
                 ),

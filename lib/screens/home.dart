@@ -42,11 +42,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 IconButton(
                   icon: const Icon(
                     Icons.home,
-                    size: 20,
+                    size: 30,
                   ),
                   onPressed: () {},
                 ),
-                const Text('Home'),
+                // const Text('Home'),
               ],
             ),
             IconButton(
