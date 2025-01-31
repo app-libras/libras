@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class AppGreeting extends StatelessWidget {
   final String name;
   final Color textColor;
+  final void Function() onTap;
   final String? profileImage;
   final double? fontSize;
 
   const AppGreeting({
     super.key,
     required this.textColor,
+    required this.onTap,
     required this.name,
     this.fontSize,
     this.profileImage,
@@ -24,11 +26,14 @@ class AppGreeting extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            backgroundImage:
-                AssetImage(profileImage ?? 'assets/images/avatar.png'),
-            radius: 40,
+          GestureDetector(
+            onTap: onTap,
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              backgroundImage:
+                  AssetImage(profileImage ?? 'assets/images/avatar.png'),
+              radius: 40,
+            ),
           ),
           const SizedBox(width: 20),
           Text(
