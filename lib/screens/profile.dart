@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:libras/screens/home.dart';
 
 class InteractiveProfile extends StatefulWidget {
   @override
@@ -8,6 +9,12 @@ class InteractiveProfile extends StatefulWidget {
 }
  
 final String userName = "kwamz";
+
+
+void _homescreen(BuildContext context) {
+  Navigator.pushNamed(context, HomeScreen.id);
+}
+
 
 class _InteractiveProfileState extends State<InteractiveProfile> {
   bool _isHovered = true;
@@ -20,7 +27,35 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
   Widget build(BuildContext context) { 
   return
   Scaffold(
-    backgroundColor: Colors.grey[100], // Change this color
+    backgroundColor: Colors.grey[100], 
+     bottomNavigationBar: BottomAppBar(
+        height: 90,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.home,
+                    size: 30,
+                  ),
+                  onPressed: () => _homescreen(context),
+                ),
+                // const Text('Home'),
+              ],
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.person,
+                size: 30,
+              ),
+              onPressed: (){}, 
+              // () => _userprofiler(context),
+            ),
+          ],
+        ),
+      ),// Change this color
     body: Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
@@ -48,162 +83,156 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
               ),
             ],
           ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              // Animated Profile Avatar with tap interaction
-              GestureDetector(
-                onTap: () {
-                  HapticFeedback.lightImpact();
-                  _showImageSourceDialog(context);
-                },
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
-                  curve: Curves.easeInOut,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: _isHovered ? Colors.blue : Colors.transparent,
-                      width: 2,
+          SizedBox(height: 40),
+
+           Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  // Centered Circle Avatar
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        HapticFeedback.lightImpact();
+                        _showImageSourceDialog(context);
+                      },
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: _isHovered
+                                ? Colors.blue
+                                : Colors.transparent,
+                            width: 2,
+                          ),
+                        ),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 80,
+                              backgroundImage: null,
+                              child: Icon(Icons.person, size: 40),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-               
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          
-                          backgroundImage: null,
-                          child: Icon(Icons.person, size: 40),
-                          
-                        ),
-                   
-            ],),
-                  ),
-                ),
-              
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  // Original content below the avatar
+                  SizedBox(height: 20),
                   Text(
-                    'Olá'+ userName + '!',
+                    'Olá $userName!',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
-                //   Animated progress indicator
-                  
-        //           SizedBox(height: 8),
-                  
-        //           Row(
-        //             mainAxisAlignment: MainAxisAlignment.end, // Align row children to right
-        // mainAxisSize: MainAxisSize.min,
-        //             children: [
-        //               // Animated Search Button
-        //               AnimatedIconButton(
-        //                 icon: Icons.search,
-        //                 onPressed: () => _showSearch(context),
-        //               ),
-        //               SizedBox(width: 10),
-        //               Notification Button with Badge
-        //               Stack(
-        //                 children: [
-        //                   AnimatedIconButton(
-        //                     icon: Icons.notifications,
-        //                     onPressed: () {
-        //                       setState(() => _showNotificationBadge = false);
-        //                       _showNotifications(context);
-        //                     },
-        //                   ),
-        //                   if (_showNotificationBadge)
-        //                     Positioned(
-        //                       right: 0,
-        //                       child: Container(
-        //                         padding: EdgeInsets.all(4),
-        //                         decoration: BoxDecoration(
-        //                           color: Colors.red,
-        //                           shape: BoxShape.circle,
-        //                         ),
-        //                       ),
-        //                     )
-        //                 ],
-        //               ),
-        //             ],
-                    
-        //           )
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 50),
-          
-         AnimatedSize(
+                  SizedBox(height: 20),
+                  AnimatedSize(
                     duration: Duration(milliseconds: 500),
                     child: Container(
-                      width: 150,
+                      width: 250,
                       child: LinearProgressIndicator(
                         value: _profileProgress,
                         backgroundColor: Colors.grey[300],
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.greenAccent),
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Colors.greenAccent),
                         minHeight: 8,
                       ),
                     ),
                   ),
-                  SizedBox(height: 25,),
-
-          
-          Column(
-            children: [
-              Row(
-                children: [
-                  _buildInteractiveTile(
-                    context,
-                    Icons.email,
-                    'Email',
-                    'user@example.com',
-                    color: Colors.blue,
-                  ),
-                  SizedBox(width: 16),
-                  _buildInteractiveTile(
-                    context,
-                    Icons.phone,
-                    'Phone',
-                    '+1 234 567 890',
-                    color: Colors.green,
+                  SizedBox(height: 35),
+                                 
+                  Column(
+                    children: [
+                       Row(
+                        children: [
+                          _buildInteractiveTile(
+                            context, 
+                            Icons.person_off_outlined, 
+                            'Perfil', 
+                            'Editar seu perfil',
+                            ),
+                            ],
+                      ),
+                      SizedBox(height: 20,
+                      ),
+                      
+                      Row(
+                        children: [
+                          _buildInteractiveTile(
+                            context,
+                            Icons.percent_rounded,
+                            'Nivel',
+                            'Ver até onde chegou',
+                            color: Colors.blue,
+                          ),
+                          // SizedBox(width: 16),
+                          // _buildInteractiveTile(
+                          //   context,
+                          //   Icons.phone,
+                          //   'Phone',
+                          //   '+1 234 567 890',
+                          //   color: Colors.green,
+                          // ),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                       Row(
+                        children: [
+                          _buildInteractiveTile(
+                            context,
+                            Icons.settings,
+                            'Configurações',
+                            'Configurar sua conta',
+                            color: Colors.orange,
+                          ),
+                          // SizedBox(width: 16),
+                          // _buildInteractiveTile(
+                          //   context,
+                          //   Icons.person,
+                          //   'Profile',
+                          //   'Edit profile',
+                          //   color: Colors.purple,
+                          // ),
+                        ],
+                      ),
+                     
+                      // SizedBox(height: 20),
+                      // Row(
+                      //   children: [
+                      //     _buildInteractiveTile(
+                      //       context,
+                      //       Icons.settings,
+                      //       'Settings',
+                      //       'Account settings',
+                      //       color: Colors.orange,
+                      //     ),
+                      //     SizedBox(width: 16),
+                      //     _buildInteractiveTile(
+                      //       context,
+                      //       Icons.person,
+                      //       'Profile',
+                      //       'Edit profile',
+                      //       color: Colors.purple,
+                      //     ),
+                      //   ],
+                      // ),
+                      // SizedBox(height: 15,),
+                     
+                    ],
                   ),
                 ],
               ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  _buildInteractiveTile(
-                    context,
-                    Icons.settings,
-                    'Settings',
-                    'Account settings',
-                    color: Colors.orange,
-                  ),
-                  SizedBox(width: 16),
-                  _buildInteractiveTile(
-                    context,
-                    Icons.person,
-                    'Profile',
-                    'Edit profile',
-                    color: Colors.purple,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
-    ),);
+    );
   }
-
   Widget _buildInteractiveTile(BuildContext context, IconData icon,
       String title, String subtitle, {Color color = Colors.blue}) {
     return Expanded(
@@ -245,7 +274,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                       color: color.withOpacity(0.2),
                       shape: BoxShape.circle,
                     ),
-                    child: Icon(icon, size: 36, color: color),
+                    child: Icon(icon, size: 50, color: color),
                   ),
                   SizedBox(width: 20),
                   Expanded(
