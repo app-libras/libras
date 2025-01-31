@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:libras/screens/get_user_name.dart';
-import 'package:libras/screens/home.dart';
+import 'package:libras/screens/home_screen.dart';
 import 'package:libras/auth/verifiy_user_account.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +15,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   var isUser = false;
 
   @override

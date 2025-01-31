@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:libras/configs/themes.dart';
 import 'package:libras/screens/aula.dart';
 import 'package:libras/screens/get_user_name.dart';
-import 'package:libras/screens/home.dart';
-import 'package:libras/screens/profile.dart';
+import 'package:libras/screens/home_screen.dart';
+import 'package:libras/screens/profile_screen.dart';
 import 'package:libras/screens/splash.dart';
 
 class MyApp extends StatelessWidget {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         UserNameScreen.id: (context) => const UserNameScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
         AulaScreen.id: (context) => const AulaScreen(),
-        InteractiveProfile.id: (context) =>  InteractiveProfile(),
+        ProfileScreen.id: (context) => ProfileScreen(),
       },
     );
   }
