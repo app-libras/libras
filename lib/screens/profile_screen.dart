@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:libras/screens/home.dart';
+import 'package:libras/screens/home_screen.dart';
 
-class InteractiveProfile extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  _InteractiveProfileState createState() => _InteractiveProfileState();
-  static const id = 'interactive_profile';
-}
- 
-final String userName = "kwamz";
+  _ProfileScreenState createState() => _ProfileScreenState();
+  static const id = 'profileScreen';
 
+  const ProfileScreen({super.key});
+}
+
+final String userName = "kwamz";
 
 void _homescreen(BuildContext context) {
   Navigator.pushNamed(context, HomeScreen.id);
 }
 
-
-class _InteractiveProfileState extends State<InteractiveProfile> {
-  bool _isHovered = true;
-  double _profileProgress = 0.75;
-  bool _showNotificationBadge = true;
-
-  
+class _ProfileScreenState extends State<ProfileScreen> {
+  final bool _isHovered = true;
+  final double _profileProgress = 0.75;
+  final bool _showNotificationBadge = true;
 
   @override
-  Widget build(BuildContext context) { 
-  return
-  Scaffold(
-    backgroundColor: Colors.grey[100], 
-     bottomNavigationBar: BottomAppBar(
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[100],
+      bottomNavigationBar: BottomAppBar(
         height: 90,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -50,42 +47,42 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                 Icons.person,
                 size: 30,
               ),
-              onPressed: (){}, 
+              onPressed: () {},
               // () => _userprofiler(context),
             ),
           ],
         ),
-      ),// Change this color
-    body: Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // Add the top app bar with back and menu icons
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                color: Colors.grey[700],
-                onPressed: () {
-                  // Add navigation back functionality
-                  Navigator.maybePop(context);
-                },
-              ),
-              IconButton(
-                icon: Icon(Icons.menu),
-                color: Colors.grey[700],
-                onPressed: () {
-                  // Add menu functionality
-                  null;
-                },
-              ),
-            ],
-          ),
-          SizedBox(height: 40),
+      ), // Change this color
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Add the top app bar with back and menu icons
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  color: Colors.grey[700],
+                  onPressed: () {
+                    // Add navigation back functionality
+                    Navigator.maybePop(context);
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.menu),
+                  color: Colors.grey[700],
+                  onPressed: () {
+                    // Add menu functionality
+                    null;
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: 40),
 
-           Expanded(
+            Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -102,9 +99,8 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: _isHovered
-                                ? Colors.blue
-                                : Colors.transparent,
+                            color:
+                                _isHovered ? Colors.blue : Colors.transparent,
                             width: 2,
                           ),
                         ),
@@ -133,7 +129,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                   SizedBox(height: 20),
                   AnimatedSize(
                     duration: Duration(milliseconds: 500),
-                    child: Container(
+                    child: SizedBox(
                       width: 250,
                       child: LinearProgressIndicator(
                         value: _profileProgress,
@@ -145,22 +141,23 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                     ),
                   ),
                   SizedBox(height: 35),
-                                 
+
                   Column(
                     children: [
-                       Row(
+                      Row(
                         children: [
                           _buildInteractiveTile(
-                            context, 
-                            Icons.person_off_outlined, 
-                            'Perfil', 
+                            context,
+                            Icons.person_off_outlined,
+                            'Perfil',
                             'Editar seu perfil',
-                            ),
-                            ],
+                          ),
+                        ],
                       ),
-                      SizedBox(height: 20,
+                      SizedBox(
+                        height: 20,
                       ),
-                      
+
                       Row(
                         children: [
                           _buildInteractiveTile(
@@ -181,7 +178,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                         ],
                       ),
                       SizedBox(height: 20),
-                       Row(
+                      Row(
                         children: [
                           _buildInteractiveTile(
                             context,
@@ -200,7 +197,7 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                           // ),
                         ],
                       ),
-                     
+
                       // SizedBox(height: 20),
                       // Row(
                       //   children: [
@@ -222,7 +219,6 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
                       //   ],
                       // ),
                       // SizedBox(height: 15,),
-                     
                     ],
                   ),
                 ],
@@ -233,8 +229,10 @@ class _InteractiveProfileState extends State<InteractiveProfile> {
       ),
     );
   }
-  Widget _buildInteractiveTile(BuildContext context, IconData icon,
-      String title, String subtitle, {Color color = Colors.blue}) {
+
+  Widget _buildInteractiveTile(
+      BuildContext context, IconData icon, String title, String subtitle,
+      {Color color = Colors.blue}) {
     return Expanded(
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
@@ -365,7 +363,8 @@ class AnimatedIconButton extends StatefulWidget {
   final IconData icon;
   final VoidCallback onPressed;
 
-  AnimatedIconButton({required this.icon, required this.onPressed});
+  const AnimatedIconButton(
+      {super.key, required this.icon, required this.onPressed});
 
   @override
   _AnimatedIconButtonState createState() => _AnimatedIconButtonState();
