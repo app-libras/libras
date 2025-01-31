@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:libras/screens/home.dart';
+import 'package:libras/screens/home_screen.dart';
 import 'package:libras/auth/register_user.dart';
 // import 'package:flutter/widgets.dart';
 

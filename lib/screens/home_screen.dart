@@ -4,11 +4,11 @@ import 'package:libras/providers/user_provider.dart';
 import 'package:libras/widgets/app_greeting.dart';
 import 'package:libras/widgets/aula_card_widget.dart';
 import 'package:libras/widgets/aulas_container_widget.dart';
-import 'package:libras/widgets/progressive_circle.dart';
+// import 'package:libras/widgets/progressive_circle.dart';
 import 'package:libras/widgets/score_widget.dart';
 import 'package:libras/widgets/scores_container_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:libras/screens/profile.dart';
+import 'package:libras/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,7 +24,7 @@ _aulaAbc(BuildContext context) {
 }
 
 void _userprofiler(BuildContext context) {
-  Navigator.pushNamed(context, InteractiveProfile.id);
+  Navigator.pushNamed(context, ProfileScreen.id);
 }
 
 class _HomeScreenState extends State<HomeScreen> {
