@@ -32,33 +32,33 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
-      bottomNavigationBar: BottomAppBar(
-        height: 90,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Column(
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.home,
-                    size: 30,
-                  ),
-                  onPressed: () {},
-                ),
-                // const Text('Home'),
-              ],
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.person,
-                size: 30,
-              ),
-              onPressed: () => _userprofiler(context),
-            ),
-          ],
-        ),
-      ),
+      // bottomNavigationBar: BottomAppBar(
+      //   height: 90,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: <Widget>[
+      //       Column(
+      //         children: [
+      //           IconButton(
+      //             icon: const Icon(
+      //               Icons.home,
+      //               size: 30,
+      //             ),
+      //             onPressed: () {},
+      //           ),
+      //           // const Text('Home'),
+      //         ],
+      //       ),
+      //       IconButton(
+      //         icon: const Icon(
+      //           Icons.person,
+      //           size: 30,
+      //         ),
+      //         onPressed: () => _userprofiler(context),
+      //       ),
+      //     ],
+      //   ),
+      // ),
       body: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fontSize: 30,
               profileImage: 'assets/images/sign.png',
               textColor: Theme.of(context).colorScheme.primary,
+              onTap: () => _userprofiler(context),
             ),
             ScoresContainerWidget(
               height: 150,
@@ -96,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
             AulasContainerWidget(
               children: <Widget>[
                 AulaCardWidget(
+                  onTap: () => _aulaAbc(context),
                   imageLink: 'assets/aulas/abc_gif/logo/abc.png',
                   // imageHeight: 100,
                   imageWidth: 200,
@@ -103,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fadeColor: Theme.of(context).colorScheme.onPrimary,
                 ),
                 AulaCardWidget(
+                  onTap: () => _aulaAbc(context),
                   imageLink: 'assets/aulas/abc_gif/logo/abc.png',
                   // imageHeight: 100,
                   imageWidth: 200,
