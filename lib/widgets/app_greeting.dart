@@ -32,7 +32,7 @@ class AppGreeting extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.primary,
               backgroundImage:
                   AssetImage(profileImage ?? 'assets/images/avatar.png'),
-              radius: 40,
+              radius: 35,
             ),
           ),
           const SizedBox(width: 20),
