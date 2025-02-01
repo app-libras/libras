@@ -4,6 +4,7 @@ import 'package:libras/providers/user_provider.dart';
 import 'package:libras/widgets/app_greeting.dart';
 import 'package:libras/widgets/aula_card_widget.dart';
 import 'package:libras/widgets/aulas_container_widget.dart';
+import 'package:libras/widgets/exercise_widget.dart';
 // import 'package:libras/widgets/progressive_circle.dart';
 import 'package:libras/widgets/score_widget.dart';
 import 'package:libras/widgets/scores_container_widget.dart';
@@ -19,7 +20,7 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-_aulaAbc(BuildContext context) {
+void _aulaAbc(BuildContext context) {
   Navigator.pushNamed(context, 'aula_screen');
 }
 
@@ -32,48 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
-      // bottomNavigationBar: BottomAppBar(
-      //   height: 90,
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //     children: <Widget>[
-      //       Column(
-      //         children: [
-      //           IconButton(
-      //             icon: const Icon(
-      //               Icons.home,
-      //               size: 30,
-      //             ),
-      //             onPressed: () {},
-      //           ),
-      //           // const Text('Home'),
-      //         ],
-      //       ),
-      //       IconButton(
-      //         icon: const Icon(
-      //           Icons.person,
-      //           size: 30,
-      //         ),
-      //         onPressed: () => _userprofiler(context),
-      //       ),
-      //     ],
-      //   ),
-      // ),
       body: SingleChildScrollView(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             AppGreeting(
               name: 'Prince',
-              fontSize: 30,
+              fontSize: 20,
               profileImage: 'assets/images/sign.png',
               textColor: Theme.of(context).colorScheme.primary,
               onTap: () => _userprofiler(context),
             ),
             ScoresContainerWidget(
-              height: 150,
-              borderRadius: BorderRadius.circular(30),
+              height: 120,
+              borderRadius: BorderRadius.circular(20),
               decorationColor: Theme.of(context).colorScheme.onSecondary,
               children: <Widget>[
                 ScoreWidget(
@@ -81,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   points: 1,
                   imageLink: 'assets/images/ponto.png',
                   imageSize: 50,
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                   decorationColor: Theme.of(context).colorScheme.surface,
                 ),
                 ScoreWidget(
@@ -89,12 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   points: 23,
                   imageLink: 'assets/images/level.png',
                   imageSize: 50,
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(20),
                   decorationColor: Theme.of(context).colorScheme.surface,
                 ),
               ],
             ),
             AulasContainerWidget(
+              containerHeight: 100,
               children: <Widget>[
                 AulaCardWidget(
                   onTap: () => _aulaAbc(context),
@@ -114,78 +89,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
+            // ExcerciseWidget(
 
-            // Container(
-            //   margin: const EdgeInsets.only(
-            //     top: 20,
-            //   ),
-            //   decoration: BoxDecoration(
-            //     color: Theme.of(context).colorScheme.primary,
-            //     borderRadius: const BorderRadius.only(
-            //       topLeft: Radius.circular(20),
-            //       topRight: Radius.circular(20),
-            //     ),
-            //   ),
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Column(
-            //       children: <Widget>[
-            //         const UserScoresContainer(
-            //           children: <Widget>[
-            //             UserScore(
-            //               text: 'Pontos',
-            //               points: 1,
-            //               imageLink: 'assets/images/ponto.png',
-            //             ),
-            //             UserScore(
-            //               text: 'Nivel',
-            //               points: 23,
-            //               imageLink: 'assets/images/level.png',
-            //             ),
-            //           ],
-            //         ),
-            //         Center(
-            //           child: Column(
-            //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //             children: <Widget>[
-            //               ProgressiveCircle(
-            //                 text: "ABC",
-            //                 textColor: Theme.of(context).colorScheme.secondary,
-            //                 backgroundColor: Colors.greenAccent,
-            //                 progressColor:
-            //                     Theme.of(context).colorScheme.secondary,
-            //                 percent: .5,
-            //                 onTap: () => _aulaAbc(context),
-            //               ),
-            //               ProgressiveCircle(
-            //                 text: "123",
-            //                 textColor: Theme.of(context).colorScheme.secondary,
-            //                 backgroundColor: Colors.greenAccent,
-            //                 progressColor:
-            //                     Theme.of(context).colorScheme.secondary,
-            //                 percent: 0.0,
-            //                 onTap: () {
-            //                   print("0%");
-            //                 },
-            //               ),
-            //               ProgressiveCircle(
-            //                 text: "SAUDAÇÕES",
-            //                 textColor: Theme.of(context).colorScheme.secondary,
-            //                 backgroundColor: Colors.greenAccent,
-            //                 progressColor:
-            //                     Theme.of(context).colorScheme.secondary,
-            //                 percent: 0.0,
-            //                 onTap: () {
-            //                   print("0%");
-            //                 },
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            ExerciseWidget(
+              onTap: () => _aulaAbc(context),
+              imageLink: 'assets/aulas/abc_gif/logo/abc.png',
+              text: 'Exercicio 1',
+              fadeColor: Theme.of(context).colorScheme.onPrimary,
+            ),
+
+            SizedBox(height: 20),
+            AulasContainerWidget(
+              containerHeight: 100,
+              children: <Widget>[
+                AulaCardWidget(
+                  onTap: () => _aulaAbc(context),
+                  imageLink: 'assets/aulas/abc_gif/logo/abc.png',
+                  // imageHeight: 100,
+                  imageWidth: 200,
+                  text: 'Aula 3',
+                  fadeColor: Theme.of(context).colorScheme.onPrimary,
+                ),
+                AulaCardWidget(
+                  onTap: () => _aulaAbc(context),
+                  imageLink: 'assets/aulas/abc_gif/logo/abc.png',
+                  // imageHeight: 100,
+                  imageWidth: 200,
+                  text: 'Aula 4',
+                  fadeColor: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            // ExcerciseWidget(
+
+            ExerciseWidget(
+              onTap: () => _aulaAbc(context),
+              imageLink: 'assets/aulas/abc_gif/logo/abc.png',
+              text: 'Exercicio 2',
+              fadeColor: Theme.of(context).colorScheme.onPrimary,
+            ),
+
+            SizedBox(height: 500),
           ],
         ),
       ),
