@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 ///
 /// This class is a stateless widget, so it does not have a [build] method.
 /// It is created with a [UserScore] constructor and is used in the [lib/screens/home.dart] file.
-class UserScore extends StatelessWidget {
+class ScoreWidget extends StatelessWidget {
   /// The text to be displayed in the second text.
   final String text;
 
@@ -31,25 +31,28 @@ class UserScore extends StatelessWidget {
 
   /// The height of the image.
   ///
-  /// Defaults to 40.
-  final double? imageHeight;
-
   /// The width of the image.
   ///
   /// Defaults to 40.
-  final double? imageWidth;
+  final double? imageSize;
 
-  /// Creates a [UserScore] widget.
+  final Color? decorationColor;
+  final BorderRadius? borderRadius;
+  final EdgeInsets? margin;
+
+  /// Creates a [ScoreWidget] widget.
   ///
   /// The [key] parameter is optional and defaults to [null].
-  const UserScore({
+  const ScoreWidget({
     super.key,
     required this.text,
     required this.points,
     required this.imageLink,
     this.fontSize,
-    this.imageHeight,
-    this.imageWidth,
+    this.imageSize,
+    this.decorationColor,
+    this.borderRadius,
+    this.margin,
   });
 
   /// Builds a [Widget] that displays a user's score along with an image.
@@ -62,25 +65,36 @@ class UserScore extends StatelessWidget {
   /// The second text is displayed with a bold font style.
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Image.asset(
-          imageLink,
-          height: imageHeight ?? 40,
-          width: imageWidth ?? 40,
-        ),
-        Text(
-          text,
-        ),
-        Text(
-          '$points',
-          style: TextStyle(
-            fontSize: fontSize ?? 20,
-            fontWeight: FontWeight.bold,
+    return Container(
+      margin: margin ?? const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: decorationColor ?? Theme.of(context).colorScheme.secondary,
+        borderRadius: borderRadius ?? BorderRadius.circular(15),
+      ),
+      width: 150,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            imageLink,
+            height: imageSize ?? 40,
+            width: imageSize ?? 40,
           ),
-        ),
-      ],
+          Text(
+            text,
+            style: TextStyle(
+                // color: Theme.of(context).colorScheme.tertiary,
+                ),
+          ),
+          Text(
+            '$points',
+            style: TextStyle(
+              fontSize: fontSize ?? 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
