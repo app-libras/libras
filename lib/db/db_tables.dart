@@ -1,6 +1,6 @@
 class UserDbTables {
   String get user => 'user';
-  String get userTables =>'''
+  String get userTables => '''
   CREATE TABLE $user (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
@@ -9,7 +9,7 @@ class UserDbTables {
 
 class ScoreDbTables {
   String get score => 'score';
-  String get scoreTables =>'''
+  String get scoreTables => '''
   CREATE TABLE $score (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     score INTEGER NOT NULL,

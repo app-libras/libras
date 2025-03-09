@@ -2,7 +2,7 @@ import 'package:libras/db/db_tables.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DbService{
+class DbService {
   DbService._();
   static final DbService instance = DbService._();
   static Database? _database;

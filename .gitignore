@@ -32,3 +32,8 @@ ios/Flutter/flutter_export_environment.sh
 ios/Flutter/Generated.xcconfig
 .idea/*
 .gradle/
+
+android/app/.cxx/*
+
+# FVM Version Cache
+.fvm/

@@ -3,7 +3,7 @@ import 'package:libras/db/db_tables.dart';
 import 'package:sqflite/sqflite.dart';
 
 class VerifiyUserAccount {
- late Database db;
+  late Database db;
 
   /// Verifies if the user is registered in the database.
   ///
