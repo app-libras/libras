@@ -35,6 +35,7 @@ class ExerciseWidget extends StatelessWidget {
             color: Theme.of(context).colorScheme.secondary,
             borderRadius: BorderRadius.circular(20),
           ),
+          clipBehavior: Clip.hardEdge,
           child: StackWidget(
             imageLink: imageLink,
             imageHeight: imageHeight,

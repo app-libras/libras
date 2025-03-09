@@ -1,6 +1,6 @@
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:libras/providers/user_provider.dart';
+// import 'package:libras/providers/user_provider.dart';
 import 'package:libras/widgets/app_greeting.dart';
 import 'package:libras/widgets/aula_card_widget.dart';
 import 'package:libras/widgets/aulas_container_widget.dart';
@@ -8,7 +8,7 @@ import 'package:libras/widgets/exercise_widget.dart';
 // import 'package:libras/widgets/progressive_circle.dart';
 import 'package:libras/widgets/score_widget.dart';
 import 'package:libras/widgets/scores_container_widget.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 import 'package:libras/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -68,10 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
             AulasContainerWidget(
-              containerHeight: 100,
+              containerHeight: 150,
               children: <Widget>[
                 AulaCardWidget(
+                  containerWidth: MediaQuery.of(context).size.width * 0.45,
                   onTap: () => _aulaAbc(context),
                   imageLink: 'assets/aulas/abc_gif/logo/abc.png',
                   // imageHeight: 100,
@@ -80,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fadeColor: Theme.of(context).colorScheme.onPrimary,
                 ),
                 AulaCardWidget(
+                  containerWidth: MediaQuery.of(context).size.width * 0.45,
                   onTap: () => _aulaAbc(context),
                   imageLink: 'assets/aulas/abc_gif/logo/abc.png',
                   // imageHeight: 100,
@@ -104,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
               containerHeight: 100,
               children: <Widget>[
                 AulaCardWidget(
+                  containerWidth: MediaQuery.of(context).size.width * 0.45,
                   onTap: () => _aulaAbc(context),
                   imageLink: 'assets/aulas/abc_gif/logo/abc.png',
                   // imageHeight: 100,
@@ -112,6 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fadeColor: Theme.of(context).colorScheme.onPrimary,
                 ),
                 AulaCardWidget(
+                  containerWidth: MediaQuery.of(context).size.width * 0.45,
                   onTap: () => _aulaAbc(context),
                   imageLink: 'assets/aulas/abc_gif/logo/abc.png',
                   // imageHeight: 100,
@@ -131,7 +136,15 @@ class _HomeScreenState extends State<HomeScreen> {
               fadeColor: Theme.of(context).colorScheme.onPrimary,
             ),
 
-            SizedBox(height: 500),
+            SizedBox(height: 20),
+            ExerciseWidget(
+              imageHeight: 150,
+              onTap: () => _aulaAbc(context),
+              imageLink: 'assets/aulas/abc_gif/logo/abc.png',
+              text: 'Exercicio 3',
+              fadeColor: Theme.of(context).colorScheme.onPrimary,
+            ),
+            SizedBox(height: 50),
           ],
         ),
       ),

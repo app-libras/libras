@@ -1,13 +1,15 @@
 class UserModel {
   final String? id;
   final String name;
+  final String? profile;
 
-  UserModel({this.id, required this.name});
+  UserModel({this.id,this.profile, required this.name});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['_id'],
       name: json['name'],
+      profile:json['profile_pic'],
     );
   }
 
@@ -30,6 +32,7 @@ class UserModel {
     return {
       '_id': id,
       'name': name,
+      'profile_pic':profile
     };
   }
 }

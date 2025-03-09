@@ -59,11 +59,16 @@ class _SplashScreenState extends State<SplashScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Image.asset(
+                  'assets/images/sign.png',
+                  height: 100,
+                ),
+                const SizedBox(width: 10),
                 Column(
                   children: <Widget>[
                     AnimatedTextKit(
                       repeatForever: true,
-                      pause: const Duration(milliseconds: 5000),
+                      pause: const Duration(milliseconds: 200),
                       animatedTexts: [
                         TypewriterAnimatedText(
                           'LiBRAR',
@@ -77,11 +82,6 @@ class _SplashScreenState extends State<SplashScreen> {
                       ],
                     ),
                   ],
-                ),
-                const SizedBox(width: 10),
-                Image.asset(
-                  'assets/images/sign.png',
-                  height: 100,
                 ),
               ],
             )

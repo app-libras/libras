@@ -10,6 +10,9 @@ class AulaCardWidget extends StatelessWidget {
     this.fadeColor,
     this.imageWidth,
     this.imageHeight,
+    this.containerHeight,
+    this.containerWidth,
+    this.borderRadius,
   });
 
   final String imageLink;
@@ -18,16 +21,20 @@ class AulaCardWidget extends StatelessWidget {
   final double? imageHeight;
   final double? imageWidth;
   final Color? fadeColor;
+  final double? containerHeight;
+  final double? containerWidth;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 190,
+        width: containerWidth ?? 150,
+        height: containerHeight ?? double.infinity,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.secondary,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: borderRadius ?? BorderRadius.circular(20),
         ),
         clipBehavior: Clip.hardEdge,
         child: StackWidget(
