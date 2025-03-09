@@ -3,18 +3,17 @@
 // import 'package:flutter/material.dart';
 // // import 'package:cached_network_image/cached_network_image.dart';
 
-
 //  class  ProfileScreen extends StatefulWidget {
 //   const ProfileScreen({super.key});
 
 //   static const id = 'profile_screen';
-  
+
 //   @override
 //   State<StatefulWidget> createState() {
 //     // TODO: implement createState
 //     throw UnimplementedError();
 //   }
- 
+
 // }
 //  final String userName = "John Doe";
 //  final String userBio = "Aulas de Libras";
@@ -46,8 +45,6 @@
 //       ),
 //     );
 //   }
-
-
 
 //    Widget build(BuildContext context) {
 //     return Scaffold(
@@ -83,8 +80,8 @@
 //             ),
 //             ),
 //             SizedBox(height: 20,),
-        
-//         //    Column(crossAxisAlignment: 
+
+//         //    Column(crossAxisAlignment:
 //         //    CrossAxisAlignment.start,
 //         //    children: [Text(userName),
 //         //    SizedBox(height: 10,
@@ -102,13 +99,13 @@
 //             SizedBox(height: 30),
 //             Padding(
 //                 padding: const EdgeInsets.symmetric(horizontal: 20),
-//             child: 
+//             child:
 //             GridView.count(
 //                 shrinkWrap: true,
 //                 physics: AlwaysScrollableScrollPhysics(),
-//                 crossAxisCount: 2, 
-//                 crossAxisSpacing: 10, 
-//                 mainAxisSpacing: 10, 
+//                 crossAxisCount: 2,
+//                 crossAxisSpacing: 10,
+//                 mainAxisSpacing: 10,
 //                 childAspectRatio: 1.5,
 //                 children: [
 //                         _buildTile(Icons.phone, 'Phone', '+1 234 567 890', Colors.blue),
@@ -117,7 +114,7 @@
 //                         _buildTile(Icons.cake, 'Birthday', 'Jan 1, 1990', Colors.purple),
 //                 ],
 //                 ),),
-                                               
+
 //             SizedBox(height: 20),
 //             ElevatedButton(
 //               onPressed: () {
@@ -125,8 +122,7 @@
 //               },
 //               child: Text('Edit Profile'),
 //             ),
-          
+
 //         );
-      
-    
+
 //   }
