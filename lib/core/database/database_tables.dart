@@ -5,7 +5,7 @@ class UserTables {
   String get userTables => '''
   CREATE TABLE $user (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
+    name TEXT NOT NULL UNIQUE,
     profile_pic TEXT
   )''';
 }
@@ -15,9 +15,10 @@ class ScoreTables {
   String get scoreTables => '''
   CREATE TABLE $score (
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
-    score INTEGER NOT NULL,
+    points INTEGER NOT NULL,
+    level INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES user(_id)
+    FOREIGN KEY(user_id) REFERENCES ${DatabaseTablesName.user}(_id) ON DELETE CASCADE
   )''';
 }
 
@@ -28,7 +29,7 @@ class AulaTables {
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     aula INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES user(_id)
+    FOREIGN KEY(user_id) REFERENCES ${DatabaseTablesName.user}(_id) ON DELETE CASCADE
   )''';
 }
 
@@ -40,7 +41,7 @@ class MateriaTables {
     materia INTEGER NOT NULL,
     path TEXT NOT NULL,
     aula_id INTEGER NOT NULL,
-    FOREIGN KEY(aula_id) REFERENCES aula(_id)
+    FOREIGN KEY(aula_id) REFERENCES ${DatabaseTablesName.aula}(_id) ON DELETE CASCADE
   )''';
 }
 
@@ -52,6 +53,6 @@ class QuestionTables {
     question INTEGER NOT NULL,
     path TEXT NOT NULL,
     aula_id INTEGER NOT NULL,
-    FOREIGN KEY(aula_id) REFERENCES aula(_id)
+    FOREIGN KEY(aula_id) REFERENCES ${DatabaseTablesName.aula}(_id) ON DELETE CASCADE
   )''';
 }

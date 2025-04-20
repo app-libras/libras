@@ -1,7 +1,7 @@
 class User {
-  final String? id;
+  final String id;
   final String name;
-  final String? profilePic;
+  final String profilePic;
 
-  User({this.id, required this.name, this.profilePic});
+  User({required this.id, required this.name, required this.profilePic});
 }

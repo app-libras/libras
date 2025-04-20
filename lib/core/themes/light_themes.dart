@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-ThemeData myTheme() {
+ThemeData lightTheme() {
   return ThemeData.light().copyWith(
     colorScheme: const ColorScheme.light().copyWith(
       primary: const Color.fromARGB(255, 23, 24, 24),
