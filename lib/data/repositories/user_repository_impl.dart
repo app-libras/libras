@@ -16,8 +16,6 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<void> addUser(UserModel user) async {
-    await _userDao.insertUser(
-      UserModel(name: user.name, profilePic: user.profilePic).toMap(),
-    );
+    await _userDao.insertUser(user.toMap());
   }
 }

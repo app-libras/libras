@@ -19,7 +19,7 @@ class ScoreWidget extends StatelessWidget {
   final String text;
 
   /// The score of the user.
-  final double points;
+  final int points;
 
   /// The link to the image file.
   final String imageLink;
@@ -83,8 +83,8 @@ class ScoreWidget extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-                // color: Theme.of(context).colorScheme.tertiary,
-                ),
+              // color: Theme.of(context).colorScheme.tertiary,
+            ),
           ),
           Text(
             '$points',

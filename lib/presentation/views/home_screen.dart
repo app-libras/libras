@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/user_viewmodel.dart';
 import 'package:libras/presentation/widgets/app_greeting_widget.dart';
 import 'package:libras/presentation/widgets/aula_card_widget.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<UserViewModel>();
+    final scoreViewModel = context.watch<ScoreViewModel>();
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       body: SingleChildScrollView(
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               children: <Widget>[
                 ScoreWidget(
                   text: 'Pontos',
-                  points: 1,
+                  points: scoreViewModel.score[0].points,
                   imageLink: 'assets/logos/ponto.png',
                   imageSize: 50,
                   borderRadius: BorderRadius.circular(20),
@@ -42,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 ScoreWidget(
                   text: 'Nivel',
-                  points: 23,
+                  points: scoreViewModel.score[0].level,
                   imageLink: 'assets/logos/level.png',
                   imageSize: 50,
                   borderRadius: BorderRadius.circular(20),

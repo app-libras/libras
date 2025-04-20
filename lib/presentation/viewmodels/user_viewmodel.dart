@@ -17,11 +17,11 @@ class UserViewModel with ChangeNotifier {
 
   Future<void> loadUsers() async {
     _isLoading = true;
-    debugPrint('loadUsers');
 
     try {
       _user = await _userRepository.getUser();
     } catch (e) {
+      // showLoading();
       debugPrint(e.toString());
     } finally {
       _isLoading = false;

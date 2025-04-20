@@ -1,7 +1,7 @@
 import 'package:libras/domain/entities/user.dart';
 
 class UserModel {
-  final String? id;
+  final int? id;
   final String name;
   final String? profilePic;
 
@@ -9,7 +9,7 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'],
+      id: map['_id'],
       name: map['name'],
       profilePic: map['profile_pic'],
     );
@@ -20,5 +20,5 @@ class UserModel {
   }
 
   // convert to domain entity
-  User toEntity() => User(id: id!, name: name, profilePic: profilePic!);
+  User toEntity() => User(id: id!, name: name, profilePic: profilePic);
 }

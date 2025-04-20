@@ -14,8 +14,11 @@ class UserDao {
 
   Future<void> insertUser(Map<String, dynamic> row) async {
     final db = await _appDatabase.database;
-    print(row);
-    await db.insert(DatabaseTablesName.user, row);
+    try {
+      await db.insert(DatabaseTablesName.user, row);
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<void> updateUser(Map<String, dynamic> row) async {

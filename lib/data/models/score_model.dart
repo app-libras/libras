@@ -1,26 +1,31 @@
+import 'package:libras/domain/entities/score.dart';
+
 class ScoreModel {
   final int? id;
-  final int score;
+  final int points;
   final int userId;
   final int level;
 
   ScoreModel({
-    required this.id,
-    required this.score,
+    this.id,
+    required this.points,
     required this.userId,
     required this.level,
   });
 
   Map<String, dynamic> toMap() {
-    return {'score': score, 'user_id': userId, 'level': level};
+    return {'points': points, 'user_id': userId, 'level': level};
   }
 
   factory ScoreModel.fromMap(Map<String, dynamic> map) {
     return ScoreModel(
-      id: map['id'],
-      score: map['score'],
+      id: map['_id'],
+      points: map['points'],
       userId: map['user_id'],
       level: map['level'],
     );
   }
+
+  Score toEntity() =>
+      Score(id: id!, points: points, userId: userId, level: level);
 }

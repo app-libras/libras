@@ -6,8 +6,23 @@ class ScoreDao {
 
   ScoreDao(this._appDatabase);
 
+  Future<List<Map<String, dynamic>>> getAllScore() async {
+    final db = await _appDatabase.database;
+    return db.query(DatabaseTablesName.score);
+  }
+
   Future<void> insertScore(Map<String, dynamic> row) async {
     final db = await _appDatabase.database;
     await db.insert(DatabaseTablesName.score, row);
+  }
+
+  Future<void> updateScore(Map<String, dynamic> row) async {
+    final db = await _appDatabase.database;
+    await db.update(
+      DatabaseTablesName.score,
+      row,
+      where: 'id = ?',
+      whereArgs: [row['id']],
+    );
   }
 }
