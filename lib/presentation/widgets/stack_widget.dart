@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+
+class StackWidget extends StatelessWidget {
+  const StackWidget({
+    super.key,
+    required this.imageLink,
+    required this.imageHeight,
+    required this.imageWidth,
+    required this.fadeColor,
+    required this.text,
+  });
+
+  final String imageLink;
+  final double? imageHeight;
+  final double? imageWidth;
+  final Color? fadeColor;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Image.asset(
+          imageLink,
+          height: imageHeight ?? double.infinity,
+          width: imageWidth ?? double.infinity,
+          fit: BoxFit.fitWidth,
+          // scale: 0.01,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            color: fadeColor ?? Theme.of(context).colorScheme.onPrimary,
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+      ],
+    );
+  }
+}
