@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/user_viewmodel.dart';
+import 'package:libras/presentation/views/classroom_screen.dart';
 import 'package:libras/presentation/widgets/app_greeting_widget.dart';
 import 'package:libras/presentation/widgets/aula_card_widget.dart';
 import 'package:libras/presentation/widgets/aulas_container_widget.dart';
@@ -9,9 +10,18 @@ import 'package:libras/presentation/widgets/score_widget.dart';
 import 'package:libras/presentation/widgets/scores_container_widget.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  void _clickAula(BuildContext context) {
+    Navigator.pushNamed(context, ClassroomScreen.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 AulaCardWidget(
                   containerWidth: MediaQuery.of(context).size.width * 0.45,
                   // onTap: () => _aulaAbc(context),
-                  onTap: () {},
+                  onTap: () => _clickAula(context),
                   imageLink: 'assets/aulas/abc/abc.png',
                   // imageHeight: 100,
                   imageWidth: 200,
