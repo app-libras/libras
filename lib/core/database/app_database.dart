@@ -7,8 +7,7 @@ import 'package:libras/core/constants/database_init_constants.dart';
 class AppDatabase {
   AppDatabase._();
   static final AppDatabase instance = AppDatabase._();
-  
-  
+
   static Database? _database;
 
   Future<Database> get database async {
@@ -32,7 +31,10 @@ class AppDatabase {
   }
 
   Future<void> _onCreate(Database db, int version) async {
+    await db.execute('PRAGMA foreign_keys = ON');
     await db.execute(UserTables().userTables);
     await db.execute(ScoreTables().scoreTables);
+    await db.execute(AulaTables().aulaTables);
+    await db.execute(SaudacoesTables().saudacoesTables);
   }
 }

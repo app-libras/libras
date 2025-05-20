@@ -16,4 +16,9 @@ class BooksIcons {
     fontFamily: _kFontFam,
     fontPackage: _kFontPkg,
   );
+  static const IconData book_1 = IconData(
+    0xf02d,
+    fontFamily: _kFontFam,
+    fontPackage: _kFontPkg,
+  );
 }

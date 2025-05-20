@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:libras/presentation/viewmodels/class_content_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/user_viewmodel.dart';
-import 'package:libras/presentation/views/classroom_screen.dart';
+import 'package:libras/presentation/views/class_content_screen.dart';
 import 'package:libras/presentation/widgets/app_greeting_widget.dart';
 import 'package:libras/presentation/widgets/aula_card_widget.dart';
 import 'package:libras/presentation/widgets/aulas_container_widget.dart';
@@ -19,12 +20,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  void _clickAula(BuildContext context) {
-    Navigator.pushNamed(context, ClassroomScreen.id);
-  }
+  // void _clickAula() async {
+  //   await
+
+  //   Navigator.pushNamed(context, ClassContentScreen.id);
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final classContentViewModel = context.read<ClassContentViewModel>();
     final viewModel = context.watch<UserViewModel>();
     final scoreViewModel = context.watch<ScoreViewModel>();
     return Scaffold(
@@ -34,13 +38,13 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget>[
             AppGreetingWidget(
               name: viewModel.user[0].name,
-              fontSize: 20,
+              fontSize: 30,
               profileImage: viewModel.user[0].profilePic,
               textColor: Theme.of(context).colorScheme.primary,
               onTap: () => () {},
             ),
             ScoresContainerWidget(
-              height: 120,
+              height: 150,
               borderRadius: BorderRadius.circular(20),
               decorationColor: Theme.of(context).colorScheme.onSecondary,
               children: <Widget>[
@@ -53,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   decorationColor: Theme.of(context).colorScheme.surface,
                 ),
                 ScoreWidget(
-                  text: 'Nivel',
+                  text: 'Nível',
                   points: scoreViewModel.score[0].level,
                   imageLink: 'assets/logos/level.png',
                   imageSize: 50,
@@ -69,11 +73,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 AulaCardWidget(
                   containerWidth: MediaQuery.of(context).size.width * 0.45,
                   // onTap: () => _aulaAbc(context),
-                  onTap: () => _clickAula(context),
+                  onTap:
+                      () => {
+                        classContentViewModel.loadSaudacoes(),
+                        Navigator.pushNamed(context, ClassContentScreen.id),
+                      },
                   imageLink: 'assets/aulas/abc/abc.png',
                   // imageHeight: 100,
                   imageWidth: 200,
-                  text: 'Aula 1',
+                  text: 'Saudações',
                   fadeColor: Theme.of(context).colorScheme.onPrimary,
                 ),
                 AulaCardWidget(

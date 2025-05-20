@@ -71,7 +71,7 @@ class ScoreWidget extends StatelessWidget {
         color: decorationColor ?? Theme.of(context).colorScheme.secondary,
         borderRadius: borderRadius ?? BorderRadius.circular(15),
       ),
-      width: 150,
+      width: 170,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -84,6 +84,7 @@ class ScoreWidget extends StatelessWidget {
             text,
             style: TextStyle(
               // color: Theme.of(context).colorScheme.tertiary,
+              fontSize: fontSize ?? 20,
             ),
           ),
           Text(

@@ -26,10 +26,22 @@ class AulaTables {
   final String aula = DatabaseTablesName.aula;
   String get aulaTables => '''
   CREATE TABLE $aula (
-    _id INTEGER PRIMARY KEY AUTOINCREMENT,
-    aula INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
-    FOREIGN KEY(user_id) REFERENCES ${DatabaseTablesName.user}(_id) ON DELETE CASCADE
+    _id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    start INTEGER NOT NULL,
+    step INTEGER NOT NULL
+  )''';
+}
+
+class SaudacoesTables {
+  final String saudacoes = DatabaseTablesName.saudacoes;
+  String get saudacoesTables => '''
+  CREATE TABLE $saudacoes (
+    _id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    path TEXT NOT NULL,
+    aula_id INTEGER NOT NULL,
+    FOREIGN KEY(aula_id) REFERENCES ${DatabaseTablesName.aula}(_id) ON DELETE CASCADE
   )''';
 }
 
@@ -37,7 +49,8 @@ class MateriaTables {
   final String materia = DatabaseTablesName.materia;
   String get materiaTables => '''
   CREATE TABLE $materia (
-    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    _id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
     materia INTEGER NOT NULL,
     path TEXT NOT NULL,
     aula_id INTEGER NOT NULL,
@@ -49,7 +62,7 @@ class QuestionTables {
   final String question = DatabaseTablesName.question;
   String get questionTables => '''
   CREATE TABLE $question (
-    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    _id INTEGER PRIMARY KEY,
     question INTEGER NOT NULL,
     path TEXT NOT NULL,
     aula_id INTEGER NOT NULL,

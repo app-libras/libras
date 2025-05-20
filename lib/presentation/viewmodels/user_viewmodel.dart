@@ -25,8 +25,8 @@ class UserViewModel with ChangeNotifier {
       debugPrint(e.toString());
     } finally {
       _isLoading = false;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> addUser(String name) async {

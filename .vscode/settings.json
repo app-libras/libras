@@ -2,6 +2,9 @@
   "dart.flutterSdkPath": ".fvm/versions/3.29.3",
   "cSpell.words": [
     "cupertino",
+    "saudacao",
+    "Saudacao",
+    "saudacoes",
     "sqflite",
     "viewmodel",
     "viewmodels"

@@ -37,7 +37,7 @@ class AppGreetingWidget extends StatelessWidget {
             'Olá, $name',
             style: TextStyle(
               fontSize: fontSize ?? 30,
-              fontWeight: FontWeight.w600,
+              // fontWeight: FontWeight.w600,
               color: textColor,
             ),
           ),

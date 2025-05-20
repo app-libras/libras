@@ -21,25 +21,25 @@ class StackWidget extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Image.asset(
-          imageLink,
-          height: imageHeight ?? double.infinity,
-          width: imageWidth ?? double.infinity,
-          fit: BoxFit.fitWidth,
-          // scale: 0.01,
-        ),
+        // Image.asset(
+        //   imageLink,
+        //   height: imageHeight ?? double.infinity,
+        //   width: imageWidth ?? double.infinity,
+        //   // fit: BoxFit.fitWidth,
+        //   // scale: 1,
+        // ),
         Container(
           decoration: BoxDecoration(
-            color: fadeColor ?? Theme.of(context).colorScheme.onPrimary,
+            color: fadeColor ?? Theme.of(context).colorScheme.secondary,
             borderRadius: BorderRadius.circular(20),
           ),
         ),
         Text(
           text,
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            // color: Colors.white,
           ),
         ),
       ],

@@ -6,4 +6,5 @@ class DatabaseTablesName {
   static const String materia = 'materia';
   static const String aula = 'aula';
   static const String materiaAula = 'materia_aula';
+  static const String saudacoes = 'saudacoes';
 }

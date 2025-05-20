@@ -55,16 +55,21 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
+
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: fonts/BooksIcons.ttf
 
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/logos/
     - assets/aulas/abc/
+    - assets/aulas/1/part_1/
+    - assets/aulas/1/part_2/
+    - assets/aulas/1/aulas.json
+    - assets/aulas/1/materia.json
     - assets/profiles/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
