@@ -1,85 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:libras/data/repositories/repo/saudacao_repository.dart';
-import 'package:libras/domain/entities/saudacao.dart';
+import 'package:libras/data/repositories/repo/materials_repository.dart';
+import 'package:libras/domain/entities/materials.dart';
 
 class ClassContentViewModel extends ChangeNotifier {
-  final SaudacaoRepository _saudacaoRepository;
+  final MaterialsRepository _materialRepository;
 
-  List<Saudacao> _saudacoes = [];
+  List<Materials> _materials = [];
 
-  Saudacao? _saudacaoAtive;
+  Materials? _materialAtive;
 
   int _index = 0;
 
-  bool isLastSaudacao = false;
+  bool isLastMaterial = false;
 
-  bool isFirstSaudacao = true;
+  bool isFirstMaterial = true;
 
   bool _isFinal = false;
 
   bool get isFinal => _isFinal;
 
-  List<Saudacao> get saudacoes => _saudacoes;
+  List<Materials> get materials => _materials;
 
-  Saudacao? get saudacaoAtive => _saudacaoAtive;
+  Materials? get materialAtive => _materialAtive;
 
-  ClassContentViewModel(this._saudacaoRepository);
+  ClassContentViewModel(this._materialRepository);
 
-  Future<void> loadSaudacoes() async {
+  Future<void> loadMaterials() async {
     try {
-      _saudacoes = await _saudacaoRepository.getAllSaudacao();
-      _saudacaoAtive = _saudacoes[_index];
+      _materials = await _materialRepository.getAllMaterials();
+      _materialAtive = _materials[_index];
       if (_index != 0) {
-        isFirstSaudacao = false;
+        isFirstMaterial = false;
       } else {
-        isFirstSaudacao = true;
+        isFirstMaterial = true;
       }
 
-      print(_saudacoes);
+      print(_materials);
     } catch (e) {
       debugPrint(e.toString());
     }
     notifyListeners();
   }
 
-  void nextSaudacao() {
-    if (_saudacoes.indexOf(_saudacaoAtive!) == _saudacoes.length - 1) {
-      isFirstSaudacao = true;
-      isLastSaudacao = true;
+  void nextMaterial() {
+    if (_materials.indexOf(_materialAtive!) == _materials.length - 1) {
+      isFirstMaterial = true;
+      isLastMaterial = true;
       _isFinal = true;
       notifyListeners();
       return;
     }
-    _saudacaoAtive = _saudacoes[_saudacoes.indexOf(_saudacaoAtive!) + 1];
+    _materialAtive = _materials[_materials.indexOf(_materialAtive!) + 1];
     notifyListeners();
   }
 
   void previousSaudacao() {
-    if (_saudacoes.indexOf(_saudacaoAtive!) == 0) {
+    if (_materials.indexOf(_materialAtive!) == 0) {
       _disablePrevious();
       return;
     }
-    _saudacaoAtive = _saudacoes[_saudacoes.indexOf(_saudacaoAtive!) - 1];
+    _materialAtive = _materials[_materials.indexOf(_materialAtive!) - 1];
     notifyListeners();
   }
 
   void _disablePrevious() {
-    isFirstSaudacao = true;
+    isFirstMaterial = true;
     notifyListeners();
   }
 
   void disableNext() {
-    isLastSaudacao = true;
+    isLastMaterial = true;
     notifyListeners();
   }
 
   void enableNext() {
-    isLastSaudacao = false;
+    isLastMaterial = false;
     notifyListeners();
   }
 
   void enablePrevious() {
-    isFirstSaudacao = false;
+    isFirstMaterial = false;
     notifyListeners();
   }
 }

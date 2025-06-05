@@ -28,8 +28,23 @@ class AulaTables {
   CREATE TABLE $aula (
     _id INTEGER PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
-    start INTEGER NOT NULL,
+    is_start INTEGER NOT NULL,
+    is_finish INTEGER NOT NULL,
     step INTEGER NOT NULL
+  )''';
+}
+
+class MateriaTables {
+  final String materia = DatabaseTablesName.material;
+  String get materiaTables => '''
+  CREATE TABLE $materia (
+    _id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    path TEXT NOT NULL,
+    is_questions INTEGER NOT NULL,
+    is_answer INTEGER NOT NULL,
+    aula_id INTEGER NOT NULL,
+    FOREIGN KEY(aula_id) REFERENCES ${DatabaseTablesName.aula}(_id) ON DELETE CASCADE
   )''';
 }
 
@@ -39,31 +54,6 @@ class SaudacoesTables {
   CREATE TABLE $saudacoes (
     _id INTEGER PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
-    path TEXT NOT NULL,
-    aula_id INTEGER NOT NULL,
-    FOREIGN KEY(aula_id) REFERENCES ${DatabaseTablesName.aula}(_id) ON DELETE CASCADE
-  )''';
-}
-
-class MateriaTables {
-  final String materia = DatabaseTablesName.materia;
-  String get materiaTables => '''
-  CREATE TABLE $materia (
-    _id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE,
-    materia INTEGER NOT NULL,
-    path TEXT NOT NULL,
-    aula_id INTEGER NOT NULL,
-    FOREIGN KEY(aula_id) REFERENCES ${DatabaseTablesName.aula}(_id) ON DELETE CASCADE
-  )''';
-}
-
-class QuestionTables {
-  final String question = DatabaseTablesName.question;
-  String get questionTables => '''
-  CREATE TABLE $question (
-    _id INTEGER PRIMARY KEY,
-    question INTEGER NOT NULL,
     path TEXT NOT NULL,
     aula_id INTEGER NOT NULL,
     FOREIGN KEY(aula_id) REFERENCES ${DatabaseTablesName.aula}(_id) ON DELETE CASCADE

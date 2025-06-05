@@ -8,8 +8,10 @@ class UserModel {
   UserModel({this.id, required this.name, this.profilePic});
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
+    print(map['id']);
+
     return UserModel(
-      id: map['_id'],
+      id: map['id'],
       name: map['name'],
       profilePic: map['profile_pic'],
     );

@@ -20,6 +20,7 @@ class UserViewModel with ChangeNotifier {
 
     try {
       _user = await _userRepository.getUser();
+      print(_user);
     } catch (e) {
       // showLoading();
       debugPrint(e.toString());
@@ -30,6 +31,7 @@ class UserViewModel with ChangeNotifier {
   }
 
   Future<void> addUser(String name) async {
+    print(name);
     final user = UserModel(name: name);
     await _userRepository.addUser(user);
     await loadUsers();

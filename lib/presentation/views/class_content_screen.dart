@@ -25,7 +25,7 @@ class ClassContentScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child:
-            classContentViewModel.isLastSaudacao
+            classContentViewModel.isLastMaterial
                 ? Center(
                   child: Container(
                     child: Text(
@@ -59,7 +59,7 @@ class ClassContentScreen extends StatelessWidget {
                                 style: TextStyle(fontSize: 30),
                               ),
                               TextSpan(
-                                text: classContentViewModel.saudacaoAtive!.name,
+                                text: classContentViewModel.materialAtive!.name,
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w600,
@@ -88,7 +88,7 @@ class ClassContentScreen extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.only(right: 20, left: 20),
                         child: Image.asset(
-                          classContentViewModel.saudacaoAtive!.path,
+                          classContentViewModel.materialAtive!.path,
                           height: 380,
                           width: 310,
                           // fit: BoxFit.fitWidth,
@@ -122,11 +122,11 @@ class ClassContentScreen extends StatelessWidget {
                 minimumSize: const Size(150, 50),
                 elevation: 0,
               ),
-              onPressed: context.read<ClassContentViewModel>().nextSaudacao,
+              onPressed: context.read<ClassContentViewModel>().nextMaterial,
               child: Column(
                 children: [
                   Icon(Icons.arrow_forward, color: Colors.green, size: 24),
-                  classContentViewModel.isLastSaudacao
+                  classContentViewModel.isLastMaterial
                       ? Text('Finalizar', style: TextStyle(fontSize: 16))
                       : Text('Próximo', style: TextStyle(fontSize: 16)),
                 ],

@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   // onTap: () => _aulaAbc(context),
                   onTap:
                       () => {
-                        classContentViewModel.loadSaudacoes(),
+                        classContentViewModel.loadMaterials(),
                         Navigator.pushNamed(context, ClassContentScreen.id),
                       },
                   imageLink: 'assets/aulas/abc/abc.png',

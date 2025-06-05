@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:libras/app.dart';
 import 'package:libras/core/database/app_database.dart';
 import 'package:libras/core/database/dao/aula_dao.dart';
-import 'package:libras/core/database/dao/saudacao_dao.dart';
+import 'package:libras/core/database/dao/materials_dao.dart';
 import 'package:libras/core/database/dao/score_dao.dart';
 import 'package:libras/core/database/dao/user_dao.dart';
-import 'package:libras/data/repositories/repo/saudacao_repository.dart';
-import 'package:libras/data/repositories/impl/saudacao_repository_impl.dart';
+import 'package:libras/data/repositories/repo/materials_repository.dart';
+import 'package:libras/data/repositories/impl/materials_repository_impl.dart';
 import 'package:libras/data/repositories/repo/score_repository.dart';
 import 'package:libras/data/repositories/impl/score_repository_impl.dart';
 import 'package:libras/data/repositories/repo/user_repository.dart';
@@ -27,18 +27,7 @@ void main() async {
   final userDao = UserDao(appDatabase);
   final scoreDao = ScoreDao(appDatabase);
   final aulaDao = AulaDao(appDatabase);
-  final saudacao = SaudacaoDao(appDatabase);
-
-  try {
-    await aulaDao.loadInitialData();
-  } catch (e) {
-    debugPrint(e.toString());
-  }
-  try {
-    await saudacao.loadInitialData();
-  } catch (e) {
-    debugPrint(e.toString());
-  }
+  final saudacao = MaterialsDao(appDatabase);
 
   runApp(
     MultiProvider(
@@ -55,10 +44,11 @@ void main() async {
         Provider<AulaRepository>(
           create: (context) => AulaRepositoryImpl(context.read<AulaDao>()),
         ),
-        Provider<SaudacaoDao>(create: (_) => saudacao),
-        Provider<SaudacaoRepository>(
+        Provider<MaterialsDao>(create: (_) => saudacao),
+        Provider<MaterialsRepository>(
           create:
-              (context) => SaudacaoRepositoryImpl(context.read<SaudacaoDao>()),
+              (context) =>
+                  MaterialsRepositoryImpl(context.read<MaterialsDao>()),
         ),
         ChangeNotifierProvider(
           create: (context) => UserViewModel(context.read<UserRepository>()),
@@ -69,7 +59,7 @@ void main() async {
         ChangeNotifierProvider(
           create:
               (context) =>
-                  ClassContentViewModel(context.read<SaudacaoRepository>()),
+                  ClassContentViewModel(context.read<MaterialsRepository>()),
         ),
       ],
       child: const MyApp(),
