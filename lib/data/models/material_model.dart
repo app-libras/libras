@@ -19,7 +19,7 @@ class MaterialsModel {
 
   Map<String, dynamic> toMap() {
     return {
-      '_id': id,
+      'id': id,
       'name': name,
       'path': path,
       'is_question': isQuestion ? 1 : 0,
@@ -30,11 +30,11 @@ class MaterialsModel {
 
   factory MaterialsModel.fromMap(Map<String, dynamic> map) {
     return MaterialsModel(
-      id: map['_id'],
+      id: map['id'],
       name: map['name'],
       path: map['path'],
-      isQuestion: map['is_question'] ?? false,
-      isAnswer: map['is_answer'] ?? false,
+      isQuestion: map['is_question'] == 1 ? true : false,
+      isAnswer: map['is_answer'] == 1 ? true : false,
       aulaId: map['aula_id'],
     );
   }

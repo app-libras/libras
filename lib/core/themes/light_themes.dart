@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 ThemeData lightTheme() {
-  return ThemeData.light().copyWith(
+  return ThemeData(
+    useMaterial3: true,
+    primarySwatch: Colors.blueGrey,
     colorScheme: const ColorScheme.light().copyWith(
       primary: const Color.fromARGB(255, 23, 24, 24),
       secondary: const Color(0xFFF0FEF0),
@@ -11,6 +13,7 @@ ThemeData lightTheme() {
       onSecondary: const Color(0xFFC5F8C5),
       onTertiary: const Color.fromARGB(255, 2, 97, 45),
       onPrimary: const Color.fromARGB(58, 5, 5, 5),
+
       error: const Color.fromARGB(220, 185, 55, 55),
       onError: const Color.fromARGB(218, 192, 50, 40),
     ),

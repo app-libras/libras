@@ -9,13 +9,13 @@ class MaterialsRepositoryImpl implements MaterialsRepository {
   MaterialsRepositoryImpl(this._materialsDao);
 
   @override
-  Future<List<Materials>> getAllMaterials() async {
-    final result = await _materialsDao.getAllMaterials();
+  Future<List<Materials>> getMaterialsByAulaId(int id) async {
+    final result = await _materialsDao.getMaterialsByAulaId(id);
     return result.map((e) => MaterialsModel.fromMap(e).toEntity()).toList();
   }
 
   @override
-  Future<void> addMaterials(MaterialsModel materials) async {
-    await _materialsDao.insertMaterials(materials.toMap());
+  Future<void> updateMaterials(MaterialsModel material) async {
+    await _materialsDao.updateMaterials(material.toMap());
   }
 }

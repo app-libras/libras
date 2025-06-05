@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:libras/data/repositories/repo/materials_repository.dart';
 import 'package:libras/domain/entities/materials.dart';
 
-class ClassContentViewModel extends ChangeNotifier {
+class MaterialsViewModel extends ChangeNotifier {
   final MaterialsRepository _materialRepository;
 
   List<Materials> _materials = [];
 
-  Materials? _materialAtive;
+  late Materials _materialsAtive;
 
   int _index = 0;
 
@@ -21,45 +21,41 @@ class ClassContentViewModel extends ChangeNotifier {
 
   List<Materials> get materials => _materials;
 
-  Materials? get materialAtive => _materialAtive;
+  Materials? get materialAtive => _materialsAtive;
 
-  ClassContentViewModel(this._materialRepository);
+  MaterialsViewModel(this._materialRepository);
 
-  Future<void> loadMaterials() async {
+  Future<void> loadMaterialsByAulaId(int id) async {
+    print(id);
     try {
-      _materials = await _materialRepository.getAllMaterials();
-      _materialAtive = _materials[_index];
-      if (_index != 0) {
-        isFirstMaterial = false;
-      } else {
-        isFirstMaterial = true;
-      }
-
+      _materials = await _materialRepository.getMaterialsByAulaId(id);
+      _materialsAtive = _materials[_index];
       print(_materials);
     } catch (e) {
+      print(e);
       debugPrint(e.toString());
     }
     notifyListeners();
   }
 
   void nextMaterial() {
-    if (_materials.indexOf(_materialAtive!) == _materials.length - 1) {
+    if (_materials.indexOf(_materialsAtive) == _materials.length - 1) {
       isFirstMaterial = true;
       isLastMaterial = true;
       _isFinal = true;
       notifyListeners();
       return;
     }
-    _materialAtive = _materials[_materials.indexOf(_materialAtive!) + 1];
+    _materialsAtive = _materials[_materials.indexOf(_materialsAtive) + 1];
     notifyListeners();
   }
 
   void previousSaudacao() {
-    if (_materials.indexOf(_materialAtive!) == 0) {
+    if (_materials.indexOf(_materialsAtive) == 0) {
       _disablePrevious();
       return;
     }
-    _materialAtive = _materials[_materials.indexOf(_materialAtive!) - 1];
+    _materialsAtive = _materials[_materials.indexOf(_materialsAtive) - 1];
     notifyListeners();
   }
 

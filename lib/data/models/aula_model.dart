@@ -29,8 +29,8 @@ class AulaModel {
     return AulaModel(
       id: map['id'],
       name: map['name'],
-      isStart: map['is_start'] ?? false,
-      isFinish: map['is_finish'] ?? false,
+      isStart: map['is_start'] == 1 ? true : false,
+      isFinish: map['is_finish'] == 1 ? true : false,
       step: map['step'],
     );
   }

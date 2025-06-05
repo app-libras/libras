@@ -19,7 +19,7 @@ class AppGreetingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50, left: 10, bottom: 10),
+      padding: const EdgeInsets.only(top: 0, left: 10, bottom: 10),
       child: Row(
         children: [
           GestureDetector(

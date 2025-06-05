@@ -11,15 +11,11 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<List<User>> getUser() async {
     final result = await _userDao.getAllUsers();
-    print(result);
-    return result.map((e) => UserModel.fromMap(e).toEntity()).toList();
+    return List<User>.from(result.map((e) => UserModel.fromMap(e).toEntity()));
   }
 
   @override
   Future<void> addUser(UserModel user) async {
-    Map<String, dynamic> row = user.toMap();
-    print(row);
-
     await _userDao.insertUser(user.toMap());
   }
 }

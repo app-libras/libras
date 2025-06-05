@@ -13,9 +13,10 @@ import 'package:libras/data/repositories/repo/user_repository.dart';
 import 'package:libras/data/repositories/impl/user_repository_impl.dart';
 import 'package:libras/data/repositories/repo/aula_repository.dart';
 import 'package:libras/data/repositories/impl/aula_repository_impl.dart';
-import 'package:libras/presentation/viewmodels/class_content_viewmodel.dart';
+import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/user_viewmodel.dart';
+import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -59,7 +60,10 @@ void main() async {
         ChangeNotifierProvider(
           create:
               (context) =>
-                  ClassContentViewModel(context.read<MaterialsRepository>()),
+                  MaterialsViewModel(context.read<MaterialsRepository>()),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AulasViewModel(context.read<AulaRepository>()),
         ),
       ],
       child: const MyApp(),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:libras/presentation/viewmodels/class_content_viewmodel.dart';
+import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class ClassContentScreen extends StatelessWidget {
-  static const id = 'class-content-screen';
-  const ClassContentScreen({super.key});
+class MaterialsScreen extends StatelessWidget {
+  static const id = 'materials-screen';
+  const MaterialsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final classContentViewModel = context.watch<ClassContentViewModel>();
+    final materialsViewModel = context.watch<MaterialsViewModel>();
     // if (!classContentViewModel.isFinal) {
     //   Navigator.pop(context);
     // }
@@ -25,7 +25,7 @@ class ClassContentScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child:
-            classContentViewModel.isLastMaterial
+            materialsViewModel.isLastMaterial
                 ? Center(
                   child: Container(
                     child: Text(
@@ -59,7 +59,7 @@ class ClassContentScreen extends StatelessWidget {
                                 style: TextStyle(fontSize: 30),
                               ),
                               TextSpan(
-                                text: classContentViewModel.materialAtive!.name,
+                                text: materialsViewModel.materialAtive!.name,
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.w600,
@@ -88,7 +88,7 @@ class ClassContentScreen extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.only(right: 20, left: 20),
                         child: Image.asset(
-                          classContentViewModel.materialAtive!.path,
+                          materialsViewModel.materialAtive!.path,
                           height: 380,
                           width: 310,
                           // fit: BoxFit.fitWidth,
@@ -109,7 +109,7 @@ class ClassContentScreen extends StatelessWidget {
                 minimumSize: const Size(150, 50),
                 elevation: 0,
               ),
-              onPressed: context.read<ClassContentViewModel>().previousSaudacao,
+              onPressed: context.read<MaterialsViewModel>().previousSaudacao,
               child: Column(
                 children: const [
                   Icon(Icons.arrow_back, color: Colors.green, size: 24),
@@ -122,11 +122,11 @@ class ClassContentScreen extends StatelessWidget {
                 minimumSize: const Size(150, 50),
                 elevation: 0,
               ),
-              onPressed: context.read<ClassContentViewModel>().nextMaterial,
+              onPressed: context.read<MaterialsViewModel>().nextMaterial,
               child: Column(
                 children: [
                   Icon(Icons.arrow_forward, color: Colors.green, size: 24),
-                  classContentViewModel.isLastMaterial
+                  materialsViewModel.isLastMaterial
                       ? Text('Finalizar', style: TextStyle(fontSize: 16))
                       : Text('Próximo', style: TextStyle(fontSize: 16)),
                 ],

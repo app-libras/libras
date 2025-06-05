@@ -9,14 +9,32 @@ class MaterialsDao {
 
   MaterialsDao(this._appDatabase);
 
-  Future<List<Map<String, dynamic>>> getAllMaterials() async {
+  Future<List<Map<String, dynamic>>> getMaterialsByAulaId(int id) async {
+    print('getMaterialsByAulaId');
+    print(id);
     final db = await _appDatabase.database;
-    return db.query(DatabaseTablesName.material);
+    final result = await db.query(
+      DatabaseTablesName.material,
+      where: 'aula_id = ?',
+      whereArgs: [id],
+    );
+    print(result);
+    return result;
+    // return db.query(
+    //   DatabaseTablesName.material,
+    //   where: 'aula_id = ?',
+    //   whereArgs: [id],
+    // );
   }
 
-  Future<void> insertMaterials(Map<String, dynamic> row) async {
+  Future<void> updateMaterials(Map<String, dynamic> row) async {
     final db = await _appDatabase.database;
-    await db.insert(DatabaseTablesName.material, row);
+    await db.update(
+      DatabaseTablesName.material,
+      row,
+      where: 'id = ?',
+      whereArgs: [row['id']],
+    );
   }
 
   // Future<void> loadInitialData() async {

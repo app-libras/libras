@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class StackWidget extends StatelessWidget {
   const StackWidget({
     super.key,
-    required this.imageLink,
+    // required this.imageLink,
     required this.imageHeight,
     required this.imageWidth,
     required this.fadeColor,
     required this.text,
   });
 
-  final String imageLink;
+  // final String imageLink;
   final double? imageHeight;
   final double? imageWidth;
   final Color? fadeColor;
