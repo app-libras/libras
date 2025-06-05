@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:libras/data/repositories/saudacao_repository.dart';
+import 'package:libras/data/repositories/repo/saudacao_repository.dart';
 import 'package:libras/domain/entities/saudacao.dart';
 
 class ClassContentViewModel extends ChangeNotifier {

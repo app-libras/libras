@@ -8,5 +8,6 @@
     "sqflite",
     "viewmodel",
     "viewmodels"
-  ]
+  ],
+  "idf.pythonInstallPath": "/home/prinako/.pyenv/shims/python"
 }

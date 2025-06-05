@@ -1,6 +1,6 @@
 import 'package:libras/core/database/dao/saudacao_dao.dart';
 import 'package:libras/data/models/saudacao_model.dart';
-import 'package:libras/data/repositories/saudacao_repository.dart';
+import 'package:libras/data/repositories/repo/saudacao_repository.dart';
 import 'package:libras/domain/entities/saudacao.dart';
 
 class SaudacaoRepositoryImpl implements SaudacaoRepository {

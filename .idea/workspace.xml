@@ -5,24 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b414b008-a14b-403e-9700-c4f44b5659cf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/constants/database_tables_name_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/constants/database_tables_name_constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/database/app_database.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/database/app_database.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/database/database_tables.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/database/database_tables.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/fonts/books_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/fonts/books_icons.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repositories/saudacao_repository.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repositories/saudacao_repository_impl.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repositories/score_repository.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repositories/score_repository_impl.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repositories/user_repository.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repositories/user_repository_impl.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/viewmodels/class_content_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/viewmodels/class_content_viewmodel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/viewmodels/score_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/viewmodels/score_viewmodel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/viewmodels/user_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/viewmodels/user_viewmodel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/views/classroom_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/classroom_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/views/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/widgets/app_greeting_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/widgets/app_greeting_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/widgets/score_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/widgets/score_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/widgets/scores_container_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/widgets/scores_container_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/presentation/widgets/stack_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/widgets/stack_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/presentation/views/class_content_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/views/class_content_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

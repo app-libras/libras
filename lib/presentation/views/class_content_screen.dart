@@ -9,9 +9,9 @@ class ClassContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final classContentViewModel = context.watch<ClassContentViewModel>();
-    if (!classContentViewModel.isFinal) {
-      Navigator.pop(context);
-    }
+    // if (!classContentViewModel.isFinal) {
+    //   Navigator.pop(context);
+    // }
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -110,15 +110,12 @@ class ClassContentScreen extends StatelessWidget {
                 elevation: 0,
               ),
               onPressed: context.read<ClassContentViewModel>().previousSaudacao,
-              child:
-                  classContentViewModel.isFirstSaudacao
-                      ? Container()
-                      : Column(
-                        children: const [
-                          Icon(Icons.arrow_back, color: Colors.green, size: 24),
-                          Text('Anterior', style: TextStyle(fontSize: 16)),
-                        ],
-                      ),
+              child: Column(
+                children: const [
+                  Icon(Icons.arrow_back, color: Colors.green, size: 24),
+                  Text('Anterior', style: TextStyle(fontSize: 16)),
+                ],
+              ),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(

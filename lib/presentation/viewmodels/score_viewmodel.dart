@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libras/data/models/score_model.dart';
-import 'package:libras/data/repositories/score_repository.dart';
+import 'package:libras/data/repositories/repo/score_repository.dart';
 import 'package:libras/domain/entities/score.dart';
 
 class ScoreViewModel with ChangeNotifier {
