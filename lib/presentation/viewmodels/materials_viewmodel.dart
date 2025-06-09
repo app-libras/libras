@@ -29,7 +29,8 @@ class MaterialsViewModel extends ChangeNotifier {
     print(id);
     try {
       _materials = await _materialRepository.getMaterialsByAulaId(id);
-      _materialsAtive = _materials[_index];
+      // _materialsAtive = _materials[_index];
+      _materialsAtive = _materials[0];
       print(_materials);
     } catch (e) {
       print(e);

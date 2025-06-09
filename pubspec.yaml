@@ -68,8 +68,8 @@ flutter:
     - assets/db/libras.db
     - assets/logos/
     - assets/aulas/abc/
-    - assets/aulas/1/part_1/
     - assets/aulas/1/part_2/
+    - assets/aulas/2/
     - assets/profiles/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
