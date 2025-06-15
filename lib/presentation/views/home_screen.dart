@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  int widgetsController = 0;
   // void _clickAula() async {
   //   await
 
@@ -81,11 +82,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 // containerHeight: 150,
                 children: List.generate(aulas.length, (index) {
                   late double containerWidth;
-                  index == 2
+                  widgetsController == 2
                       ? containerWidth =
                           MediaQuery.of(context).size.width * 0.92
                       : containerWidth =
                           MediaQuery.of(context).size.width * 0.45;
+                  widgetsController == 2
+                      ? widgetsController = 0
+                      : widgetsController++;
                   return AulaCardWidget(
                     containerWidth: containerWidth,
                     // onTap: () => _aulaAbc(context),
