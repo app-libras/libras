@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
+import 'package:libras/presentation/widgets/exercise_of_materials.dart';
+import 'package:libras/presentation/widgets/presentation_of_materials.dart';
 import 'package:provider/provider.dart';
 
 class MaterialsScreen extends StatelessWidget {
@@ -15,7 +17,7 @@ class MaterialsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0,
+        // elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         leading: IconButton(
@@ -34,71 +36,7 @@ class MaterialsScreen extends StatelessWidget {
                     ),
                   ),
                 )
-                : Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        RichText(
-                          text: TextSpan(
-                            style: TextStyle(
-                              color:
-                                  Theme.of(
-                                    context,
-                                  ).textTheme.titleMedium?.color,
-                              fontSize: 20,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Esse é o sinal de ',
-                                style: TextStyle(fontSize: 24),
-                              ),
-                              TextSpan(
-                                text: "'",
-                                style: TextStyle(fontSize: 30),
-                              ),
-                              TextSpan(
-                                text: materialsViewModel.materialAtive!.name,
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              TextSpan(
-                                text: "'",
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  // fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        // Text(
-                        //   'Bom dia',
-                        //   style: TextStyle(fontSize: 25, color: Colors.grey),
-                        // ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 50),
-                    Center(
-                      child: Container(
-                        padding: const EdgeInsets.only(right: 20, left: 20),
-                        child: Image.asset(
-                          materialsViewModel.materialAtive!.path,
-                          height: 380,
-                          width: 310,
-                          // fit: BoxFit.fitWidth,
-                          scale: 0.01,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
+                : ExerciseOfMaterials(materialsViewModel: materialsViewModel),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Row(
