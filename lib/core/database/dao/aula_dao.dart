@@ -14,6 +14,16 @@ class AulaDao {
     return db.query(DatabaseTablesName.aula);
   }
 
+  Future<Map<String, dynamic>> getAulaById(int id) async {
+    final db = await _appDatabase.database;
+    final result = await db.query(
+      DatabaseTablesName.aula,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+    return result.first;
+  }
+
   Future<void> insertAula(Map<String, dynamic> row) async {
     final db = await _appDatabase.database;
     await db.insert(DatabaseTablesName.aula, row);

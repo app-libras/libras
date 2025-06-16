@@ -10,15 +10,12 @@ class MaterialsDao {
   MaterialsDao(this._appDatabase);
 
   Future<List<Map<String, dynamic>>> getMaterialsByAulaId(int id) async {
-    print('getMaterialsByAulaId');
-    print(id);
     final db = await _appDatabase.database;
     final result = await db.query(
       DatabaseTablesName.material,
       where: 'aula_id = ?',
       whereArgs: [id],
     );
-    print(result);
     return result;
     // return db.query(
     //   DatabaseTablesName.material,

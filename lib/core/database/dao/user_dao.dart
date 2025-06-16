@@ -17,7 +17,7 @@ class UserDao {
     try {
       await db.insert(DatabaseTablesName.user, row);
     } catch (e) {
-      print(e);
+      // debugPrint(e);
     }
   }
 

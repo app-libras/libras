@@ -11,6 +11,7 @@ class BooksIcons {
     fontFamily: _kFontFam,
     fontPackage: _kFontPkg,
   );
+  // ignore: constant_identifier_names
   static const IconData book_open_1 = IconData(
     0xe801,
     fontFamily: _kFontFam,

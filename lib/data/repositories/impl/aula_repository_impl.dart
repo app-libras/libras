@@ -15,7 +15,18 @@ class AulaRepositoryImpl implements AulaRepository {
   }
 
   @override
+  Future<Aula> getAulaById(int id) async {
+    final result = await _aulaDao.getAulaById(id);
+    return AulaModel.fromMap(result).toEntity();
+  }
+
+  @override
   Future<void> addAula(AulaModel aula) async {
     await _aulaDao.insertAula(aula.toMap());
+  }
+
+  @override
+  Future<void> updateAula(AulaModel aula) async {
+    await _aulaDao.updateAula(aula.toMap());
   }
 }

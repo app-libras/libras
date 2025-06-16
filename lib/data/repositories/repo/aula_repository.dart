@@ -4,6 +4,7 @@ import 'package:libras/domain/entities/aula.dart';
 abstract class AulaRepository {
   Future<List<Aula>> getAllAulas();
   Future<void> addAula(AulaModel aula);
-  // Future<void> updateAula();
+  Future<Aula> getAulaById(int id);
+  Future<void> updateAula(AulaModel aula);
   // Future<void> deleteAula();
 }

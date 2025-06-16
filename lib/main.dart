@@ -59,8 +59,10 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create:
-              (context) =>
-                  MaterialsViewModel(context.read<MaterialsRepository>()),
+              (context) => MaterialsViewModel(
+                context.read<MaterialsRepository>(),
+                context.read<AulaRepository>(),
+              ),
         ),
         ChangeNotifierProvider(
           create: (context) => AulasViewModel(context.read<AulaRepository>()),
