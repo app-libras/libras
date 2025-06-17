@@ -3,9 +3,9 @@ import 'package:libras/domain/entities/aula.dart';
 class AulaModel {
   final int id;
   final String name;
-  final bool isStart;
-  final bool isFinish;
-  final int step;
+  bool isStart;
+  bool isFinish;
+  int step;
 
   AulaModel({
     required this.id,
@@ -41,5 +41,13 @@ class AulaModel {
     isStart: isStart,
     isFinish: isFinish,
     step: step,
+  );
+
+  factory AulaModel.fromEntity(Aula aula) => AulaModel(
+    id: aula.id,
+    name: aula.name,
+    isStart: aula.isStart,
+    isFinish: aula.isFinish,
+    step: aula.step,
   );
 }

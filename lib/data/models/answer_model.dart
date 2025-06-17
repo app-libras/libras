@@ -7,12 +7,7 @@ class AnswerModel {
 
   AnswerModel({required this.id, required this.answer});
 
-  Map<String, dynamic> toMap() {
-    return {'id': id, 'answer': answer};
-  }
-
   factory AnswerModel.fromMaterial(Materials material) {
-    print(material);
     return AnswerModel(id: material.id, answer: material.name);
   }
   Answer toEntity() => Answer(id: id, answer: answer);

@@ -34,7 +34,7 @@ class QuestionModel {
         List.of(answer).where((e) => e.id != material.id).toList();
     aux.shuffle(Random());
 
-    int count = min(4, aux.length);
+    int count = min(5, aux.length);
     newAnswer = aux.sublist(0, count);
 
     newAnswer.add(Answer(id: material.id, answer: material.name));

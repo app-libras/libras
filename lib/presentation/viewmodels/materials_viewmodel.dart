@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:libras/data/models/answer_model.dart';
+import 'package:libras/data/models/aula_model.dart';
 import 'package:libras/data/models/question_model.dart';
 import 'package:libras/data/repositories/repo/aula_repository.dart';
 import 'package:libras/data/repositories/repo/materials_repository.dart';
@@ -12,7 +13,6 @@ import 'package:libras/domain/entities/materials.dart';
 
 class MaterialsViewModel extends ChangeNotifier {
   final MaterialsRepository _materialRepository;
-  final AulaRepository _aulaRepository;
 
   List<Materials> _materials = [];
   List<Question> _questions = [];
@@ -24,6 +24,8 @@ class MaterialsViewModel extends ChangeNotifier {
 
   late int _index;
 
+  late int _selectedAnswer = 0;
+
   bool isLastMaterial = false;
 
   bool isFirstMaterial = true;
@@ -32,24 +34,33 @@ class MaterialsViewModel extends ChangeNotifier {
 
   bool get isFinal => _isFinal;
 
+  int get selectedAnswer => _selectedAnswer;
+
   List<Materials> get materials => _materials;
   List<Question> get questions => _questions;
 
   Materials? get materialAtive => _materialsAtive;
   Question? get currentQuestion => _currentQuestion;
 
-  MaterialsViewModel(this._materialRepository, this._aulaRepository);
+  MaterialsViewModel(this._materialRepository);
 
-  Future<void> loadMaterialsByAulaId(int id) async {
+  Future<void> loadMaterialsByAulaId(int id, int step) async {
     try {
-      _aula = await _aulaRepository.getAulaById(id);
+      _index = step;
       _materials = await _materialRepository.getMaterialsByAulaId(id);
       // _materialsAtive = _materials[_index];
       _answers =
           _materials.map((e) => Answer(id: e.id, answer: e.name)).toList();
-      _materialsAtive = _materials[_aula.step];
+      _materialsAtive = _materials[_index];
+
+      _isFinal = _materials.length == _index + 1;
+
+      if (!_isFinal) {
+        isLastMaterial = false;
+      }
+
       // To generate the questions
-      generateQuestion();
+      _generateQuestion();
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -61,7 +72,7 @@ class MaterialsViewModel extends ChangeNotifier {
   /// This method iterates over the materials and for each one,
   /// it creates a question with the material as the answer.
   /// The questions are then added to the list of questions.
-  void generateQuestion() {
+  void _generateQuestion() {
     List<Materials> auxMaterials = _materials;
     auxMaterials.shuffle(Random());
     _questions =
@@ -72,19 +83,43 @@ class MaterialsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void selectAnswer(int value) {
+    _selectedAnswer = value;
+    notifyListeners();
+  }
+
+  void nextQuestion() {
+    if (_selectedAnswer == 0) {
+      return;
+    }
+    _currentQuestion = _questions[_questions.indexOf(_currentQuestion) + 1];
+    if (_questions.indexOf(_currentQuestion) == _questions.length - 1) {
+      // _isFinal = true;
+      print('is final');
+      notifyListeners();
+      return;
+    }
+    _selectedAnswer = 0;
+    notifyListeners();
+  }
+
   void nextMaterial() {
-    if (_materials.indexOf(_materialsAtive) == _materials.length - 1) {
-      // isFirstMaterial = true;
-      isLastMaterial = true;
+    if (_materials.indexOf(_materialsAtive) + 1 == _materials.length) {
       _isFinal = true;
       notifyListeners();
       return;
     }
+    print(_materials.indexOf(_materialsAtive) + 1);
+    print(_materials.length);
+    if (_materials.indexOf(_materialsAtive) == _materials.length - 1) {
+      // isFirstMaterial = true;
+      isLastMaterial = true;
+      notifyListeners();
+      return;
+    }
     _materialsAtive = _materials[_materials.indexOf(_materialsAtive) + 1];
-    notifyListeners();
-  }
-
-  void setRandomQuestion() {
+    isFirstMaterial = false;
+    isLastMaterial = false;
     notifyListeners();
   }
 

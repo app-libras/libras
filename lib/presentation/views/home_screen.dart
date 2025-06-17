@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libras/domain/entities/aula.dart';
 import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
@@ -27,23 +28,27 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AulasViewModel>().loadAulas();
     });
+    print('initState');
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print('dispose');
   }
 
   int widgetsController = 0;
-  // void _clickAula() async {
-  //   await
-
-  //   Navigator.pushNamed(context, ClassContentScreen.id);
-  // }
 
   @override
   Widget build(BuildContext context) {
-    final aulas = context.watch<AulasViewModel>().aulas;
+    // final aulas = context.watch<AulasViewModel>().aulas;
+    final aulas = Provider.of<AulasViewModel>(context, listen: true).aulas;
     final viewModel = context.watch<UserViewModel>();
     final scoreViewModel = context.watch<ScoreViewModel>();
     return Scaffold(
       // backgroundColor: Theme.of(context).colorScheme.secondary,
       body: SafeArea(
+        bottom: false,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -80,35 +85,47 @@ class _HomeScreenState extends State<HomeScreen> {
               // SizedBox(height: 20),
               AulasContainerWidget(
                 // containerHeight: 150,
-                children: List.generate(aulas.length, (index) {
-                  late double containerWidth;
-                  widgetsController == 2
-                      ? containerWidth =
-                          MediaQuery.of(context).size.width * 0.92
-                      : containerWidth =
-                          MediaQuery.of(context).size.width * 0.45;
-                  widgetsController == 2
-                      ? widgetsController = 0
-                      : widgetsController++;
-                  return AulaCardWidget(
-                    containerWidth: containerWidth,
-                    // onTap: () => _aulaAbc(context),
-                    onTap: () async {
-                      context.read<MaterialsViewModel>().loadMaterialsByAulaId(
-                        aulas[index].id,
-                      );
+                children: List.generate(
+                  context.watch<AulasViewModel>().aulas.length,
+                  (index) {
+                    late double containerWidth;
+                    widgetsController == 2
+                        ? containerWidth =
+                            MediaQuery.of(context).size.width * 0.92
+                        : containerWidth =
+                            MediaQuery.of(context).size.width * 0.45;
+                    widgetsController == 2
+                        ? widgetsController = 0
+                        : widgetsController++;
+                    return AulaCardWidget(
+                      // fadeColor: Theme.of(context).colorScheme.onPrimary,
+                      containerWidth: containerWidth,
+                      // onTap: () => _aulaAbc(context),
+                      onTap: () async {
+                        context.read<AulasViewModel>().onClickAula(
+                          aulas[index],
+                        );
+                        context
+                            .read<MaterialsViewModel>()
+                            .loadMaterialsByAulaId(
+                              aulas[index].id,
+                              aulas[index].step,
+                            );
 
-                      if (!mounted) return;
-                      Navigator.pushNamed(context, MaterialsScreen.id);
-                      // Navigator.pushNamed(context, MaterialsScreen.id),
-                    },
-                    // imageLink: aulas[index].imageLink,
-                    // imageHeight: 100,
-                    imageWidth: 200,
-                    text: aulas[index].name,
-                    fadeColor: Theme.of(context).colorScheme.onPrimary,
-                  );
-                }),
+                        if (!mounted) return;
+                        Navigator.pushNamed(context, MaterialsScreen.id);
+                      },
+                      // imageLink: aulas[index].imageLink,
+                      // imageHeight: 100,
+                      imageWidth: 200,
+                      text: aulas[index].name,
+                      fadeColor:
+                          context.watch<AulasViewModel>().aulas[index].isStart
+                              ? Theme.of(context).colorScheme.onSecondary
+                              : Theme.of(context).colorScheme.onPrimary,
+                    );
+                  },
+                ),
               ),
               // SizedBox(height: 20),
               // ExerciseWidget(
@@ -117,6 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //   text: 'Exercicio 1',
               //   fadeColor: Theme.of(context).colorScheme.onPrimary,
               // ),
+              const SizedBox(height: 30),
             ],
           ),
         ),

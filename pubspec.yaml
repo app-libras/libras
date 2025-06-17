@@ -67,7 +67,7 @@ flutter:
   assets:
     - assets/db/libras.db
     - assets/logos/
-    - assets/aulas/3/part_2/
+    - assets/aulas/3/
     - assets/aulas/1/
     - assets/aulas/2/
     - assets/profiles/
