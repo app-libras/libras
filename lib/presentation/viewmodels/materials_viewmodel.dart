@@ -1,13 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:libras/data/models/answer_model.dart';
-import 'package:libras/data/models/aula_model.dart';
 import 'package:libras/data/models/question_model.dart';
-import 'package:libras/data/repositories/repo/aula_repository.dart';
 import 'package:libras/data/repositories/repo/materials_repository.dart';
 import 'package:libras/domain/entities/answer.dart';
-import 'package:libras/domain/entities/aula.dart';
 import 'package:libras/domain/entities/question.dart';
 import 'package:libras/domain/entities/materials.dart';
 
@@ -18,7 +14,7 @@ class MaterialsViewModel extends ChangeNotifier {
   List<Question> _questions = [];
   List<Answer> _answers = [];
 
-  late Aula _aula;
+  // late Aula _aula;
   late Materials _materialsAtive;
   late Question _currentQuestion;
 

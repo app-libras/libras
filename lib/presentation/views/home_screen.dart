@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:libras/domain/entities/aula.dart';
 import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
@@ -127,13 +126,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              // SizedBox(height: 20),
-              // ExerciseWidget(
-              //   onTap: () => {},
-              //   imageLink: 'assets/aulas/abc/abc.png',
-              //   text: 'Exercicio 1',
-              //   fadeColor: Theme.of(context).colorScheme.onPrimary,
-              // ),
               const SizedBox(height: 30),
             ],
           ),
