@@ -34,7 +34,7 @@ class ExerciseWidget extends StatelessWidget {
           ),
           clipBehavior: Clip.hardEdge,
           child: StackWidget(
-            imageLink: imageLink,
+            // imageLink: imageLink,
             imageHeight: imageHeight,
             imageWidth: imageWidth,
             fadeColor: fadeColor,
