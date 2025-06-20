@@ -15,7 +15,7 @@ ThemeData lightTheme() {
       onPrimary: const Color.fromARGB(58, 5, 5, 5),
 
       error: const Color.fromARGB(220, 185, 55, 55),
-      onError: const Color.fromARGB(218, 192, 50, 40),
+      onError: const Color.fromARGB(41, 248, 30, 30),
     ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(color: Colors.black),

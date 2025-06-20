@@ -3,11 +3,106 @@ import 'package:libras/presentation/methods/app_bar.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class ExerciseOfMaterials extends StatelessWidget {
+class ExerciseOfMaterials extends StatefulWidget {
   const ExerciseOfMaterials({super.key, required this.materialsViewModel});
 
   final MaterialsViewModel materialsViewModel;
 
+  @override
+  State<ExerciseOfMaterials> createState() => _ExerciseOfMaterialsState();
+}
+
+Future<void> _showMyDialog(BuildContext context) async {
+  int selectedAnswer = context.read<MaterialsViewModel>().selectedAnswer;
+  int currentQuestion = context.read<MaterialsViewModel>().currentQuestion!.id;
+
+  bool isCorrect = selectedAnswer == currentQuestion;
+
+  if (isCorrect) {
+    // TODO: Implement correct answer logic
+  }
+
+  return showModalBottomSheet<void>(
+    context: context,
+    barrierColor: Colors.transparent,
+    elevation: 1,
+    isDismissible: false,
+    builder: (BuildContext context) {
+      return Container(
+        height:
+            MediaQuery.of(context).size.height *
+            0.22, // Adjust height as needed
+        color:
+            isCorrect
+                ? Theme.of(context).colorScheme.secondary
+                : Theme.of(context).colorScheme.onError,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  const SizedBox(width: 20),
+                  CircleAvatar(
+                    backgroundColor: isCorrect ? Colors.green : Colors.red,
+                    radius: 30,
+                    child: Icon(
+                      isCorrect ? Icons.check : Icons.close,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        isCorrect ? 'Parabéns!' : 'Resposta errada',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        isCorrect
+                            ? 'Sua resposta está correta!'
+                            : 'Na próxima você acertar',
+                        style: TextStyle(
+                          fontSize: 20,
+                          // color: Colors.grey.shade600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              // const SizedBox(height: 20),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  minimumSize: const Size(150, 50),
+                ),
+                child: const Text('Continuar', style: TextStyle(fontSize: 20)),
+                onPressed: () {
+                  Navigator.pop(context);
+                  context.read<MaterialsViewModel>().nextQuestion();
+                },
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+class _ExerciseOfMaterialsState extends State<ExerciseOfMaterials> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +126,7 @@ class ExerciseOfMaterials extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.only(right: 20, left: 20),
                       child: Image.asset(
-                        materialsViewModel.currentQuestion!.path,
+                        widget.materialsViewModel.currentQuestion!.path,
                         height: 320,
                         width: double.infinity,
                         // fit: BoxFit.fitWidth,
@@ -62,18 +157,20 @@ class ExerciseOfMaterials extends StatelessWidget {
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       for (var answer
-                          in materialsViewModel.currentQuestion!.answer)
+                          in widget.materialsViewModel.currentQuestion!.answer)
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
-                                materialsViewModel.selectedAnswer == answer.id
+                                widget.materialsViewModel.selectedAnswer ==
+                                        answer.id
                                     ? Colors.green.shade100
                                     : Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
                             side:
-                                materialsViewModel.selectedAnswer == answer.id
+                                widget.materialsViewModel.selectedAnswer ==
+                                        answer.id
                                     ? const BorderSide(color: Colors.green)
                                     : const BorderSide(color: Colors.grey),
 
@@ -95,8 +192,8 @@ class ExerciseOfMaterials extends StatelessWidget {
                           ),
                           onPressed: () {
                             if (answer.id !=
-                                materialsViewModel.selectedAnswer) {
-                              materialsViewModel.selectAnswer(answer.id);
+                                widget.materialsViewModel.selectedAnswer) {
+                              widget.materialsViewModel.selectAnswer(answer.id);
                             }
                           },
                         ),
@@ -110,26 +207,44 @@ class ExerciseOfMaterials extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.transparent,
-        child: Center(
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              minimumSize: const Size(150, 50),
-              elevation: 1,
-              backgroundColor: Colors.green[50],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(150, 50),
+                  elevation: 1,
+                  backgroundColor: Colors.green[50],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () {
+                  if (widget.materialsViewModel.selectedAnswer == 0) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Selecione uma resposta.',
+                          style: TextStyle(fontSize: 20, color: Colors.black),
+                        ),
+                        backgroundColor: Colors.orange.shade100,
+                      ),
+                    );
+                    return;
+                  }
+                  _showMyDialog(context);
+                },
+                child: Row(
+                  children: [
+                    Text('Feito', style: TextStyle(fontSize: 20)),
+                    const SizedBox(width: 10),
+                    Icon(Icons.check, color: Colors.deepOrange, size: 28),
+                  ],
+                ),
               ),
             ),
-            onPressed: context.read<MaterialsViewModel>().nextQuestion,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Feito', style: TextStyle(fontSize: 20)),
-                const SizedBox(width: 10),
-                Icon(Icons.check, color: Colors.deepOrange, size: 28),
-              ],
-            ),
-          ),
+          ],
         ),
       ),
     );

@@ -33,4 +33,30 @@ class ScoreViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> updateScorePoints(int points) async {
+    ScoreModel newScore = _score.map((e) => ScoreModel.fromEntity(e)).first;
+    newScore.points = points;
+    try {
+      await _scoreRepository.updateScore(newScore);
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      await loadScore();
+      notifyListeners();
+    }
+  }
+
+  Future<void> updateScoreLevel(int level) async {
+    ScoreModel newScore = _score.map((e) => ScoreModel.fromEntity(e)).first;
+    newScore.level = level;
+    try {
+      await _scoreRepository.updateScore(newScore);
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      await loadScore();
+      notifyListeners();
+    }
+  }
 }

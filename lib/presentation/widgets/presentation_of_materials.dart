@@ -118,16 +118,17 @@ class PresentationOfMaterials extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                elevation: 0,
+                elevation: 1,
+                backgroundColor: Theme.of(context).colorScheme.onSecondary,
               ),
               onPressed: context.read<MaterialsViewModel>().nextMaterial,
               child: Row(
                 children: [
                   materialsViewModel.isLastMaterial
                       ? Text('Exercícios', style: TextStyle(fontSize: 16))
-                      : Text('Próximo', style: TextStyle(fontSize: 16)),
+                      : Text('Próximo', style: TextStyle(fontSize: 24)),
                   const SizedBox(width: 10),
-                  Icon(Icons.arrow_forward, color: Colors.green, size: 24),
+                  Icon(Icons.arrow_forward, color: Colors.green, size: 30),
                 ],
               ),
             ),
