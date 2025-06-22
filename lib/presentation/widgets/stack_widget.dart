@@ -37,7 +37,7 @@ class StackWidget extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
             // color: Colors.white,
           ),

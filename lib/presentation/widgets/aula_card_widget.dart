@@ -35,6 +35,8 @@ class AulaCardWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: fadeColor ?? Theme.of(context).colorScheme.secondary,
           borderRadius: borderRadius ?? BorderRadius.circular(20),
+
+          border: Border.all(color: Colors.white, width: 2),
         ),
         clipBehavior: Clip.hardEdge,
         child: StackWidget(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
-import 'package:libras/presentation/widgets/exercise_of_materials.dart';
-import 'package:libras/presentation/widgets/presentation_of_materials.dart';
+import 'package:libras/presentation/widgets/congratulations_widget.dart';
+import 'package:libras/presentation/widgets/exercise_widget.dart';
+import 'package:libras/presentation/widgets/presentation_widget.dart';
 import 'package:provider/provider.dart';
 
 class MaterialsScreen extends StatefulWidget {
@@ -20,7 +21,9 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
     //   Navigator.pop(context);
     // }
     return materialsViewModel.isFinalMaterial
-        ? ExerciseOfMaterials(materialsViewModel: materialsViewModel)
-        : PresentationOfMaterials(materialsViewModel: materialsViewModel);
+        ? materialsViewModel.isFinalQuestion
+            ? CongratulationsWidget(materialsViewModel: materialsViewModel)
+            : ExerciseWidget(materialsViewModel: materialsViewModel)
+        : PresentationWidget(materialsViewModel: materialsViewModel);
   }
 }

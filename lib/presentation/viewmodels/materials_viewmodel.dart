@@ -25,17 +25,16 @@ class MaterialsViewModel extends ChangeNotifier {
   late int _indexOfLastQuestion;
 
   bool isLastMaterial = false;
-
   bool isFirstMaterial = true;
 
   bool _isFinalMaterial = false;
   bool _isFinalQuestion = false;
 
   bool get isFinalMaterial => _isFinalMaterial;
+  bool get isFinalQuestion => _isFinalQuestion;
 
   int get selectedAnswer => _selectedAnswer;
-
-  bool get isFinalQuestion => _isFinalQuestion;
+  int get indexOfLastQuestion => _indexOfLastQuestion;
 
   List<Materials> get materials => _materials;
   List<Question> get questions => _questions;
@@ -58,13 +57,24 @@ class MaterialsViewModel extends ChangeNotifier {
 
       if (!_isFinalMaterial) isLastMaterial = false;
 
-      if (!_isFinalQuestion) _isFinalMaterial = false;
+      if (!_isFinalQuestion) _isFinalQuestion = false;
 
       // To generate the questions
       _generateQuestion();
     } catch (e) {
       debugPrint(e.toString());
     }
+    notifyListeners();
+  }
+
+  void setToDefault() {
+    _isFinalMaterial = false;
+    _isFinalQuestion = false;
+    isFirstMaterial = true;
+    isLastMaterial = false;
+    _selectedAnswer = 0;
+    _materialsId = 0;
+    _indexOfLastQuestion = 0;
     notifyListeners();
   }
 

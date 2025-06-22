@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: <Widget>[
                   ScoreWidget(
                     text: 'Pontos',
-                    points: scoreViewModel.score[0].points,
+                    points: scoreViewModel.score.first.points,
                     imageLink: 'assets/logos/ponto.png',
                     imageSize: 50,
                     borderRadius: BorderRadius.circular(20),
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   ScoreWidget(
                     text: 'Nível',
-                    points: scoreViewModel.score[0].level,
+                    points: scoreViewModel.score.first.level,
                     imageLink: 'assets/logos/level.png',
                     imageSize: 50,
                     borderRadius: BorderRadius.circular(20),
@@ -119,8 +119,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       imageWidth: 200,
                       text: aulas[index].name,
                       fadeColor:
-                          context.watch<AulasViewModel>().aulas[index].isStart
+                          context.watch<AulasViewModel>().aulas[index].isFinish
                               ? Theme.of(context).colorScheme.onSecondary
+                              : context
+                                  .watch<AulasViewModel>()
+                                  .aulas[index]
+                                  .isStart
+                              ? Colors.orange[50]
                               : Theme.of(context).colorScheme.onPrimary,
                     );
                   },

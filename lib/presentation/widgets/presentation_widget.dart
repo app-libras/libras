@@ -3,8 +3,8 @@ import 'package:libras/presentation/methods/app_bar.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class PresentationOfMaterials extends StatelessWidget {
-  const PresentationOfMaterials({super.key, required this.materialsViewModel});
+class PresentationWidget extends StatelessWidget {
+  const PresentationWidget({super.key, required this.materialsViewModel});
 
   final MaterialsViewModel materialsViewModel;
 

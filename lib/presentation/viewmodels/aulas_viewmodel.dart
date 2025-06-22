@@ -9,7 +9,13 @@ class AulasViewModel extends ChangeNotifier {
 
   late Aula _aula;
 
+  late int _idOfFinalAula;
+
+  bool _isFinalAula = false;
+
   Aula get aulaAtive => _aula;
+
+  bool get isFinalAula => _isFinalAula;
 
   List<Aula> get aulas => _aulas;
 
@@ -18,6 +24,12 @@ class AulasViewModel extends ChangeNotifier {
 
   Future<void> loadAulas() async {
     _aulas = await _aulaRepository.getAllAulas();
+    _idOfFinalAula = _aulas[_aulas.length - 1].id;
+    notifyListeners();
+  }
+
+  void setToDefault() {
+    _isFinalAula = false;
     notifyListeners();
   }
 
@@ -48,12 +60,24 @@ class AulasViewModel extends ChangeNotifier {
     if (!newAula.isFinish) {
       newAula.isFinish = true;
       await _aulaRepository.updateAula(newAula);
-      _aula = newAula.toEntity();
+      // _aula = newAula.toEntity();
       _aulas =
           _aulas
               .map((e) => e.id == newAula.id ? newAula.toEntity() : e)
               .toList();
     }
+    notifyListeners();
+  }
+
+  void nextAula() async {
+    int currentAulaId = _aula.id + 1;
+    aulaFinish();
+    Aula nextAula = _aulas.firstWhere((element) => element.id == currentAulaId);
+    if (nextAula.id == _idOfFinalAula) {
+      _isFinalAula = true;
+    }
+    onClickAula(nextAula);
+
     notifyListeners();
   }
 }
