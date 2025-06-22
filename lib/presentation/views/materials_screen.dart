@@ -19,7 +19,7 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
     // if (!classContentViewModel.isFinal) {
     //   Navigator.pop(context);
     // }
-    return materialsViewModel.isFinal
+    return materialsViewModel.isFinalMaterial
         ? ExerciseOfMaterials(materialsViewModel: materialsViewModel)
         : PresentationOfMaterials(materialsViewModel: materialsViewModel);
   }

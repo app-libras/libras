@@ -18,19 +18,24 @@ class MaterialsViewModel extends ChangeNotifier {
   late Materials _materialsAtive;
   late Question _currentQuestion;
 
-  late int _index;
+  late int _materialsId;
 
   late int _selectedAnswer = 0;
+
+  late int _indexOfLastQuestion;
 
   bool isLastMaterial = false;
 
   bool isFirstMaterial = true;
 
-  bool _isFinal = false;
+  bool _isFinalMaterial = false;
+  bool _isFinalQuestion = false;
 
-  bool get isFinal => _isFinal;
+  bool get isFinalMaterial => _isFinalMaterial;
 
   int get selectedAnswer => _selectedAnswer;
+
+  bool get isFinalQuestion => _isFinalQuestion;
 
   List<Materials> get materials => _materials;
   List<Question> get questions => _questions;
@@ -42,18 +47,18 @@ class MaterialsViewModel extends ChangeNotifier {
 
   Future<void> loadMaterialsByAulaId(int id, int step) async {
     try {
-      _index = step;
+      _materialsId = step;
       _materials = await _materialRepository.getMaterialsByAulaId(id);
       // _materialsAtive = _materials[_index];
       _answers =
           _materials.map((e) => Answer(id: e.id, answer: e.name)).toList();
-      _materialsAtive = _materials[_index];
+      _materialsAtive = _materials[_materialsId];
 
-      _isFinal = _materials.length == _index + 1;
+      _isFinalMaterial = _materials.length == _materialsId + 1;
 
-      if (!_isFinal) {
-        isLastMaterial = false;
-      }
+      if (!_isFinalMaterial) isLastMaterial = false;
+
+      if (!_isFinalQuestion) _isFinalMaterial = false;
 
       // To generate the questions
       _generateQuestion();
@@ -75,7 +80,8 @@ class MaterialsViewModel extends ChangeNotifier {
         auxMaterials
             .map((e) => QuestionModel.fromMaterial(e, _answers).toEntity())
             .toList();
-    _currentQuestion = _questions[_index];
+    _currentQuestion = _questions[_questions.indexOf(_questions.first)];
+    _indexOfLastQuestion = _questions.indexOf(_questions.last);
     notifyListeners();
   }
 
@@ -88,20 +94,19 @@ class MaterialsViewModel extends ChangeNotifier {
     if (_selectedAnswer == 0) {
       return;
     }
-    _currentQuestion = _questions[_questions.indexOf(_currentQuestion) + 1];
-    if (_questions.indexOf(_currentQuestion) == _questions.length - 1) {
-      // _isFinal = true;
-      print('is final');
+    if (_questions.indexOf(_currentQuestion) == _indexOfLastQuestion) {
+      _isFinalQuestion = true;
       notifyListeners();
       return;
     }
+    _currentQuestion = _questions[_questions.indexOf(_currentQuestion) + 1];
     _selectedAnswer = 0;
     notifyListeners();
   }
 
   void nextMaterial() {
     if (_materials.indexOf(_materialsAtive) + 1 == _materials.length) {
-      _isFinal = true;
+      _isFinalMaterial = true;
       notifyListeners();
       return;
     }
@@ -116,35 +121,6 @@ class MaterialsViewModel extends ChangeNotifier {
     _materialsAtive = _materials[_materials.indexOf(_materialsAtive) + 1];
     isFirstMaterial = false;
     isLastMaterial = false;
-    notifyListeners();
-  }
-
-  void previousSaudacao() {
-    if (_materials.indexOf(_materialsAtive) == 0) {
-      _disablePrevious();
-      return;
-    }
-    _materialsAtive = _materials[_materials.indexOf(_materialsAtive) - 1];
-    notifyListeners();
-  }
-
-  void _disablePrevious() {
-    isFirstMaterial = true;
-    notifyListeners();
-  }
-
-  void disableNext() {
-    isLastMaterial = true;
-    notifyListeners();
-  }
-
-  void enableNext() {
-    isLastMaterial = false;
-    notifyListeners();
-  }
-
-  void enablePrevious() {
-    isFirstMaterial = false;
     notifyListeners();
   }
 }

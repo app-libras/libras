@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:libras/presentation/methods/app_bar.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
+import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class ExerciseOfMaterials extends StatefulWidget {
@@ -19,10 +20,13 @@ Future<void> _showMyDialog(BuildContext context) async {
   bool isCorrect = selectedAnswer == currentQuestion;
 
   if (isCorrect) {
-    // TODO: Implement correct answer logic
+    int points = context.read<ScoreViewModel>().score[0].points + 10;
+    print(points);
+    await context.read<ScoreViewModel>().updateScorePoints(points);
   }
 
   return showModalBottomSheet<void>(
+    // ignore: use_build_context_synchronously
     context: context,
     barrierColor: Colors.transparent,
     elevation: 1,
