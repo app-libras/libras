@@ -17,9 +17,6 @@ class _MaterialsScreenState extends State<MaterialsScreen> {
   @override
   Widget build(BuildContext context) {
     final materialsViewModel = context.watch<MaterialsViewModel>();
-    // if (!classContentViewModel.isFinal) {
-    //   Navigator.pop(context);
-    // }
     return materialsViewModel.isFinalMaterial
         ? materialsViewModel.isFinalQuestion
             ? CongratulationsWidget(materialsViewModel: materialsViewModel)

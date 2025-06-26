@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libras/presentation/methods/app_bar.dart';
+import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -65,17 +66,49 @@ Future<void> _showMyDialog(BuildContext context) async {
                       Text(
                         isCorrect ? 'Parabéns!' : 'Resposta errada',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                      isCorrect
+                          ? const SizedBox(height: 10)
+                          : RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                color:
+                                    Theme.of(
+                                      context,
+                                    ).textTheme.titleMedium?.color,
+                                // fontSize: 20,
+                              ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'A resposta correta: ',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                                TextSpan(
+                                  text:
+                                      context
+                                          .read<MaterialsViewModel>()
+                                          .currentQuestion!
+                                          .name,
+                                  style: TextStyle(
+                                    color: Colors.green,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
                       Text(
                         isCorrect
                             ? 'Sua resposta está correta!'
                             : 'Na próxima você acertar',
                         style: TextStyle(
                           fontSize: 20,
-                          // color: Colors.grey.shade600,
+                          color: Colors.grey.shade600,
                         ),
                       ),
                     ],
@@ -109,7 +142,10 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(context),
+      appBar: myAppBar(
+        context,
+        'Exercícios de ${context.read<AulasViewModel>().aulaAtive.name}',
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:libras/domain/entities/aula.dart';
 import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
@@ -27,13 +28,26 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<AulasViewModel>().loadAulas();
     });
-    print('initState');
+  }
+
+  void _setCurrentAula(Aula aula) async {
+     await context.read<AulasViewModel>().onClickAula(aula);
+    _loadMaterials(aula.id,aula.step);
+    }
+
+  void _loadMaterials(int id,step) async {
+    await context.read<MaterialsViewModel>().loadMaterialsByAulaId(id,step);
+    if(!mounted) return;
+    _navigateToMaterials();
+  }
+
+  void _navigateToMaterials() {
+    Navigator.pushNamed(context, MaterialsScreen.id);
   }
 
   @override
   void dispose() {
     super.dispose();
-    print('dispose');
   }
 
   int widgetsController = 0;
@@ -100,19 +114,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       // fadeColor: Theme.of(context).colorScheme.onPrimary,
                       containerWidth: containerWidth,
                       // onTap: () => _aulaAbc(context),
-                      onTap: () async {
-                        context.read<AulasViewModel>().onClickAula(
-                          aulas[index],
-                        );
-                        context
-                            .read<MaterialsViewModel>()
-                            .loadMaterialsByAulaId(
-                              aulas[index].id,
-                              aulas[index].step,
-                            );
-
-                        if (!mounted) return;
-                        Navigator.pushNamed(context, MaterialsScreen.id);
+                      onTap: (){
+                        _setCurrentAula(aulas[index]);
                       },
                       // imageLink: aulas[index].imageLink,
                       // imageHeight: 100,

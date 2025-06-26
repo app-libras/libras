@@ -63,9 +63,9 @@ class CongratulationsWidget extends StatelessWidget {
               const SizedBox(height: 40.0), // Espaçamento
               // Botão para continuar ou ir para a próxima etapa
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   context.read<AulasViewModel>().nextAula();
-                  context.read<MaterialsViewModel>().setToDefault();
+                  final aula = context.read<AulasViewModel>().aulaAtive;
                   context.read<MaterialsViewModel>().loadMaterialsByAulaId(
                     aula.id,
                     aula.step,

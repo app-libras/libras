@@ -33,7 +33,7 @@ class AulasViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void onClickAula(Aula aula) async {
+  Future<void> onClickAula(Aula aula) async {
     AulaModel newAula = AulaModel.fromEntity(aula);
     if (!newAula.isStart) {
       newAula.isStart = true;
@@ -69,15 +69,32 @@ class AulasViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Moves to the next aula, if the current aula is the final one it
+  /// sets [_isFinalAula] to true.
+  ///
+  /// If the user is in the last aula, it only sets [_isFinalAula] to true
+  /// without moving to the next aula.
   void nextAula() async {
-    int currentAulaId = _aula.id + 1;
+    final currentAulaIndex = _aulas.indexWhere(
+      (element) => element.id == _aula.id,
+    );
+    if (currentAulaIndex == -1 || currentAulaIndex == _aulas.length - 1) return;
+
+    // Finish the current aula
     aulaFinish();
-    Aula nextAula = _aulas.firstWhere((element) => element.id == currentAulaId);
+
+    // Get the next aula
+    final nextAula = _aulas[currentAulaIndex + 1];
+
+    // If the next aula is the final one, set [_isFinalAula] to true
     if (nextAula.id == _idOfFinalAula) {
       _isFinalAula = true;
     }
-    onClickAula(nextAula);
 
+    // Go to the next aula
+    await onClickAula(nextAula);
+
+    // Notify the listeners
     notifyListeners();
   }
 }

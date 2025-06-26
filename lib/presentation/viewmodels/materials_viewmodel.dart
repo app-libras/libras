@@ -23,6 +23,7 @@ class MaterialsViewModel extends ChangeNotifier {
   late int _selectedAnswer = 0;
 
   late int _indexOfLastQuestion;
+  late int _indexOfLastMaterial;
 
   bool isLastMaterial = false;
   bool isFirstMaterial = true;
@@ -47,17 +48,17 @@ class MaterialsViewModel extends ChangeNotifier {
   Future<void> loadMaterialsByAulaId(int id, int step) async {
     try {
       _materialsId = step;
+      print(_materialsId);
       _materials = await _materialRepository.getMaterialsByAulaId(id);
       // _materialsAtive = _materials[_index];
       _answers =
           _materials.map((e) => Answer(id: e.id, answer: e.name)).toList();
       _materialsAtive = _materials[_materialsId];
 
-      _isFinalMaterial = _materials.length == _materialsId + 1;
-
-      if (!_isFinalMaterial) isLastMaterial = false;
-
-      if (!_isFinalQuestion) _isFinalQuestion = false;
+      _indexOfLastMaterial = _materials.indexOf(_materials.last);
+      _isFinalQuestion = false;
+      _isFinalMaterial = false;
+      isLastMaterial = false;
 
       // To generate the questions
       _generateQuestion();
@@ -115,22 +116,15 @@ class MaterialsViewModel extends ChangeNotifier {
   }
 
   void nextMaterial() {
-    if (_materials.indexOf(_materialsAtive) + 1 == _materials.length) {
+    final index = _materials.indexOf(_materialsAtive);
+    if (index == _indexOfLastMaterial) {
       _isFinalMaterial = true;
       notifyListeners();
       return;
     }
-    print(_materials.indexOf(_materialsAtive) + 1);
-    print(_materials.length);
-    if (_materials.indexOf(_materialsAtive) == _materials.length - 1) {
-      // isFirstMaterial = true;
-      isLastMaterial = true;
-      notifyListeners();
-      return;
-    }
-    _materialsAtive = _materials[_materials.indexOf(_materialsAtive) + 1];
-    isFirstMaterial = false;
-    isLastMaterial = false;
+    _materialsAtive = _materials[index + 1];
+    isFirstMaterial = index == 0;
+    isLastMaterial = index == _indexOfLastMaterial - 1;
     notifyListeners();
   }
 }
