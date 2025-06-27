@@ -66,9 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: <Widget>[
               AppGreetingWidget(
-                name: viewModel.user[0].name,
+                name: viewModel.user.first.name,
                 fontSize: 30,
-                profileImage: viewModel.user[0].profilePic,
+                profileImage: viewModel.user.first.profilePic,
                 textColor: Theme.of(context).colorScheme.primary,
                 onTap: () => () {},
               ),

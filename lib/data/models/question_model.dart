@@ -29,6 +29,7 @@ class QuestionModel {
 
   factory QuestionModel.fromMaterial(Materials material, List<Answer> answer) {
     List<Answer> newAnswer = [];
+    String path = material.path;
 
     List<Answer> aux =
         List.of(answer).where((e) => e.id != material.id).toList();
@@ -37,14 +38,21 @@ class QuestionModel {
     int count = min(5, aux.length);
     newAnswer = aux.sublist(0, count);
 
+
     newAnswer.add(Answer(id: material.id, answer: material.name));
 
     newAnswer.shuffle(Random());
 
+    if(material.hasTwoPath) {
+      final List k = material.path.split('.');
+      path = '${k[0]}Q.${k[1]}';
+      
+    }
+
     return QuestionModel(
       id: material.id,
       name: material.name,
-      path: material.path,
+      path: path,
       isQuestion: material.isQuestion,
       isAnswer: material.isAnswer,
       aulaId: material.aulaId,

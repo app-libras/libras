@@ -10,17 +10,19 @@ class ExerciseWidget extends StatefulWidget {
 
   final MaterialsViewModel materialsViewModel;
 
+
   @override
   State<ExerciseWidget> createState() => _ExerciseWidgetState();
 }
 
+ 
 Future<void> _showMyDialog(BuildContext context) async {
   int selectedAnswer = context.read<MaterialsViewModel>().selectedAnswer;
   int currentQuestion = context.read<MaterialsViewModel>().currentQuestion!.id;
 
   bool isCorrect = selectedAnswer == currentQuestion;
 
-  if (isCorrect) {
+  if (isCorrect && !context.read<AulasViewModel>().aulaAtive.isFinish) {
     int points = context.read<ScoreViewModel>().score[0].points + 10;
     await context.read<ScoreViewModel>().updateScorePoints(points);
   }
@@ -137,6 +139,7 @@ Future<void> _showMyDialog(BuildContext context) async {
     },
   );
 }
+
 
 class _ExerciseWidgetState extends State<ExerciseWidget> {
   @override

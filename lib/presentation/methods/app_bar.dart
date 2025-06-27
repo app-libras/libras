@@ -7,9 +7,9 @@ AppBar myAppBar(BuildContext context, String title) {
   //   (ScoreViewModel vm) => vm.score.first.points,
   // );
   return AppBar(
-    title: Text(title, style: const TextStyle(fontSize: 30)),
+    title: Text(title, style: const TextStyle(fontSize: 24)),
     elevation: 0,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
     foregroundColor: Colors.black,
     leading: IconButton(
       icon: const Icon(Icons.arrow_back_ios),
