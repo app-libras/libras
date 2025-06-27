@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:libras/presentation/methods/app_bar.dart';
+import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class PresentationOfMaterials extends StatelessWidget {
-  const PresentationOfMaterials({super.key, required this.materialsViewModel});
+class PresentationWidget extends StatelessWidget {
+  const PresentationWidget({super.key, required this.materialsViewModel});
 
   final MaterialsViewModel materialsViewModel;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: myAppBar(context),
+      appBar: myAppBar(context, context.watch<AulasViewModel>().aulaAtive.name),
       body: SafeArea(
         child: Column(
           children: [
@@ -125,7 +126,10 @@ class PresentationOfMaterials extends StatelessWidget {
               child: Row(
                 children: [
                   materialsViewModel.isLastMaterial
-                      ? Text('Exercícios', style: TextStyle(fontSize: 16))
+                      ? Text(
+                        'Vamos aos Exercícios',
+                        style: TextStyle(fontSize: 24),
+                      )
                       : Text('Próximo', style: TextStyle(fontSize: 24)),
                   const SizedBox(width: 10),
                   Icon(Icons.arrow_forward, color: Colors.green, size: 30),

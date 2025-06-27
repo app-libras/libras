@@ -18,19 +18,24 @@ class MaterialsViewModel extends ChangeNotifier {
   late Materials _materialsAtive;
   late Question _currentQuestion;
 
-  late int _index;
+  late int _materialsNumber;
 
   late int _selectedAnswer = 0;
 
-  bool isLastMaterial = false;
+  late int _indexOfLastQuestion;
+  late int _indexOfLastMaterial;
 
+  bool isLastMaterial = false;
   bool isFirstMaterial = true;
 
-  bool _isFinal = false;
+  bool _isFinalMaterial = false;
+  bool _isFinalQuestion = false;
 
-  bool get isFinal => _isFinal;
+  bool get isFinalMaterial => _isFinalMaterial;
+  bool get isFinalQuestion => _isFinalQuestion;
 
   int get selectedAnswer => _selectedAnswer;
+  int get indexOfLastQuestion => _indexOfLastQuestion;
 
   List<Materials> get materials => _materials;
   List<Question> get questions => _questions;
@@ -42,24 +47,34 @@ class MaterialsViewModel extends ChangeNotifier {
 
   Future<void> loadMaterialsByAulaId(int id, int step) async {
     try {
-      _index = step;
+      _materialsNumber = step;
       _materials = await _materialRepository.getMaterialsByAulaId(id);
       // _materialsAtive = _materials[_index];
       _answers =
           _materials.map((e) => Answer(id: e.id, answer: e.name)).toList();
-      _materialsAtive = _materials[_index];
+      _materialsAtive = _materials.firstWhere((e) => e.isMaterial == step);
 
-      _isFinal = _materials.length == _index + 1;
-
-      if (!_isFinal) {
-        isLastMaterial = false;
-      }
+      _indexOfLastMaterial = _materials.indexOf(_materials.last)+1;
+      _isFinalQuestion = false;
+      _isFinalMaterial = false;
+      isLastMaterial = false;
 
       // To generate the questions
       _generateQuestion();
     } catch (e) {
       debugPrint(e.toString());
     }
+    notifyListeners();
+  }
+
+  void setToDefault() {
+    _isFinalMaterial = false;
+    _isFinalQuestion = false;
+    isFirstMaterial = true;
+    isLastMaterial = false;
+    _selectedAnswer = 0;
+    _materialsNumber = 0;
+    _indexOfLastQuestion = 0;
     notifyListeners();
   }
 
@@ -75,7 +90,8 @@ class MaterialsViewModel extends ChangeNotifier {
         auxMaterials
             .map((e) => QuestionModel.fromMaterial(e, _answers).toEntity())
             .toList();
-    _currentQuestion = _questions[_index];
+    _currentQuestion = _questions[_questions.indexOf(_questions.first)];
+    _indexOfLastQuestion = _questions.indexOf(_questions.last);
     notifyListeners();
   }
 
@@ -88,63 +104,27 @@ class MaterialsViewModel extends ChangeNotifier {
     if (_selectedAnswer == 0) {
       return;
     }
-    _currentQuestion = _questions[_questions.indexOf(_currentQuestion) + 1];
-    if (_questions.indexOf(_currentQuestion) == _questions.length - 1) {
-      // _isFinal = true;
-      print('is final');
+    if (_questions.indexOf(_currentQuestion) == _indexOfLastQuestion) {
+      _isFinalQuestion = true;
       notifyListeners();
       return;
     }
+    _currentQuestion = _questions[_questions.indexOf(_currentQuestion) + 1];
     _selectedAnswer = 0;
     notifyListeners();
   }
 
   void nextMaterial() {
-    if (_materials.indexOf(_materialsAtive) + 1 == _materials.length) {
-      _isFinal = true;
+    
+    if (_materialsNumber == _indexOfLastMaterial) {
+      _isFinalMaterial = true;
       notifyListeners();
       return;
     }
-    print(_materials.indexOf(_materialsAtive) + 1);
-    print(_materials.length);
-    if (_materials.indexOf(_materialsAtive) == _materials.length - 1) {
-      // isFirstMaterial = true;
-      isLastMaterial = true;
-      notifyListeners();
-      return;
-    }
-    _materialsAtive = _materials[_materials.indexOf(_materialsAtive) + 1];
-    isFirstMaterial = false;
-    isLastMaterial = false;
+    _materialsNumber++;
+    _materialsAtive = _materials.firstWhere((e) => e.isMaterial == _materialsNumber );
+    isLastMaterial = _materialsNumber == _indexOfLastMaterial;
     notifyListeners();
   }
 
-  void previousSaudacao() {
-    if (_materials.indexOf(_materialsAtive) == 0) {
-      _disablePrevious();
-      return;
-    }
-    _materialsAtive = _materials[_materials.indexOf(_materialsAtive) - 1];
-    notifyListeners();
-  }
-
-  void _disablePrevious() {
-    isFirstMaterial = true;
-    notifyListeners();
-  }
-
-  void disableNext() {
-    isLastMaterial = true;
-    notifyListeners();
-  }
-
-  void enableNext() {
-    isLastMaterial = false;
-    notifyListeners();
-  }
-
-  void enablePrevious() {
-    isFirstMaterial = false;
-    notifyListeners();
-  }
 }

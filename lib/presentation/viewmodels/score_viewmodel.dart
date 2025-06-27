@@ -23,7 +23,12 @@ class ScoreViewModel with ChangeNotifier {
   }
 
   Future<void> addScore(int userId, int points, int level) async {
-    final score = ScoreModel(points: points, userId: userId, level: level);
+    final score = ScoreModel(
+      id: 1,
+      points: points,
+      userId: userId,
+      level: level,
+    );
     try {
       await _scoreRepository.addScore(score);
     } catch (e) {
@@ -35,6 +40,7 @@ class ScoreViewModel with ChangeNotifier {
   }
 
   Future<void> updateScorePoints(int points) async {
+    print('updateScorePoints');
     ScoreModel newScore = _score.map((e) => ScoreModel.fromEntity(e)).first;
     newScore.points = points;
     try {

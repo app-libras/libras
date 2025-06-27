@@ -14,7 +14,7 @@ class ScoreModel {
   });
 
   Map<String, dynamic> toMap() {
-    return {'points': points, 'user_id': userId, 'level': level};
+    return {'id': id, 'points': points, 'user_id': userId, 'level': level};
   }
 
   factory ScoreModel.fromMap(Map<String, dynamic> map) {

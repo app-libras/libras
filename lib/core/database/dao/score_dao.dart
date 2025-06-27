@@ -18,6 +18,7 @@ class ScoreDao {
 
   Future<void> updateScore(Map<String, dynamic> row) async {
     final db = await _appDatabase.database;
+    print(row['id']);
     await db.update(
       DatabaseTablesName.score,
       row,
