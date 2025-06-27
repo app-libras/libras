@@ -25,12 +25,14 @@ class MaterialsViewModel extends ChangeNotifier {
   late int _indexOfLastQuestion;
   late int _indexOfLastMaterial;
 
-  bool isLastMaterial = false;
-  bool isFirstMaterial = true;
+  late bool _isLastMaterial ;
+  late bool _isFirstMaterial ;
 
   bool _isFinalMaterial = false;
   bool _isFinalQuestion = false;
 
+  bool get isLastMaterial => _isLastMaterial;
+  bool get isFirstMaterial => _isFirstMaterial;
   bool get isFinalMaterial => _isFinalMaterial;
   bool get isFinalQuestion => _isFinalQuestion;
 
@@ -57,7 +59,8 @@ class MaterialsViewModel extends ChangeNotifier {
       _indexOfLastMaterial = _materials.indexOf(_materials.last)+1;
       _isFinalQuestion = false;
       _isFinalMaterial = false;
-      isLastMaterial = false;
+      _isLastMaterial = false;
+      _isFirstMaterial = true;
 
       // To generate the questions
       _generateQuestion();
@@ -70,8 +73,8 @@ class MaterialsViewModel extends ChangeNotifier {
   void setToDefault() {
     _isFinalMaterial = false;
     _isFinalQuestion = false;
-    isFirstMaterial = true;
-    isLastMaterial = false;
+    _isFirstMaterial = true;
+    _isLastMaterial = false;
     _selectedAnswer = 0;
     _materialsNumber = 0;
     _indexOfLastQuestion = 0;
@@ -123,8 +126,22 @@ class MaterialsViewModel extends ChangeNotifier {
     }
     _materialsNumber++;
     _materialsAtive = _materials.firstWhere((e) => e.isMaterial == _materialsNumber );
-    isLastMaterial = _materialsNumber == _indexOfLastMaterial;
+    _isFirstMaterial = _materialsNumber == 1;
+    _isLastMaterial = _materialsNumber == _indexOfLastMaterial;
     notifyListeners();
   }
 
+  /// Goes to the previous material.
+  ///
+  /// If the user is in the first material, it doesn't do anything.
+  void previousMaterial() {
+    // If the user is in the first material, don't do anything
+    if (_materialsNumber == 1) return;
+    // Go to the previous material
+    _materialsNumber--;
+    _materialsAtive = _materials.firstWhere((e) => e.isMaterial == _materialsNumber );
+    // Set the flag to true if the user is in the first material
+    _isFirstMaterial = _materialsNumber == 1;
+    notifyListeners();
+  }
 }

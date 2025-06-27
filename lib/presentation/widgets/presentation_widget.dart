@@ -98,21 +98,26 @@ class PresentationWidget extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         color: Colors.transparent,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // ElevatedButton(
-            //   style: ElevatedButton.styleFrom(
-            //     minimumSize: const Size(150, 50),
-            //     elevation: 0,
-            //   ),
-            //   onPressed: context.read<MaterialsViewModel>().previousSaudacao,
-            //   child: Column(
-            //     children: const [
-            //       Icon(Icons.arrow_back, color: Colors.green, size: 24),
-            //       Text('Anterior', style: TextStyle(fontSize: 16)),
-            //     ],
-            //   ),
-            // ),
+            context.watch<MaterialsViewModel>().isFirstMaterial ? const SizedBox() : ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(150, 50),
+               shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                elevation: 1,
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
+              ),
+              onPressed: context.read<MaterialsViewModel>().previousMaterial,
+              child: Row(
+                children: const [
+                  Icon(Icons.arrow_back, color: Colors.white, size: 30),
+                  SizedBox(width: 10),
+                  Text('Anterior', style: TextStyle(fontSize: 24, color: Colors.white)),
+                ],
+              ),
+            ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(150, 50),
