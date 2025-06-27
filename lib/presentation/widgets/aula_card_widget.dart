@@ -4,7 +4,7 @@ import 'package:libras/presentation/widgets/stack_widget.dart';
 class AulaCardWidget extends StatelessWidget {
   const AulaCardWidget({
     super.key,
-    required this.imageLink,
+    // required this.imageLink,
     required this.text,
     required this.onTap,
     this.fadeColor,
@@ -15,7 +15,7 @@ class AulaCardWidget extends StatelessWidget {
     this.borderRadius,
   });
 
-  final String imageLink;
+  // final String imageLink;
   final String text;
   final void Function() onTap;
   final double? imageHeight;
@@ -31,14 +31,16 @@ class AulaCardWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: containerWidth ?? 150,
-        height: containerHeight ?? double.infinity,
+        height: containerHeight ?? 150,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
+          color: fadeColor ?? Theme.of(context).colorScheme.secondary,
           borderRadius: borderRadius ?? BorderRadius.circular(20),
+
+          border: Border.all(color: Colors.white, width: 2),
         ),
         clipBehavior: Clip.hardEdge,
         child: StackWidget(
-          imageLink: imageLink,
+          // imageLink: imageLink,
           imageHeight: imageHeight,
           imageWidth: imageWidth,
           fadeColor: fadeColor,

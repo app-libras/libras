@@ -39,6 +39,10 @@ class _LoadUserScreenState extends State<LoadUserScreen> {
     ).addScore(userId, level, points);
   }
 
+  void _navigateToHome(BuildContext context) {
+    Navigator.pushReplacementNamed(context, HomeScreen.id);
+  }
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -56,7 +60,7 @@ class _LoadUserScreenState extends State<LoadUserScreen> {
         _initUserScore(userViewModel.user[0].id, 1, 0);
       }
       Future.delayed(const Duration(seconds: 2), () {
-        Navigator.pushReplacementNamed(context, HomeScreen.id);
+        _navigateToHome(context);
       });
     }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libras/data/models/user_model.dart';
-import 'package:libras/data/repositories/user_repository.dart';
+import 'package:libras/data/repositories/repo/user_repository.dart';
 import 'package:libras/domain/entities/user.dart';
 
 class UserViewModel with ChangeNotifier {
@@ -25,12 +25,17 @@ class UserViewModel with ChangeNotifier {
       debugPrint(e.toString());
     } finally {
       _isLoading = false;
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   Future<void> addUser(String name) async {
-    final user = UserModel(name: name);
+    // print(name);
+    final user = UserModel(
+      id: 1,
+      name: name,
+      profilePic: 'assets/profiles/profile_default.png',
+    );
     await _userRepository.addUser(user);
     await loadUsers();
   }

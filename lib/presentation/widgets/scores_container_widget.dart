@@ -27,13 +27,9 @@ class ScoresContainerWidget extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height ?? 200,
-      margin: margin ??
-          const EdgeInsets.only(
-            top: 25,
-            bottom: 20,
-            left: 10,
-            right: 10,
-          ),
+      margin:
+          margin ??
+          const EdgeInsets.only(top: 25, bottom: 20, left: 10, right: 10),
       decoration: BoxDecoration(
         color: decorationColor ?? Theme.of(context).colorScheme.onSecondary,
         borderRadius: borderRadius ?? BorderRadius.circular(15),

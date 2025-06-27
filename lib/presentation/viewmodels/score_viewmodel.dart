@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:libras/data/models/score_model.dart';
-import 'package:libras/data/repositories/score_repository.dart';
+import 'package:libras/data/repositories/repo/score_repository.dart';
 import 'package:libras/domain/entities/score.dart';
 
 class ScoreViewModel with ChangeNotifier {
@@ -23,9 +23,41 @@ class ScoreViewModel with ChangeNotifier {
   }
 
   Future<void> addScore(int userId, int points, int level) async {
-    final score = ScoreModel(points: points, userId: userId, level: level);
+    final score = ScoreModel(
+      id: 1,
+      points: points,
+      userId: userId,
+      level: level,
+    );
     try {
       await _scoreRepository.addScore(score);
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      await loadScore();
+      notifyListeners();
+    }
+  }
+
+  Future<void> updateScorePoints(int points) async {
+    print('updateScorePoints');
+    ScoreModel newScore = _score.map((e) => ScoreModel.fromEntity(e)).first;
+    newScore.points = points;
+    try {
+      await _scoreRepository.updateScore(newScore);
+    } catch (e) {
+      debugPrint(e.toString());
+    } finally {
+      await loadScore();
+      notifyListeners();
+    }
+  }
+
+  Future<void> updateScoreLevel(int level) async {
+    ScoreModel newScore = _score.map((e) => ScoreModel.fromEntity(e)).first;
+    newScore.level = level;
+    try {
+      await _scoreRepository.updateScore(newScore);
     } catch (e) {
       debugPrint(e.toString());
     } finally {

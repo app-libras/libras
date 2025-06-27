@@ -9,7 +9,7 @@ class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['_id'],
+      id: map['id'],
       name: map['name'],
       profilePic: map['profile_pic'],
     );
@@ -20,5 +20,5 @@ class UserModel {
   }
 
   // convert to domain entity
-  User toEntity() => User(id: id!, name: name, profilePic: profilePic);
+  User toEntity() => User(id: id!, name: name, profilePic: profilePic!);
 }
