@@ -1,4 +1,4 @@
-package com.prinako.libras
+package com.prinako.librar
 
 import io.flutter.embedding.android.FlutterActivity
 

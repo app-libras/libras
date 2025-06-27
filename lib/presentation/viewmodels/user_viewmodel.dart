@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:libras/data/models/user_model.dart';
-import 'package:libras/data/repositories/repo/user_repository.dart';
-import 'package:libras/domain/entities/user.dart';
+import 'package:librar/data/models/user_model.dart';
+import 'package:librar/data/repositories/repo/user_repository.dart';
+import 'package:librar/domain/entities/user.dart';
 
 class UserViewModel with ChangeNotifier {
   final UserRepository _userRepository;

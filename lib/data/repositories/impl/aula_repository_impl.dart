@@ -1,7 +1,7 @@
-import 'package:libras/core/database/dao/aula_dao.dart';
-import 'package:libras/data/models/aula_model.dart';
-import 'package:libras/domain/entities/aula.dart';
-import 'package:libras/data/repositories/repo/aula_repository.dart';
+import 'package:librar/core/database/dao/aula_dao.dart';
+import 'package:librar/data/models/aula_model.dart';
+import 'package:librar/domain/entities/aula.dart';
+import 'package:librar/data/repositories/repo/aula_repository.dart';
 
 class AulaRepositoryImpl implements AulaRepository {
   final AulaDao _aulaDao;

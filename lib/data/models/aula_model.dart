@@ -1,4 +1,4 @@
-import 'package:libras/domain/entities/aula.dart';
+import 'package:librar/domain/entities/aula.dart';
 
 class AulaModel {
   final int id;

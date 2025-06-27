@@ -1,4 +1,4 @@
-import 'package:libras/domain/entities/score.dart';
+import 'package:librar/domain/entities/score.dart';
 
 class ScoreModel {
   final int? id;

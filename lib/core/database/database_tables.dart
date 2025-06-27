@@ -1,8 +1,9 @@
-import 'package:libras/core/constants/database_tables_name_constants.dart';
+import 'package:librar/core/constants/database_tables_name_constants.dart';
 
 class UserTables {
   final String user = DatabaseTablesName.user;
-  String get userTables => '''
+  String get userTables =>
+      '''
   CREATE TABLE $user (
     id INTEGER PRIMARY KEY CHECK (id == 1) UNIQUE DEFAULT 1,
     name TEXT NOT NULL UNIQUE,
@@ -12,7 +13,8 @@ class UserTables {
 
 class ScoreTables {
   final String score = DatabaseTablesName.score;
-  String get scoreTables => '''
+  String get scoreTables =>
+      '''
   CREATE TABLE $score (
     id INTEGER PRIMARY KEY CHECK (id == 1) UNIQUE DEFAULT 1,
     points INTEGER NOT NULL DEFAULT 0,
@@ -24,7 +26,8 @@ class ScoreTables {
 
 class AulaTables {
   final String aula = DatabaseTablesName.aula;
-  String get aulaTables => '''
+  String get aulaTables =>
+      '''
   CREATE TABLE $aula (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
@@ -36,7 +39,8 @@ class AulaTables {
 
 class MateriaTables {
   final String materia = DatabaseTablesName.material;
-  String get materiaTables => '''
+  String get materiaTables =>
+      '''
   CREATE TABLE $materia (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL UNIQUE,
@@ -50,7 +54,8 @@ class MateriaTables {
 
 class SaudacoesTables {
   final String saudacoes = DatabaseTablesName.saudacoes;
-  String get saudacoesTables => '''
+  String get saudacoesTables =>
+      '''
   CREATE TABLE $saudacoes (
     id INTEGER PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,

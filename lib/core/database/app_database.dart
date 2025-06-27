@@ -6,8 +6,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-// import 'package:libras/core/database/database_tables.dart';
-import 'package:libras/core/constants/database_init_constants.dart';
+// import 'package:librar/core/database/database_tables.dart';
+import 'package:librar/core/constants/database_init_constants.dart';
 
 class AppDatabase {
   AppDatabase._();

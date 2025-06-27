@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:libras/presentation/widgets/stack_widget.dart';
+import 'package:librar/presentation/widgets/stack_widget.dart';
 
 class AulaCardWidget extends StatelessWidget {
   const AulaCardWidget({
@@ -29,22 +29,25 @@ class AulaCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        width: containerWidth ?? 150,
-        height: containerHeight ?? 150,
-        decoration: BoxDecoration(
-          color: fadeColor ?? Theme.of(context).colorScheme.secondary,
-          borderRadius: borderRadius ?? BorderRadius.circular(20),
+      child: Hero(
+        tag: text,
+        child: Container(
+          width: containerWidth ?? 150,
+          height: containerHeight ?? 150,
+          decoration: BoxDecoration(
+            color: fadeColor ?? Theme.of(context).colorScheme.secondary,
+            borderRadius: borderRadius ?? BorderRadius.circular(20),
 
-          border: Border.all(color: Colors.white, width: 2),
-        ),
-        clipBehavior: Clip.hardEdge,
-        child: StackWidget(
-          // imageLink: imageLink,
-          imageHeight: imageHeight,
-          imageWidth: imageWidth,
-          fadeColor: fadeColor,
-          text: text,
+            border: Border.all(color: Colors.white, width: 2),
+          ),
+          clipBehavior: Clip.hardEdge,
+          child: StackWidget(
+            // imageLink: imageLink,
+            imageHeight: imageHeight,
+            imageWidth: imageWidth,
+            fadeColor: fadeColor,
+            text: text,
+          ),
         ),
       ),
     );

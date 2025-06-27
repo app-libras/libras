@@ -1,5 +1,5 @@
-import 'package:libras/domain/entities/answer.dart';
-import 'package:libras/domain/entities/materials.dart';
+import 'package:librar/domain/entities/answer.dart';
+import 'package:librar/domain/entities/materials.dart';
 
 class AnswerModel {
   final int id;

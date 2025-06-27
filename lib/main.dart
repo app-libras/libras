@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:libras/app.dart';
-import 'package:libras/core/database/app_database.dart';
-import 'package:libras/core/database/dao/aula_dao.dart';
-import 'package:libras/core/database/dao/materials_dao.dart';
-import 'package:libras/core/database/dao/score_dao.dart';
-import 'package:libras/core/database/dao/user_dao.dart';
-import 'package:libras/data/repositories/repo/materials_repository.dart';
-import 'package:libras/data/repositories/impl/materials_repository_impl.dart';
-import 'package:libras/data/repositories/repo/score_repository.dart';
-import 'package:libras/data/repositories/impl/score_repository_impl.dart';
-import 'package:libras/data/repositories/repo/user_repository.dart';
-import 'package:libras/data/repositories/impl/user_repository_impl.dart';
-import 'package:libras/data/repositories/repo/aula_repository.dart';
-import 'package:libras/data/repositories/impl/aula_repository_impl.dart';
-import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/user_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
+import 'package:librar/app.dart';
+import 'package:librar/core/database/app_database.dart';
+import 'package:librar/core/database/dao/aula_dao.dart';
+import 'package:librar/core/database/dao/materials_dao.dart';
+import 'package:librar/core/database/dao/score_dao.dart';
+import 'package:librar/core/database/dao/user_dao.dart';
+import 'package:librar/data/repositories/repo/materials_repository.dart';
+import 'package:librar/data/repositories/impl/materials_repository_impl.dart';
+import 'package:librar/data/repositories/repo/score_repository.dart';
+import 'package:librar/data/repositories/impl/score_repository_impl.dart';
+import 'package:librar/data/repositories/repo/user_repository.dart';
+import 'package:librar/data/repositories/impl/user_repository_impl.dart';
+import 'package:librar/data/repositories/repo/aula_repository.dart';
+import 'package:librar/data/repositories/impl/aula_repository_impl.dart';
+import 'package:librar/presentation/viewmodels/materials_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/score_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/user_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -47,9 +47,8 @@ void main() async {
         ),
         Provider<MaterialsDao>(create: (_) => saudacao),
         Provider<MaterialsRepository>(
-          create:
-              (context) =>
-                  MaterialsRepositoryImpl(context.read<MaterialsDao>()),
+          create: (context) =>
+              MaterialsRepositoryImpl(context.read<MaterialsDao>()),
         ),
         ChangeNotifierProvider(
           create: (context) => UserViewModel(context.read<UserRepository>()),
@@ -58,9 +57,8 @@ void main() async {
           create: (context) => ScoreViewModel(context.read<ScoreRepository>()),
         ),
         ChangeNotifierProvider(
-          create:
-              (context) =>
-                  MaterialsViewModel(context.read<MaterialsRepository>()),
+          create: (context) =>
+              MaterialsViewModel(context.read<MaterialsRepository>()),
         ),
         ChangeNotifierProvider(
           create: (context) => AulasViewModel(context.read<AulaRepository>()),

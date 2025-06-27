@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
-import 'package:libras/presentation/views/home_screen.dart';
-import 'package:libras/presentation/viewmodels/user_viewmodel.dart';
-import 'package:libras/presentation/widgets/loading_widget.dart';
-import 'package:libras/presentation/widgets/user_name_widget.dart';
+import 'package:librar/presentation/viewmodels/score_viewmodel.dart';
+import 'package:librar/presentation/views/home_screen.dart';
+import 'package:librar/presentation/viewmodels/user_viewmodel.dart';
+import 'package:librar/presentation/widgets/loading_widget.dart';
+import 'package:librar/presentation/widgets/user_name_widget.dart';
 import 'package:provider/provider.dart';
 
 class LoadUserScreen extends StatefulWidget {
@@ -39,7 +39,7 @@ class _LoadUserScreenState extends State<LoadUserScreen> {
     ).addScore(userId, level, points);
   }
 
-  void _navigateToHome(BuildContext context) {
+  void _navigateToHome() {
     Navigator.pushReplacementNamed(context, HomeScreen.id);
   }
 
@@ -60,24 +60,23 @@ class _LoadUserScreenState extends State<LoadUserScreen> {
         _initUserScore(userViewModel.user[0].id, 1, 0);
       }
       Future.delayed(const Duration(seconds: 2), () {
-        _navigateToHome(context);
+        _navigateToHome();
       });
     }
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondary,
       // body: LoadingWidget(),
-      body:
-          userViewModel.isLoading
-              ? const LoadingWidget()
-              : UserNameWidget(
-                nameController: _nameController,
-                onEnter: () async {
-                  if (_nameController.text.isEmpty) return;
-                  await userViewModel.addUser(_nameController.text);
-                  _nameController.clear();
-                },
-              ),
+      body: userViewModel.isLoading
+          ? const LoadingWidget()
+          : UserNameWidget(
+              nameController: _nameController,
+              onEnter: () async {
+                if (_nameController.text.isEmpty) return;
+                await userViewModel.addUser(_nameController.text);
+                _nameController.clear();
+              },
+            ),
     );
   }
 }
