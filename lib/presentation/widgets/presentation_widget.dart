@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hero_animation/hero_animation.dart';
 import 'package:provider/provider.dart';
 import 'package:librar/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:librar/presentation/viewmodels/materials_viewmodel.dart';
