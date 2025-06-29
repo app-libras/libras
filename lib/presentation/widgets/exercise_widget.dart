@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:libras/presentation/methods/app_bar.dart';
-import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
+import 'package:librar/presentation/methods/app_bar.dart';
+import 'package:librar/presentation/viewmodels/aulas_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/materials_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/score_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class ExerciseWidget extends StatefulWidget {
@@ -10,12 +10,10 @@ class ExerciseWidget extends StatefulWidget {
 
   final MaterialsViewModel materialsViewModel;
 
-
   @override
   State<ExerciseWidget> createState() => _ExerciseWidgetState();
 }
 
- 
 Future<void> _showMyDialog(BuildContext context) async {
   int selectedAnswer = context.read<MaterialsViewModel>().selectedAnswer;
   int currentQuestion = context.read<MaterialsViewModel>().currentQuestion!.id;
@@ -38,10 +36,9 @@ Future<void> _showMyDialog(BuildContext context) async {
         height:
             MediaQuery.of(context).size.height *
             0.22, // Adjust height as needed
-        color:
-            isCorrect
-                ? Theme.of(context).colorScheme.secondary
-                : Theme.of(context).colorScheme.onError,
+        color: isCorrect
+            ? Theme.of(context).colorScheme.secondary
+            : Theme.of(context).colorScheme.onError,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -75,34 +72,32 @@ Future<void> _showMyDialog(BuildContext context) async {
                       isCorrect
                           ? const SizedBox(height: 10)
                           : RichText(
-                            text: TextSpan(
-                              style: TextStyle(
-                                color:
-                                    Theme.of(
-                                      context,
-                                    ).textTheme.titleMedium?.color,
-                                // fontSize: 20,
-                              ),
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: 'A resposta correta: ',
-                                  style: TextStyle(fontSize: 18),
+                              text: TextSpan(
+                                style: TextStyle(
+                                  color: Theme.of(
+                                    context,
+                                  ).textTheme.titleMedium?.color,
+                                  // fontSize: 20,
                                 ),
-                                TextSpan(
-                                  text:
-                                      context
-                                          .read<MaterialsViewModel>()
-                                          .currentQuestion!
-                                          .name,
-                                  style: TextStyle(
-                                    color: Colors.green,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w800,
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'A resposta correta: ',
+                                    style: TextStyle(fontSize: 18),
                                   ),
-                                ),
-                              ],
+                                  TextSpan(
+                                    text: context
+                                        .read<MaterialsViewModel>()
+                                        .currentQuestion!
+                                        .name,
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
 
                       Text(
                         isCorrect
@@ -139,7 +134,6 @@ Future<void> _showMyDialog(BuildContext context) async {
     },
   );
 }
-
 
 class _ExerciseWidgetState extends State<ExerciseWidget> {
   @override
@@ -204,17 +198,17 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 widget.materialsViewModel.selectedAnswer ==
-                                        answer.id
-                                    ? Colors.green.shade100
-                                    : Colors.white,
+                                    answer.id
+                                ? Colors.green.shade100
+                                : Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
                             side:
                                 widget.materialsViewModel.selectedAnswer ==
-                                        answer.id
-                                    ? const BorderSide(color: Colors.green)
-                                    : const BorderSide(color: Colors.grey),
+                                    answer.id
+                                ? const BorderSide(color: Colors.green)
+                                : const BorderSide(color: Colors.grey),
 
                             // minimumSize: const Size(100, 50),
                             elevation: 1,

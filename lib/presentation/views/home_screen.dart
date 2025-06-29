@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:libras/domain/entities/aula.dart';
-import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/user_viewmodel.dart';
-import 'package:libras/presentation/views/materials_screen.dart';
-import 'package:libras/presentation/widgets/app_greeting_widget.dart';
-import 'package:libras/presentation/widgets/aula_card_widget.dart';
-import 'package:libras/presentation/widgets/aulas_container_widget.dart';
-// import 'package:libras/presentation/widgets/exercise_widget.dart';
-import 'package:libras/presentation/widgets/score_widget.dart';
-import 'package:libras/presentation/widgets/scores_container_widget.dart';
+import 'package:librar/domain/entities/aula.dart';
+import 'package:librar/presentation/viewmodels/aulas_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/materials_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/score_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/user_viewmodel.dart';
+import 'package:librar/presentation/views/materials_screen.dart';
+import 'package:librar/presentation/widgets/app_greeting_widget.dart';
+import 'package:librar/presentation/widgets/aula_card_widget.dart';
+import 'package:librar/presentation/widgets/aulas_container_widget.dart';
+import 'package:librar/presentation/widgets/score_widget.dart';
+import 'package:librar/presentation/widgets/scores_container_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,13 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _setCurrentAula(Aula aula) async {
-     await context.read<AulasViewModel>().onClickAula(aula);
-    _loadMaterials(aula.id,aula.step);
-    }
+    await context.read<AulasViewModel>().onClickAula(aula);
+    _loadMaterials(aula.id, aula.step);
+  }
 
-  void _loadMaterials(int id,step) async {
-    await context.read<MaterialsViewModel>().loadMaterialsByAulaId(id,step);
-    if(!mounted) return;
+  void _loadMaterials(int id, step) async {
+    await context.read<MaterialsViewModel>().loadMaterialsByAulaId(id, step);
+    if (!mounted) return;
     _navigateToMaterials();
   }
 
@@ -104,9 +103,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     late double containerWidth;
                     widgetsController == 2
                         ? containerWidth =
-                            MediaQuery.of(context).size.width * 0.92
+                              MediaQuery.of(context).size.width * 0.92
                         : containerWidth =
-                            MediaQuery.of(context).size.width * 0.45;
+                              MediaQuery.of(context).size.width * 0.45;
                     widgetsController == 2
                         ? widgetsController = 0
                         : widgetsController++;
@@ -114,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // fadeColor: Theme.of(context).colorScheme.onPrimary,
                       containerWidth: containerWidth,
                       // onTap: () => _aulaAbc(context),
-                      onTap: (){
+                      onTap: () {
                         _setCurrentAula(aulas[index]);
                       },
                       // imageLink: aulas[index].imageLink,
@@ -123,13 +122,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       text: aulas[index].name,
                       fadeColor:
                           context.watch<AulasViewModel>().aulas[index].isFinish
-                              ? Theme.of(context).colorScheme.onSecondary
-                              : context
-                                  .watch<AulasViewModel>()
-                                  .aulas[index]
-                                  .isStart
-                              ? Colors.orange[50]
-                              : Theme.of(context).colorScheme.onPrimary,
+                          ? Theme.of(context).colorScheme.onSecondary
+                          : context.watch<AulasViewModel>().aulas[index].isStart
+                          ? Colors.orange[50]
+                          : Theme.of(context).colorScheme.onPrimary,
                     );
                   },
                 ),

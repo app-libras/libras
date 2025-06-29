@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:libras/data/models/score_model.dart';
-import 'package:libras/data/repositories/repo/score_repository.dart';
-import 'package:libras/domain/entities/score.dart';
+import 'package:librar/data/models/score_model.dart';
+import 'package:librar/data/repositories/repo/score_repository.dart';
+import 'package:librar/domain/entities/score.dart';
 
 class ScoreViewModel with ChangeNotifier {
   final ScoreRepository _scoreRepository;
@@ -40,7 +40,6 @@ class ScoreViewModel with ChangeNotifier {
   }
 
   Future<void> updateScorePoints(int points) async {
-    print('updateScorePoints');
     ScoreModel newScore = _score.map((e) => ScoreModel.fromEntity(e)).first;
     newScore.points = points;
     try {

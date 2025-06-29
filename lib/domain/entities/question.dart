@@ -1,4 +1,4 @@
-import 'package:libras/domain/entities/answer.dart';
+import 'package:librar/domain/entities/answer.dart';
 
 class Question {
   final int id;

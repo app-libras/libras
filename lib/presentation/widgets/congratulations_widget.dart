@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:libras/presentation/viewmodels/score_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/score_viewmodel.dart';
 import 'package:lottie/lottie.dart';
-import 'package:libras/presentation/viewmodels/aulas_viewmodel.dart';
-import 'package:libras/presentation/viewmodels/materials_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/aulas_viewmodel.dart';
+import 'package:librar/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class CongratulationsWidget extends StatelessWidget {
@@ -14,10 +14,9 @@ class CongratulationsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final aula = context.watch<AulasViewModel>().aulaAtive;
     return Scaffold(
-      backgroundColor:
-          Theme.of(
-            context,
-          ).colorScheme.secondary, // Um fundo suave para celebrar
+      backgroundColor: Theme.of(
+        context,
+      ).colorScheme.secondary, // Um fundo suave para celebrar
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
