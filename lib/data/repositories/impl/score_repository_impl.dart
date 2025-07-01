@@ -1,7 +1,7 @@
-import 'package:libras/core/database/dao/score_dao.dart';
-import 'package:libras/data/models/score_model.dart';
-import 'package:libras/data/repositories/repo/score_repository.dart';
-import 'package:libras/domain/entities/score.dart';
+import 'package:librar/core/database/dao/score_dao.dart';
+import 'package:librar/data/models/score_model.dart';
+import 'package:librar/data/repositories/repo/score_repository.dart';
+import 'package:librar/domain/entities/score.dart';
 
 class ScoreRepositoryImpl implements ScoreRepository {
   final ScoreDao _scoreDao;

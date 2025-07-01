@@ -1,4 +1,4 @@
-import 'package:libras/domain/entities/user.dart';
+import 'package:librar/domain/entities/user.dart';
 
 class UserModel {
   final int? id;

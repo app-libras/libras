@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:libras/data/models/aula_model.dart';
-import 'package:libras/data/repositories/repo/aula_repository.dart';
-import 'package:libras/domain/entities/aula.dart';
+import 'package:librar/data/models/aula_model.dart';
+import 'package:librar/data/repositories/repo/aula_repository.dart';
+import 'package:librar/domain/entities/aula.dart';
 
 class AulasViewModel extends ChangeNotifier {
   final AulaRepository _aulaRepository;
@@ -50,8 +50,9 @@ class AulasViewModel extends ChangeNotifier {
     newAula.step = index;
     await _aulaRepository.updateAula(newAula);
     _aula = newAula.toEntity();
-    _aulas =
-        _aulas.map((e) => e.id == newAula.id ? newAula.toEntity() : e).toList();
+    _aulas = _aulas
+        .map((e) => e.id == newAula.id ? newAula.toEntity() : e)
+        .toList();
     notifyListeners();
   }
 
@@ -61,10 +62,9 @@ class AulasViewModel extends ChangeNotifier {
       newAula.isFinish = true;
       await _aulaRepository.updateAula(newAula);
       // _aula = newAula.toEntity();
-      _aulas =
-          _aulas
-              .map((e) => e.id == newAula.id ? newAula.toEntity() : e)
-              .toList();
+      _aulas = _aulas
+          .map((e) => e.id == newAula.id ? newAula.toEntity() : e)
+          .toList();
     }
     notifyListeners();
   }

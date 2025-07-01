@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:libras/core/themes/light_themes.dart';
-import 'package:libras/presentation/views/materials_screen.dart';
-import 'package:libras/presentation/views/home_screen.dart';
-import 'package:libras/presentation/views/load_user_screen.dart';
+import 'package:librar/core/themes/light_themes.dart';
+import 'package:librar/presentation/views/materials_screen.dart';
+import 'package:librar/presentation/views/home_screen.dart';
+import 'package:librar/presentation/views/load_user_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Libras',
+      title: 'Librar',
       theme: lightTheme(),
       initialRoute: LoadUserScreen.id,
       routes: {

@@ -1,4 +1,4 @@
-import 'package:libras/domain/entities/materials.dart';
+import 'package:librar/domain/entities/materials.dart';
 
 class MaterialsModel {
   final int id;

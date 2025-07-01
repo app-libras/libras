@@ -1,5 +1,5 @@
-import 'package:libras/core/constants/database_tables_name_constants.dart';
-import 'package:libras/core/database/app_database.dart';
+import 'package:librar/core/constants/database_tables_name_constants.dart';
+import 'package:librar/core/database/app_database.dart';
 
 class UserDao {
   final AppDatabase _appDatabase;

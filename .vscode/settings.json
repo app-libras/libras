@@ -10,5 +10,7 @@
     "sqflite",
     "viewmodel",
     "viewmodels"
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "editor.accessibilityPageSize": 550
 }

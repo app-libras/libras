@@ -1,7 +1,7 @@
-import 'package:libras/core/database/dao/materials_dao.dart';
-import 'package:libras/data/models/material_model.dart';
-import 'package:libras/data/repositories/repo/materials_repository.dart';
-import 'package:libras/domain/entities/materials.dart';
+import 'package:librar/core/database/dao/materials_dao.dart';
+import 'package:librar/data/models/material_model.dart';
+import 'package:librar/data/repositories/repo/materials_repository.dart';
+import 'package:librar/domain/entities/materials.dart';
 
 class MaterialsRepositoryImpl implements MaterialsRepository {
   final MaterialsDao _materialsDao;

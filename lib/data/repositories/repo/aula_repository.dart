@@ -1,5 +1,5 @@
-import 'package:libras/data/models/aula_model.dart';
-import 'package:libras/domain/entities/aula.dart';
+import 'package:librar/data/models/aula_model.dart';
+import 'package:librar/domain/entities/aula.dart';
 
 abstract class AulaRepository {
   Future<List<Aula>> getAllAulas();

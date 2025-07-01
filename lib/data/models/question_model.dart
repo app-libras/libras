@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:libras/domain/entities/answer.dart';
-import 'package:libras/domain/entities/materials.dart';
-import 'package:libras/domain/entities/question.dart';
+import 'package:librar/domain/entities/answer.dart';
+import 'package:librar/domain/entities/materials.dart';
+import 'package:librar/domain/entities/question.dart';
 
 class QuestionModel {
   final int id;
@@ -31,22 +31,21 @@ class QuestionModel {
     List<Answer> newAnswer = [];
     String path = material.path;
 
-    List<Answer> aux =
-        List.of(answer).where((e) => e.id != material.id).toList();
+    List<Answer> aux = List.of(
+      answer,
+    ).where((e) => e.id != material.id).toList();
     aux.shuffle(Random());
 
     int count = min(5, aux.length);
     newAnswer = aux.sublist(0, count);
 
-
     newAnswer.add(Answer(id: material.id, answer: material.name));
 
     newAnswer.shuffle(Random());
 
-    if(material.hasTwoPath) {
+    if (material.hasTwoPath) {
       final List k = material.path.split('.');
       path = '${k[0]}Q.${k[1]}';
-      
     }
 
     return QuestionModel(
