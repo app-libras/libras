@@ -13,6 +13,7 @@ class CongratulationsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final aula = context.watch<AulasViewModel>().aulaAtive;
+    bool isAtividade = aula.name == 'Atividade';
     return Scaffold(
       backgroundColor: Theme.of(
         context,
@@ -61,31 +62,36 @@ class CongratulationsWidget extends StatelessWidget {
               ),
               const SizedBox(height: 40.0), // Espaçamento
               // Botão para continuar ou ir para a próxima etapa
-              ElevatedButton(
-                onPressed: () async {
-                  context.read<AulasViewModel>().nextAula();
-                  final aula = context.read<AulasViewModel>().aulaAtive;
-                  context.read<MaterialsViewModel>().loadMaterialsByAulaId(
-                    aula.id,
-                    aula.step,
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.lightGreen, // Cor do botão
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 15,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-                child: const Text(
-                  'Continuar Aprendendo',
-                  style: TextStyle(fontSize: 18.0),
-                ),
-              ),
+              isAtividade
+                  ? ElevatedButton(
+                      onPressed: () async {
+                        context.read<AulasViewModel>().nextAula();
+                        final aula = context.read<AulasViewModel>().aulaAtive;
+                        context
+                            .read<MaterialsViewModel>()
+                            .loadMaterialsByAulaId(
+                              aula.id,
+                              aula.step,
+                              aula.name,
+                            );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.lightGreen, // Cor do botão
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 40,
+                          vertical: 15,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      child: const Text(
+                        'Continuar Aprendendo',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    )
+                  : const SizedBox(),
               const SizedBox(height: 20.0), // Espaçamento
               ElevatedButton(
                 onPressed: () {

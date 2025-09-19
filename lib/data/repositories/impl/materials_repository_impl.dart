@@ -18,4 +18,10 @@ class MaterialsRepositoryImpl implements MaterialsRepository {
   Future<void> updateMaterials(MaterialsModel material) async {
     await _materialsDao.updateMaterials(material.toMap());
   }
+
+  @override
+  Future<List<Materials>> getAllMaterialsExcept() async {
+    final result = await _materialsDao.getAllMaterialsExcept();
+    return result.map((e) => MaterialsModel.fromMap(e).toEntity()).toList();
+  }
 }

@@ -4,6 +4,7 @@ import 'package:librar/presentation/viewmodels/aulas_viewmodel.dart';
 import 'package:librar/presentation/viewmodels/materials_viewmodel.dart';
 import 'package:librar/presentation/viewmodels/score_viewmodel.dart';
 import 'package:librar/presentation/viewmodels/user_viewmodel.dart';
+import 'package:librar/presentation/views/atividade_screen.dart';
 import 'package:librar/presentation/views/materials_screen.dart';
 import 'package:librar/presentation/widgets/app_greeting_widget.dart';
 import 'package:librar/presentation/widgets/aula_card_widget.dart';
@@ -31,17 +32,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _setCurrentAula(Aula aula) async {
     await context.read<AulasViewModel>().onClickAula(aula);
-    _loadMaterials(aula.id, aula.step);
+    _loadMaterials(aula.id, aula.step, aula.name);
   }
 
-  void _loadMaterials(int id, step) async {
-    await context.read<MaterialsViewModel>().loadMaterialsByAulaId(id, step);
+  void _loadMaterials(int id, int step, String name) async {
+    await context.read<MaterialsViewModel>().loadMaterialsByAulaId(
+      id,
+      step,
+      name,
+    );
     if (!mounted) return;
-    _navigateToMaterials();
+    if (name == 'Atividades') {
+      _navigateToAtividade();
+    } else {
+      _navigateToMaterials();
+    }
   }
 
   void _navigateToMaterials() {
     Navigator.pushNamed(context, MaterialsScreen.id);
+  }
+
+  void _navigateToAtividade() {
+    Navigator.pushNamed(context, AtividadeScreen.id);
   }
 
   @override

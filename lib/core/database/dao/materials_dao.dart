@@ -24,6 +24,15 @@ class MaterialsDao {
     // );
   }
 
+  Future<List<Map<String, dynamic>>> getAllMaterialsExcept() async {
+    final db = await _appDatabase.database;
+    return db.query(
+      DatabaseTablesName.material,
+      where: 'aula_id NOT IN (?, ?, ?)',
+      whereArgs: [4, 5, 6],
+    );
+  }
+
   Future<void> updateMaterials(Map<String, dynamic> row) async {
     final db = await _appDatabase.database;
     await db.update(
