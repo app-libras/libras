@@ -21,6 +21,7 @@ class MaterialsViewModel extends ChangeNotifier {
   late int _materialsNumber;
 
   late int _selectedAnswer = 0;
+  late String _selectedAnswerAtividade = '';
   double _progressValue = 0;
   double _progressFactorValue = 0.0;
 
@@ -40,6 +41,7 @@ class MaterialsViewModel extends ChangeNotifier {
 
   double get progressValue => _progressValue;
   int get selectedAnswer => _selectedAnswer;
+  String get selectedAnswerAtividade => _selectedAnswerAtividade;
   int get indexOfLastQuestion => _indexOfLastQuestion;
   int get indexOfLastMaterial => _indexOfLastMaterial;
 
@@ -51,32 +53,47 @@ class MaterialsViewModel extends ChangeNotifier {
 
   MaterialsViewModel(this._materialRepository);
 
-  Future<void> loadMaterialsByAulaId(int id, int step) async {
-    print('step: $step');
+  Future<void> loadMaterialsByAulaId(int id, int step, String name) async {
+    print(name);
     try {
+      List<Materials> rawMaterials = await _materialRepository
+          .getMaterialsByAulaId(id);
+      _materials = rawMaterials;
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+
+    if (name == 'Atividades') {
+      _materialsNumber = 1;
+      _materialsAtive = _materials.firstWhere((e) => e.isMaterial == 1);
+      List<Materials> auxMaterials = await _materialRepository
+          .getAllMaterialsExcept();
+      _answers = auxMaterials
+          .map((e) => Answer(id: e.id, answer: e.name))
+          .toList();
+      _materials.shuffle(Random());
+      _generateQuestionAtividade(auxMaterials);
+    } else {
       _materialsNumber = step;
-      _materials = await _materialRepository.getMaterialsByAulaId(id);
+      _materialsAtive = _materials.firstWhere((e) => e.isMaterial == step);
       // _materialsAtive = _materials[_index];
       _answers = _materials
           .map((e) => Answer(id: e.id, answer: e.name))
           .toList();
-      _materialsAtive = _materials.firstWhere((e) => e.isMaterial == step);
-
-      _indexOfLastMaterial = _materials.indexOf(_materials.last) + 1;
-      _isFinalQuestion = false;
-      _isFinalMaterial = false;
-      _isLastMaterial = false;
-      _isFirstMaterial = step == 1;
-
-      _progressFactorValue = (1 / _indexOfLastMaterial);
-
-      _progressValue = _progressFactorValue * step;
-
       // To generate the questions
       _generateQuestion();
-    } catch (e) {
-      debugPrint(e.toString());
     }
+
+    _indexOfLastMaterial = _materials.indexOf(_materials.last) + 1;
+    _isFinalQuestion = false;
+    _isFinalMaterial = false;
+    _isLastMaterial = false;
+    _isFirstMaterial = step == 1;
+
+    _progressFactorValue = (1 / _indexOfLastMaterial);
+
+    _progressValue = _progressFactorValue * step;
+
     notifyListeners();
   }
 
@@ -107,6 +124,17 @@ class MaterialsViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void _generateQuestionAtividade(List<Materials> materials) {
+    List<Materials> auxMaterials = materials;
+    auxMaterials.shuffle(Random());
+    _questions = auxMaterials
+        .map((e) => QuestionModel.fromAtividadeMaterial(e, _answers).toEntity())
+        .toList();
+    _currentQuestion = _questions[_questions.indexOf(_questions.first)];
+    _indexOfLastQuestion = _questions.indexOf(_questions.last);
+    notifyListeners();
+  }
+
   void selectAnswer(int value) {
     _selectedAnswer = value;
     notifyListeners();
@@ -123,6 +151,27 @@ class MaterialsViewModel extends ChangeNotifier {
     }
     _currentQuestion = _questions[_questions.indexOf(_currentQuestion) + 1];
     _selectedAnswer = 0;
+    notifyListeners();
+  }
+
+  void nextAtividadeQuestion() {
+    if (_materialsNumber == _indexOfLastMaterial) {
+      _isFinalMaterial = true;
+      notifyListeners();
+      return;
+    }
+    if (_selectedAnswerAtividade == '') {
+      print('selectedAnswerAtividade');
+      return;
+    }
+    // if (_questions.indexOf(_currentQuestion) == _indexOfLastQuestion) {
+    //   _isFinalQuestion = true;
+    //   print(_isFinalQuestion);
+    //   notifyListeners();
+    //   return;
+    // }
+    _currentQuestion = _questions[_questions.indexOf(_currentQuestion) + 1];
+    _selectedAnswerAtividade = '';
     notifyListeners();
   }
 
@@ -157,6 +206,11 @@ class MaterialsViewModel extends ChangeNotifier {
     _isFirstMaterial = _materialsNumber == 1;
     _isLastMaterial = _materialsNumber == _indexOfLastMaterial;
     _progressValue = _progressValue - _progressFactorValue;
+    notifyListeners();
+  }
+
+  void onChangeSelectedAnswerAtividade(String value) {
+    _selectedAnswerAtividade = value;
     notifyListeners();
   }
 }
