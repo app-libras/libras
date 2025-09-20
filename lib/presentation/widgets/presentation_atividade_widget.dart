@@ -193,7 +193,7 @@ class _PresentationAtividadeWidgetState
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 20),
-                Text('Qual é palavra?', style: TextStyle(fontSize: 30)),
+                Text('Qual é a palavra?', style: TextStyle(fontSize: 30)),
                 // Text(
                 //   'Digita sua resposta',
                 //   style: TextStyle(fontSize: 20, color: Colors.grey.shade600),
