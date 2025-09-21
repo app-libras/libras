@@ -150,9 +150,9 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              Text('Que sinal esse?', style: TextStyle(fontSize: 30)),
+              Text('Que sinal é esse?', style: TextStyle(fontSize: 30)),
               Text(
-                'Escolha a resposta correta abaixo',
+                'Marque a resposta correta',
                 style: TextStyle(fontSize: 20, color: Colors.grey.shade600),
               ),
               const SizedBox(height: 10),
@@ -261,7 +261,7 @@ class _ExerciseWidgetState extends State<ExerciseWidget> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          'Selecione uma resposta.',
+                          'Marque uma resposta.',
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                         backgroundColor: Colors.orange.shade100,
